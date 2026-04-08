@@ -1,17 +1,14 @@
 import { useEffect, useState } from "react";
+import unionLogo from "../../assets/union-logo.png";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants, MotionProps } from "framer-motion";
 import { Menu, X, Sun, Moon, BookCheckIcon } from "lucide-react";
 import { useLenis } from "lenis/react";
 import { BorderBeam } from "../lightswind/border-beam";
 
-const navItems = [
-  { name: "Home", href: "#hero" },
-  { name: "About", href: "#about" },
-  { name: "Education", href: "#education" },
-  { name: "Career", href: "#career" },
-  { name: "Projects", href: "#projects" },
-];
+import contentData from "../../data";
+
+const navItems = contentData.header.navItems;
 
 export default function Header() {
   const [theme, setTheme] = useState<string>(() => {
@@ -122,9 +119,12 @@ export default function Header() {
             {/* Logo / Brand */}
             <a
               onClick={() => handleScrollTo("#hero")}
-              className="cursor-pointer font-bold text-lg text-gray-800 dark:text-white"
+              className="cursor-pointer flex items-center gap-2"
             >
-              <BookCheckIcon />
+              <img src={unionLogo} alt="Логотип Профспілки" className="h-10 w-auto object-contain" />
+              <span className="font-bold text-lg text-union-primary dark:text-white hidden sm:block">
+                {contentData.hero.title}
+              </span>
             </a>
 
             {/* Desktop Navigation */}
@@ -138,13 +138,12 @@ export default function Header() {
                   >
                     <a
                       onClick={() => handleScrollTo(item.href)}
-                      className="cursor-pointer hover:text-pink-800
-                       dark:hover:text-pink-400"
+                      className="cursor-pointer hover:text-union-secondary dark:hover:text-pink-400"
                     >
                       {item.name}
                     </a>
                     <motion.span
-                      className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-blue-500 rounded-full"
+                      className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-union-accent rounded-full"
                       initial={{ width: 0, x: "-50%" }}
                       whileHover={{ width: "100%" }}
                       transition={{ duration: 0.3 }}

@@ -30,6 +30,13 @@ export default {
           accent: "#606060" /* Medium-dark grey accent */,
           muted: "#909090" /* Medium grey */,
         },
+        union: {
+          primary: "#1A365D",
+          secondary: "#2B6CB0",
+          accent: "#D69E2E",
+          light: "#EBF8FF",
+          dark: "#2D3748"
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

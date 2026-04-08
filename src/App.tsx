@@ -5,17 +5,18 @@ import Header from "./components/Header/Header";
 import { HeroSection } from "./components/HeroSection/HeroSection";
 import StripedBackground from "./components/lightswind/StripedBackground";
 import { AboutSection } from "./components/AboutSection/AboutSection";
-import { ProjectsSection } from "./components/ProjectsSection/ProjectsSection";
-import { EducationSection } from "./components/EducationSection/EducationSection";
-import { CareerTimeline } from "./components/CareerSection/CareerTimeline";
+import { RecommendationsSection } from "./components/RecommendationsSection/RecommendationsSection";
+import { EducationSection as NewsSection } from "./components/NewsSection/EducationSection";
+import { CareerTimeline as LawSection } from "./components/LawSection/CareerTimeline";
 import ReactLenis from "lenis/react";
+import contentData from "./data";
 import Dock from "./components/lightswind/dock";
 import {
   Home,
   User,
   GraduationCap,
   Briefcase,
-  FolderKanban,
+  BookCheckIcon,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -55,28 +56,28 @@ function App() {
   const dockItems = [
     {
       icon: <Home size={24} />,
-      label: "Home",
-      onClick: () => scrollToSection("home"),
+      label: contentData.dock.items.home,
+      onClick: () => scrollToSection("hero"),
     },
     {
       icon: <User size={24} />,
-      label: "About",
+      label: contentData.dock.items.about,
       onClick: () => scrollToSection("about"),
     },
     {
       icon: <GraduationCap size={24} />,
-      label: "Education",
-      onClick: () => scrollToSection("education"),
+      label: contentData.dock.items.news,
+      onClick: () => scrollToSection("news"),
+    },
+    {
+      icon: <BookCheckIcon size={24} />,
+      label: contentData.dock.items.recommendations,
+      onClick: () => scrollToSection("recommendations"),
     },
     {
       icon: <Briefcase size={24} />,
-      label: "Career",
-      onClick: () => scrollToSection("career"),
-    },
-    {
-      icon: <FolderKanban size={24} />,
-      label: "Projects",
-      onClick: () => scrollToSection("projects"),
+      label: contentData.dock.items.law,
+      onClick: () => scrollToSection("law"),
     },
   ];
 
@@ -94,20 +95,20 @@ function App() {
         >
           <div className="z-10">
             {/* Give IDs to sections */}
-            <div id="home">
+            <div id="hero">
               <HeroSection />
             </div>
             <div id="about">
               <AboutSection />
             </div>
-            <div id="education">
-              <EducationSection />
+            <div id="news">
+              <NewsSection />
             </div>
-            <div id="career">
-              <CareerTimeline />
+            <div id="recommendations">
+              <RecommendationsSection />
             </div>
-            <div id="projects">
-              <ProjectsSection />
+            <div id="law">
+              <LawSection />
             </div>
           </div>
         </div>
