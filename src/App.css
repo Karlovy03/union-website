@@ -2,12 +2,162 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-
 @theme {
   --font-sans: var(--font-geist-sans);
+
+  /* Noguchi Color Palette - Standard Tailwind v4 mapping */
+  --color-union-primary: var(--union-primary);
+  --color-union-secondary: var(--union-secondary);
+  --color-union-accent: var(--union-accent);
+  --color-union-light: var(--union-light);
+  --color-union-dark: var(--union-dark);
+
+  /* Semantic Overrides */
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-primary: hsl(var(--primary));
 }
 
 @import "./components/lightswind.css";
+
+@layer base {
+  :root {
+    /* Base Neutral HSL for Shadcn/Tailwind */
+    --background: 34 32% 95%; /* Derived from #f3eae0 (Off-white) */
+    --foreground: 218 36% 21%; /* Derived from #223148 (Deep Blue) */
+    
+    --card: 0 0% 100%;
+    --card-foreground: 218 36% 21%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 218 36% 21%;
+
+    --primary: 218 36% 21%; /* Deep Blue */
+    --primary-foreground: 34 32% 95%; /* Off-white */
+
+    --secondary: 218 20% 40%;
+    --secondary-foreground: 34 32% 95%;
+
+    --muted: 34 32% 90%;
+    --muted-foreground: 218 10% 40%;
+
+    --accent: 34 32% 85%;
+    --accent-foreground: 218 36% 21%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 34 10% 80%;
+    --input: 34 10% 80%;
+    --ring: 218 36% 21%;
+    
+    --radius: 0.75rem;
+
+    /* Semantic Hex Variables for Custom Components */
+    --union-primary: #223148;
+    --union-secondary: #2f486d;
+    --union-accent: #d2c7b8;
+    --union-light: #f3eae0;
+    --union-dark: #1A2536;
+  }
+
+  .dark {
+    /* Swapping colors for Dark Mode */
+    --background: 218 36% 15%; /* #1A2536 darker */
+    --foreground: 34 32% 95%; /* #f3eae0 (Off-white) */
+
+    --card: 218 36% 12%;
+    --card-foreground: 34 32% 95%;
+
+    --popover: 218 36% 10%;
+    --popover-foreground: 34 32% 95%;
+
+    --primary: 34 32% 95%; /* Primary becomes light */
+    --primary-foreground: 218 36% 21%;
+
+    --secondary: 218 30% 25%;
+    --secondary-foreground: 34 32% 95%;
+
+    --muted: 218 30% 20%;
+    --muted-foreground: 34 10% 70%;
+
+    --accent: 218 30% 25%;
+    --accent-foreground: 34 32% 95%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 218 30% 25%;
+    --input: 218 30% 25%;
+    --ring: 34 32% 95%;
+
+    /* Semantic Hex Variables - Symmetrically flipped for dark */
+    --union-primary: #f3eae0;
+    --union-secondary: #d2c7b8;
+    --union-accent: #d2c7b8;
+    --union-light: #2f486d;
+    --union-dark: #223148;
+  }
+}
+
+.aurora-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  filter: blur(100px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.aurora-blob {
+  position: absolute;
+  width: 40vw;
+  height: 40vw;
+  border-radius: 50%;
+  background: var(--union-primary);
+  opacity: 0.2;
+  animation: move 20s infinite alternate;
+}
+
+.aurora-blob-1 {
+  top: -10%;
+  left: -10%;
+  background: #2f486d;
+}
+
+.aurora-blob-2 {
+  bottom: -10%;
+  right: -10%;
+  background: #223148;
+  animation-delay: -5s;
+}
+
+.aurora-blob-3 {
+  top: 40%;
+  left: 50%;
+  background: #d2c7b8;
+  width: 30vw;
+  height: 30vw;
+  animation-delay: -10s;
+  opacity: 0.1;
+}
+
+@keyframes move {
+  from {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate(10vw, 10vh) rotate(360deg);
+  }
+}
+
+.dark .aurora-blob {
+  opacity: 0.15;
+}
 
 
 
@@ -36,7 +186,3 @@
 * {
   font-family: "Geist Sans", sans-serif !important;
 }
-
-
-
-

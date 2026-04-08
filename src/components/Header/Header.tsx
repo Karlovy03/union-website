@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import unionLogo from "../../assets/union-logo.png";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants, MotionProps } from "framer-motion";
-import { Menu, X, Sun, Moon, BookCheckIcon } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { useLenis } from "lenis/react";
 import { BorderBeam } from "../lightswind/border-beam";
 
@@ -23,8 +23,10 @@ export default function Header() {
   useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
+      document.documentElement.setAttribute("data-theme", "dark");
     } else {
       document.documentElement.classList.remove("dark");
+      document.documentElement.setAttribute("data-theme", "light");
     }
     localStorage.setItem("theme", theme);
   }, [theme]);
@@ -109,10 +111,10 @@ export default function Header() {
           className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4"
         >
           <div
-            className="border border-gray-100 dark:border-gray-900 backdrop-blur-xl
-            w-full xl:max-w-6xl rounded-full
-            flex items-center justify-between px-6 py-3
-            transition-all duration-300"
+            className="border border-union-accent/30 backdrop-blur-2xl
+            w-full xl:max-w-6xl rounded-full bg-white/60 dark:bg-union-dark/80
+            flex items-center justify-between px-8 py-4
+            transition-all duration-300 shadow-2xl ring-1 ring-black/5 dark:ring-white/5"
           >
             <BorderBeam />
 
@@ -122,7 +124,7 @@ export default function Header() {
               className="cursor-pointer flex items-center gap-2"
             >
               <img src={unionLogo} alt="Логотип Профспілки" className="h-10 w-auto object-contain" />
-              <span className="font-bold text-lg text-union-primary dark:text-white hidden sm:block">
+              <span className="font-bold text-lg text-union-primary hidden sm:block">
                 {contentData.hero.title}
               </span>
             </a>
@@ -133,12 +135,12 @@ export default function Header() {
                 {navItems.map((item) => (
                   <motion.li
                     key={item.name}
-                    className="relative group text-sm font-medium text-gray-600 
-                    dark:text-gray-300 transition-colors"
+                    className="relative group text-sm font-medium text-muted-foreground 
+                    dark:text-white/70 transition-colors"
                   >
                     <a
                       onClick={() => handleScrollTo(item.href)}
-                      className="cursor-pointer hover:text-union-secondary dark:hover:text-pink-400"
+                      className="cursor-pointer hover:text-union-accent transition-colors font-semibold tracking-wide"
                     >
                       {item.name}
                     </a>
@@ -206,7 +208,7 @@ export default function Header() {
                   exit: "closed",
                   variants: menuVariants,
                 } as MotionProps)}
-                className="fixed inset-0 z-40 bg-background dark:bg-background-dark md:hidden flex flex-col items-center justify-center"
+                className="fixed inset-0 z-40 bg-background md:hidden flex flex-col items-center justify-center backdrop-blur-3xl"
               >
                 {/* Close Button inside the sidebar */}
                 <motion.button
@@ -233,7 +235,7 @@ export default function Header() {
                     >
                       <a
                         onClick={() => handleScrollTo(item.href)}
-                        className="text-4xl font-bold text-gray-800 dark:text-white cursor-pointer"
+                        className="text-4xl font-bold text-foreground cursor-pointer hover:text-union-accent transition-colors"
                       >
                         {item.name}
                       </a>

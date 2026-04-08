@@ -88,25 +88,31 @@ function App() {
       <ReactLenis root>
         <Header />
 
-        <div
-          className="w-full bg-transparent max-w-5xl px-4 my-30
-          flex items-center justify-center 
-          lg:rounded-3xl backdrop-blur-xl border-gray-100 dark:border-gray-900"
-        >
-          <div className="z-10">
-            {/* Give IDs to sections */}
-            <div id="hero">
-              <HeroSection />
-            </div>
+        <div className="relative z-10 w-full">
+          {/* Aurora Blobs Background */}
+          <div className="aurora-container">
+            <div className="aurora-blob aurora-blob-1"></div>
+            <div className="aurora-blob aurora-blob-2"></div>
+            <div className="aurora-blob aurora-blob-3"></div>
+          </div>
+
+          <div id="hero" className="min-h-[80vh] flex items-center justify-center">
+            <HeroSection />
+          </div>
+          
+          <div className="space-y-32 pb-32">
             <div id="about">
               <AboutSection />
             </div>
+            
             <div id="news">
               <NewsSection />
             </div>
+            
             <div id="recommendations">
               <RecommendationsSection />
             </div>
+            
             <div id="law">
               <LawSection />
             </div>

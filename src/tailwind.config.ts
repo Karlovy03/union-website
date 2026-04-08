@@ -31,11 +31,7 @@ export default {
           muted: "#909090" /* Medium grey */,
         },
         union: {
-          primary: "#1A365D",
-          secondary: "#2B6CB0",
-          accent: "#D69E2E",
-          light: "#EBF8FF",
-          dark: "#2D3748"
+          /* Defined in App.css @theme for better v4 compatibility */
         },
         primary: {
           DEFAULT: "hsl(var(--primary))",

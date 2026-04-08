@@ -21,15 +21,20 @@ export const AboutSection = () => {
         transition={{ duration: 1.8, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.2 }}
       >
-        <h2 className="text-3xl font-bold text-union-primary dark:text-white">{contentData.about.title}</h2>
+        <h2 className="text-3xl font-bold text-union-primary">{contentData.about.title}</h2>
         <p className="text-muted-foreground text-sm max-w-3xl leading-relaxed">
           {contentData.about.description}
         </p>
-        <div className="flex gap-8 mt-6">
+        <div className="flex flex-wrap gap-12 mt-10">
           {contentData.about.stats.map((stat, index) => (
-            <div key={index} className="flex flex-col">
-              <span className="text-2xl font-bold text-union-accent">{stat.value}</span>
-              <span className="text-xs text-muted-foreground">{stat.label}</span>
+            <div key={index} className="flex flex-col relative group">
+              <span className="text-4xl font-bold bg-gradient-to-tr from-union-primary via-union-secondary to-union-accent bg-clip-text text-transparent">
+                {stat.value}
+              </span>
+              <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider mt-1">
+                {stat.label}
+              </span>
+              <div className="absolute -bottom-2 left-0 w-0 h-1 bg-union-accent group-hover:w-full transition-all duration-500"></div>
             </div>
           ))}
         </div>
@@ -45,7 +50,7 @@ export const AboutSection = () => {
         viewport={{ once: true, amount: 0.2 }}
       >
         <div className="text-center space-y-2">
-          <h2 className="text-3xl font-bold text-union-primary dark:text-white">
+          <h2 className="text-3xl font-bold text-union-primary">
             {contentData.benefits.title}
           </h2>
           <p className="text-muted-foreground">
@@ -62,15 +67,19 @@ export const AboutSection = () => {
                 whileHover={{ y: -5 }}
                 transition={{ duration: 0.2 }}
               >
-                <Card className="h-full bg-union-light/50 dark:bg-union-dark/50 border-union-secondary/20 shadow-sm backdrop-blur-sm">
-                  <CardHeader className="pb-2">
-                    <div className="w-12 h-12 rounded-xl bg-union-primary/10 flex items-center justify-center mb-4">
-                      <IconComponent className="h-6 w-6 text-union-primary dark:text-union-accent" />
+                <Card className="h-full bg-white/40 dark:bg-white/5 border-white/20 dark:border-white/10 shadow-xl backdrop-blur-xl hover:bg-white/60 dark:hover:bg-white/10 transition-all duration-300 group/card">
+                  <CardHeader className="pb-4">
+                    <div className="w-14 h-14 rounded-2xl bg-union-primary/10 dark:bg-union-accent/10 flex items-center justify-center mb-6 group-hover/card:scale-110 transition-transform duration-500 shadow-inner">
+                      <IconComponent className="h-7 w-7 text-union-primary dark:text-union-accent" />
                     </div>
-                    <CardTitle className="text-lg">{benefit.title}</CardTitle>
+                    <CardTitle className="text-xl font-bold text-union-primary leading-tight">
+                      {benefit.title}
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-muted-foreground">{benefit.description}</p>
+                    <p className="text-base text-muted-foreground leading-relaxed">
+                      {benefit.description}
+                    </p>
                   </CardContent>
                 </Card>
               </motion.div>

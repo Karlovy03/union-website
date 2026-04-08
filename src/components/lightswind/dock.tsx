@@ -87,7 +87,7 @@ function DockItem({
       onFocus={() => isHovered.set(1)}
       onBlur={() => isHovered.set(0)}
       onClick={onClick}
-      className="relative inline-flex items-center justify-center rounded-full bg-background shadow-md"
+      className="relative inline-flex items-center justify-center rounded-full bg-white/40 dark:bg-black/40 border border-white/20 dark:border-white/10 shadow-2xl backdrop-blur-xl ring-1 ring-black/5 dark:ring-white/5 hover:scale-110 active:scale-95 transition-all text-union-primary dark:text-union-accent"
       tabIndex={0}
       role="button"
       aria-haspopup="true"
@@ -105,7 +105,7 @@ function DockItem({
             animate={{ opacity: 1, y: -10 }}
             exit={{ opacity: 0, y: 0 }}
             transition={{ duration: 0.2 }}
-            className="absolute -top-6 left-1/2 w-fit whitespace-pre rounded-md border border bg-[#060606] px-2 py-0.5 text-xs text-white"
+            className="absolute -top-10 left-1/2 w-fit whitespace-pre rounded-lg border border-union-accent/20 bg-union-light/95 dark:bg-union-dark/95 px-3 py-1.5 text-xs font-bold text-union-primary dark:text-union-accent shadow-xl backdrop-blur-md"
             style={{ x: "-50%" }}
             role="tooltip"
           >

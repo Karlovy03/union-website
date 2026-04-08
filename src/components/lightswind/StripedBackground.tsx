@@ -29,12 +29,11 @@ const StripesBackground: React.FC<StripesBackgroundProps> = ({
       className={clsx(
         "pointer-events-none",
         // More visible stripes in both modes
-        "bg-[repeating-linear-gradient(45deg,_#00000066_0px,_#00000066_1px,_transparent_1px,_transparent_6px)] opacity-50",
-        "dark:bg-[repeating-linear-gradient(45deg,_#ffffff66_0px,_#ffffff66_1px,_transparent_1px,_transparent_6px)]",
+        "bg-[repeating-linear-gradient(45deg,_var(--union-primary)_0px,_var(--union-primary)_1px,_transparent_1px,_transparent_10px)] opacity-[0.03] dark:opacity-[0.05]",
         positionStyles[position],
         width,
         height,
-        className // now `opacity-50` will apply more obviously
+        className
       )}
     />
   );

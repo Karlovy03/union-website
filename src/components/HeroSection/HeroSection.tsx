@@ -23,7 +23,7 @@ export const HeroSection = () => {
         initial={false} // so it inherits parent animation
       >
         <motion.h1
-          className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-union-primary dark:text-white"
+          className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-union-primary"
           initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
           animate={{
             opacity: 1,
@@ -58,10 +58,10 @@ export const HeroSection = () => {
             transition: { duration: 0.8, ease: "easeOut" },
           }}
         >
-          <button className="px-6 py-3 bg-union-primary text-white rounded-full font-medium hover:bg-union-secondary transition-colors shadow-lg shadow-union-primary/30">
+          <button className="px-8 py-4 bg-union-primary text-primary-foreground rounded-full font-bold hover:bg-union-secondary transition-all hover:scale-105 active:scale-95 shadow-xl shadow-union-primary/20">
             {contentData.hero.primaryButton}
           </button>
-          <button className="px-6 py-3 bg-white dark:bg-gray-800 text-union-primary dark:text-white border border-gray-200 dark:border-gray-700 rounded-full font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+          <button className="px-8 py-4 bg-background/50 backdrop-blur-md text-union-primary border border-union-primary/30 rounded-full font-bold hover:bg-union-primary/10 transition-all hover:scale-105 active:scale-95">
             {contentData.hero.secondaryButton}
           </button>
         </motion.div>
@@ -78,13 +78,14 @@ export const HeroSection = () => {
         }}
         transition={{ delay: 0.5, duration: 1.2, ease: "easeOut" }}
       >
-        <div className="w-80 h-80 relative rounded-full overflow-hidden shadow-2xl border-4 border-union-light">
+        <div className="w-80 h-80 md:w-96 md:h-96 relative rounded-3xl overflow-hidden shadow-2xl border-2 border-union-accent/20 rotate-3 hover:rotate-0 transition-transform duration-700">
           <img
             src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=2670&auto=format&fit=crop"
             alt="Union Members"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover scale-110 hover:scale-100 transition-transform duration-700"
           />
-          <div className="absolute inset-0 bg-union-primary/10 mix-blend-multiply"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-union-primary/60 to-transparent mix-blend-multiply opacity-60"></div>
+          <div className="absolute inset-0 bg-union-secondary/10"></div>
         </div>
       </motion.div>
     </motion.div>

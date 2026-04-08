@@ -32,19 +32,22 @@ export const EducationSection = () => {
           viewport={{ once: true }}
         >
           {contentData.news.items.map((news, idx) => (
-            <Card key={idx} className="bg-union-light/30 dark:bg-union-dark/30 border-union-secondary/20">
+            <Card key={idx} className="bg-white/40 dark:bg-white/5 border-white/20 dark:border-white/10 shadow-xl backdrop-blur-xl hover:bg-white/60 dark:hover:bg-white/10 transition-all duration-300">
               <CardHeader>
-                <CardTitle>{news.title}</CardTitle>
-                <p className="text-sm text-union-accent">
+                <CardTitle className="text-xl font-bold text-union-primary">{news.title}</CardTitle>
+                <p className="text-sm font-semibold text-union-secondary">
                   {news.subtitle}
                 </p>
               </CardHeader>
-              <CardContent className="text-sm text-muted-foreground space-y-2">
-                <p>{news.content}</p>
+              <CardContent className="text-base text-muted-foreground space-y-3">
+                <p className="leading-relaxed">{news.content}</p>
                 {news.points && (
-                  <ul className="list-disc list-inside space-y-1 mt-2 text-xs">
+                  <ul className="space-y-2 mt-4">
                     {news.points.map((point, pIdx) => (
-                      <li key={pIdx}>{point}</li>
+                      <li key={pIdx} className="flex items-start gap-2">
+                        <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-union-accent shrink-0" />
+                        <span className="text-sm">{point}</span>
+                      </li>
                     ))}
                   </ul>
                 )}

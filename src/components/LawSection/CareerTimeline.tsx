@@ -4,10 +4,10 @@ import contentData from "../../data";
 
 export const CareerTimeline = () => {
   const iconFallback = [
-    <FileText className="h-4 w-4 mr-2 text-primary" key="1" />,
-    <Scale className="h-4 w-4 mr-2 text-primary" key="2" />,
-    <ShieldCheck className="h-4 w-4 mr-2 text-primary" key="3" />,
-    <Layers className="h-4 w-4 mr-2 text-primary" key="4" />
+    <FileText className="h-5 w-5 text-white" key="1" />,
+    <Scale className="h-5 w-5 text-white" key="2" />,
+    <ShieldCheck className="h-5 w-5 text-white" key="3" />,
+    <Layers className="h-5 w-5 text-white" key="4" />
   ];
 
   const careerEvents = contentData.law.timeline.map((item, index) => ({
@@ -30,9 +30,9 @@ export const CareerTimeline = () => {
         parallaxIntensity={0.15}
         revealAnimation="fade"
         progressIndicator={true}
-        lineColor="bg-primary/20"
-        activeColor="bg-primary"
-        progressLineWidth={3}
+        lineColor="bg-union-primary/20 dark:bg-white/10"
+        activeColor="bg-union-accent shadow-[0_0_15px_rgba(214,158,46,0.5)]"
+        progressLineWidth={4}
         progressLineCap="round"
       />
     </div>

@@ -21,7 +21,7 @@ export const RecommendationsSection = () => {
     >
       <div className="text-center mb-12">
         <motion.h2 
-          className="text-3xl md:text-4xl font-bold text-union-primary dark:text-white mb-4"
+          className="text-3xl md:text-4xl font-bold text-union-primary mb-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -43,16 +43,16 @@ export const RecommendationsSection = () => {
               transition={{ type: "spring", stiffness: 300 }}
               className="relative group h-full"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-union-primary/30 to-union-accent/30 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
-              <Card className="relative h-full bg-white dark:bg-[#070b14] border-union-secondary/30 shadow-lg shadow-union-primary/5 group-hover:border-union-accent/50 transition-colors duration-300 z-10 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-union-primary/40 to-union-accent/40 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+              <Card className="relative h-full bg-white/60 dark:bg-white/5 border-white/20 dark:border-white/10 shadow-2xl backdrop-blur-2xl group-hover:border-union-accent/50 transition-all duration-500 z-10 overflow-hidden ring-1 ring-black/5 dark:ring-white/5">
                 {/* Decorative background element */}
                 <div className="absolute -right-6 -top-6 w-24 h-24 bg-union-accent/10 rounded-full blur-2xl group-hover:bg-union-accent/20 transition-colors"></div>
                 
-                <CardHeader className="pt-8">
-                  <div className="mb-4 inline-flex items-center justify-center rounded-xl bg-union-primary text-white w-14 h-14 shadow-lg shadow-union-primary/30">
-                    <IconComp className="h-7 w-7" />
+                <CardHeader className="pt-10">
+                  <div className="mb-6 inline-flex items-center justify-center rounded-2xl bg-gradient-to-br from-union-primary to-union-secondary text-white w-16 h-16 shadow-2xl shadow-union-primary/40 group-hover:scale-110 transition-transform duration-500">
+                    <IconComp className="h-8 w-8" />
                   </div>
-                  <CardTitle className="text-xl font-bold text-union-primary dark:text-white">
+                  <CardTitle className="text-2xl font-bold text-union-primary group-hover:text-union-accent transition-colors">
                     {item.title}
                   </CardTitle>
                 </CardHeader>
