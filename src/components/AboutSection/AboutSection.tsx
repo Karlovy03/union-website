@@ -13,25 +13,25 @@ const IconMap = {
 
 export const AboutSection = () => {
   return (
-    <div id="about" className="max-w-7xl mx-auto w-full px-6 py-12 space-y-16">
+    <div id="about" className="max-w-7xl mx-auto w-full px-6 py-24 space-y-24">
       <motion.div
-        className="text-foreground space-y-4"
+        className="text-foreground space-y-6 text-center"
         initial={{ opacity: 0, y: 50, filter: "blur(5px)" }}
         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ duration: 1.8, ease: "easeOut" }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.2 }}
       >
-        <h2 className="text-3xl font-bold text-union-primary">{contentData.about.title}</h2>
-        <p className="text-muted-foreground text-sm max-w-3xl leading-relaxed">
+        <h2 className="text-4xl md:text-5xl font-bold text-union-primary">{contentData.about.title}</h2>
+        <p className="text-muted-foreground text-lg max-w-3xl leading-relaxed mx-auto">
           {contentData.about.description}
         </p>
-        <div className="flex flex-wrap gap-12 mt-10">
+        <div className="flex flex-wrap justify-center gap-12 mt-12">
           {contentData.about.stats.map((stat, index) => (
-            <div key={index} className="flex flex-col relative group">
-              <span className="text-4xl font-bold bg-gradient-to-tr from-union-primary via-union-secondary to-union-accent bg-clip-text text-transparent">
+            <div key={index} className="flex flex-col items-center relative group">
+              <span className="text-5xl font-bold bg-gradient-to-tr from-union-primary via-union-secondary to-union-accent bg-clip-text text-transparent">
                 {stat.value}
               </span>
-              <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider mt-1">
+              <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest mt-2">
                 {stat.label}
               </span>
               <div className="absolute -bottom-2 left-0 w-0 h-1 bg-union-accent group-hover:w-full transition-all duration-500"></div>
@@ -40,20 +40,20 @@ export const AboutSection = () => {
         </div>
       </motion.div>
 
-      <Separator />
+      <Separator className="opacity-20" />
 
       <motion.div
-        className="space-y-8"
+        className="space-y-16"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.2 }}
       >
-        <div className="text-center space-y-2">
-          <h2 className="text-3xl font-bold text-union-primary">
+        <div className="text-center space-y-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-union-primary">
             {contentData.benefits.title}
           </h2>
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             {contentData.benefits.subtitle}
           </p>
         </div>

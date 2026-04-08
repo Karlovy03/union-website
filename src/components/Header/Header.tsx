@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import unionLogo from "../../assets/union-logo.png";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants, MotionProps } from "framer-motion";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, ArrowRight } from "lucide-react";
 import { useLenis } from "lenis/react";
 import { BorderBeam } from "../lightswind/border-beam";
 
 import contentData from "../../data";
 
 const navItems = contentData.header.navItems;
+const ctaButton = (contentData.header as any).ctaButton;
 
 export default function Header() {
   const [theme, setTheme] = useState<string>(() => {
@@ -104,98 +105,90 @@ export default function Header() {
     <AnimatePresence>
       {showHeader && (
         <motion.header
-          initial={{ y: -100, top: 20, opacity: 0 }}
+          initial={{ y: -100, top: 15, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -100, opacity: 0, transition: { duration: 0.4 } }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
-          className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4"
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="fixed top-0 left-0 right-0 z-50 flex justify-center px-6"
         >
           <div
-            className="border border-union-accent/30 backdrop-blur-2xl
-            w-full xl:max-w-6xl rounded-full bg-white/60 dark:bg-union-dark/80
-            flex items-center justify-between px-8 py-4
-            transition-all duration-300 shadow-2xl ring-1 ring-black/5 dark:ring-white/5"
+            className="border border-white/20 dark:border-white/5 backdrop-blur-2xl
+            w-full xl:max-w-7xl rounded-3xl bg-white/70 dark:bg-union-dark/90
+            flex items-center justify-between px-6 py-2.5
+            transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.15)] ring-1 ring-black/5 dark:ring-white/5"
           >
-            <BorderBeam />
+            <BorderBeam size={150} duration={10} colorFrom="#223148" colorTo="#d2c7b8" />
 
             {/* Logo / Brand */}
             <a
               onClick={() => handleScrollTo("#hero")}
-              className="cursor-pointer flex items-center gap-2"
+              className="cursor-pointer flex items-center gap-3 group shrink-0"
             >
-              <img src={unionLogo} alt="Логотип Профспілки" className="h-10 w-auto object-contain" />
-              <span className="font-bold text-lg text-union-primary hidden sm:block">
-                {contentData.hero.title}
-              </span>
+              <div className="relative">
+                 <img src={unionLogo} alt="Logo" className="h-10 w-auto object-contain transition-transform group-hover:rotate-12 duration-500" />
+                 <div className="absolute inset-0 bg-union-accent/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              </div>
+              <div className="flex flex-col -space-y-1">
+                 <span className="font-black text-sm uppercase tracking-tight text-union-primary">Профспілка</span>
+                 <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest hidden lg:block overflow-hidden whitespace-nowrap">Національної поліції</span>
+              </div>
             </a>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex flex-1 justify-center">
-              <ul className="flex space-x-6">
+            <nav className="hidden xl:flex flex-1 justify-center mx-4">
+              <ul className="flex items-center space-x-2">
                 {navItems.map((item) => (
                   <motion.li
                     key={item.name}
-                    className="relative group text-sm font-medium text-muted-foreground 
-                    dark:text-white/70 transition-colors"
+                    className="relative"
                   >
                     <a
                       onClick={() => handleScrollTo(item.href)}
-                      className="cursor-pointer hover:text-union-accent transition-colors font-semibold tracking-wide"
+                      className="cursor-pointer px-4 py-2 text-[13px] font-bold text-union-primary/80 hover:text-union-primary dark:text-white/60 dark:hover:text-white transition-all rounded-xl hover:bg-union-primary/5 dark:hover:bg-white/5 block"
                     >
                       {item.name}
                     </a>
-                    <motion.span
-                      className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-union-accent rounded-full"
-                      initial={{ width: 0, x: "-50%" }}
-                      whileHover={{ width: "100%" }}
-                      transition={{ duration: 0.3 }}
-                    />
                   </motion.li>
                 ))}
               </ul>
             </nav>
 
-            {/* Theme Toggle Button */}
-            <motion.button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-full text-sm font-semibold
-              hover:bg-pink-400 dark:hover:bg-pink-800 transition-colors
-               hidden md:block"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <AnimatePresence mode="wait" initial={false}>
-                {theme === "dark" ? (
-                  <motion.div
-                    key="moon"
-                    initial={{ y: -20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: 20, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Moon size={20} className="text-gray-800 dark:text-white" />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="sun"
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -20, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Sun size={20} className="text-gray-800 dark:text-white" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.button>
+            {/* Right Side Actions */}
+            <div className="flex items-center gap-3">
+               {/* Theme Toggle */}
+                <motion.button
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                  className="p-2.5 rounded-2xl bg-union-primary/5 dark:bg-white/5 text-union-primary dark:text-white hover:bg-union-primary/10 transition-colors hidden sm:flex items-center justify-center"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <AnimatePresence mode="wait" initial={false}>
+                    {theme === "dark" ? <Moon size={18} /> : <Sun size={18} />}
+                  </AnimatePresence>
+                </motion.button>
 
-            {/* Mobile Menu Button - Hamburger */}
-            <button
-              onClick={() => setIsMobileMenuOpen(true)}
-              className="md:hidden text-gray-800 dark:text-white"
-            >
-              <Menu size={24} />
-            </button>
+                {/* Primary CTA Button */}
+                {ctaButton && (
+                  <motion.button
+                    onClick={() => handleScrollTo(ctaButton.href)}
+                    whileHover={{ scale: 1.02, y: -1 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-gradient-to-r from-union-primary to-union-secondary text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-union-primary/20 border border-white/10 group overflow-hidden relative"
+                  >
+                     <div className="absolute inset-0 bg-gradient-to-r from-union-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                     <span className="relative z-10">{ctaButton.name}</span>
+                     <ArrowRight size={14} className="relative z-10 group-hover:translate-x-1 transition-transform" />
+                  </motion.button>
+                )}
+
+                {/* Mobile Menu Button - Hamburger */}
+                <button
+                  onClick={() => setIsMobileMenuOpen(true)}
+                  className="md:hidden w-10 h-10 rounded-2xl bg-union-primary text-white flex items-center justify-center shadow-lg"
+                >
+                  <Menu size={20} />
+                </button>
+            </div>
           </div>
 
           {/* Mobile Sidebar */}
@@ -208,39 +201,49 @@ export default function Header() {
                   exit: "closed",
                   variants: menuVariants,
                 } as MotionProps)}
-                className="fixed inset-0 z-40 bg-background md:hidden flex flex-col items-center justify-center backdrop-blur-3xl"
+                className="fixed inset-0 z-40 bg-white/95 dark:bg-union-dark/98 md:hidden flex flex-col items-center justify-center backdrop-blur-md"
               >
                 {/* Close Button inside the sidebar */}
                 <motion.button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="absolute top-8 right-8 text-gray-800 dark:text-white"
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  exit={{ scale: 0, opacity: 0 }}
-                  transition={{ delay: 0.2 }}
+                  className="absolute top-8 right-8 w-12 h-12 rounded-2xl bg-union-primary/5 flex items-center justify-center text-union-primary"
+                  whileHover={{ rotate: 90 }}
                 >
-                  <X size={32} />
+                  <X size={28} />
                 </motion.button>
 
                 <motion.ul
                   {...({
                     variants: listVariants,
                   } as MotionProps)}
-                  className="flex flex-col items-center justify-center h-full space-y-8"
+                  className="flex flex-col items-center justify-center h-full space-y-6"
                 >
-                  {navItems.map((item) => (
+                  {[...navItems, ctaButton].map((item: any) => (
                     <motion.li
                       key={item.name}
                       {...({ variants: itemVariants } as MotionProps)}
                     >
                       <a
                         onClick={() => handleScrollTo(item.href)}
-                        className="text-4xl font-bold text-foreground cursor-pointer hover:text-union-accent transition-colors"
+                        className={`text-3xl font-black uppercase tracking-tighter cursor-pointer transition-colors ${
+                          item.name === ctaButton.name ? "text-union-accent" : "text-union-primary dark:text-white"
+                        }`}
                       >
                         {item.name}
                       </a>
                     </motion.li>
                   ))}
+                  
+                  {/* Theme toggle mobile */}
+                  <motion.li {...({ variants: itemVariants } as MotionProps)} className="pt-8">
+                     <button 
+                        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                        className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-union-primary/5 text-union-primary font-bold"
+                     >
+                        {theme === "dark" ? <Moon size={20} /> : <Sun size={20} />}
+                        {theme === "dark" ? "Темна тема" : "Світла тема"}
+                     </button>
+                  </motion.li>
                 </motion.ul>
               </motion.div>
             )}

@@ -1,0 +1,21 @@
+{
+  "title": "Національна профспілка поліції",
+  "subtitle": "Ми захищаємо тих, хто захищає Закон. Разом ми сила, справедливість та безпека.",
+  "contacts": {
+    "phone": "+38 (000) 000-00-00",
+    "email": "info@policeunion.ua",
+    "address": "м. Київ, вул. Михайлівська, 10"
+  },
+  "socials": [
+    { "name": "Facebook", "url": "#", "icon": "facebook" },
+    { "name": "Telegram", "url": "#", "icon": "send" },
+    { "name": "YouTube", "url": "#", "icon": "youtube" }
+  ],
+  "links": [
+    { "name": "Про нас", "href": "#about" },
+    { "name": "Методичні рекомендації", "href": "#recommendations" },
+    { "name": "Правова база", "href": "#law" },
+    { "name": "Новини", "href": "#news" }
+  ],
+  "copyright": "© 2026 Національна Профспілка Поліції. Усі права захищені."
+}

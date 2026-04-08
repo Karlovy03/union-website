@@ -19,7 +19,10 @@ export const CareerTimeline = () => {
   }));
 
   return (
-    <div id="law">
+    <div id="law" className="max-w-7xl mx-auto px-6 py-24 relative overflow-hidden">
+       {/* Background decoration */}
+      <div className="absolute top-1/2 left-0 w-64 h-64 bg-union-accent/5 rounded-full blur-3xl -z-10 animate-pulse"></div>
+
       <ScrollTimeline
         events={careerEvents}
         title={contentData.law.title}

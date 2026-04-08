@@ -11,9 +11,17 @@ import { CareerTimeline as LawSection } from "./components/LawSection/CareerTime
 import ReactLenis from "lenis/react";
 import contentData from "./data";
 import Dock from "./components/lightswind/dock";
+import { Footer } from "./components/Footer/Footer";
+import { ScrollProgress } from "./components/ScrollProgress";
+import { JoinSection } from "./components/JoinSection/JoinSection";
+import { TeamSection } from "./components/TeamSection/TeamSection";
+import { FaqSection } from "./components/FaqSection/FaqSection";
 import {
   Home,
   User,
+  UserPlus,
+  Users,
+  HelpCircle,
   GraduationCap,
   Briefcase,
   BookCheckIcon,
@@ -65,6 +73,16 @@ function App() {
       onClick: () => scrollToSection("about"),
     },
     {
+      icon: <UserPlus size={24} />,
+      label: contentData.dock.items.join,
+      onClick: () => scrollToSection("join"),
+    },
+    {
+      icon: <Users size={24} />,
+      label: contentData.dock.items.team,
+      onClick: () => scrollToSection("team"),
+    },
+    {
       icon: <GraduationCap size={24} />,
       label: contentData.dock.items.news,
       onClick: () => scrollToSection("news"),
@@ -79,11 +97,17 @@ function App() {
       label: contentData.dock.items.law,
       onClick: () => scrollToSection("law"),
     },
+    {
+      icon: <HelpCircle size={24} />,
+      label: contentData.dock.items.faq,
+      onClick: () => scrollToSection("faq"),
+    },
   ];
 
   return (
     <div className="bg-background min-h-screen flex items-center justify-center">
       <StripedBackground className={"fixed z-0 blur-xs"} />
+      <ScrollProgress />
 
       <ReactLenis root>
         <Header />
@@ -100,11 +124,19 @@ function App() {
             <HeroSection />
           </div>
           
-          <div className="space-y-32 pb-32">
+          <div className="">
             <div id="about">
               <AboutSection />
             </div>
             
+            <div id="join">
+              <JoinSection />
+            </div>
+
+            <div id="team">
+              <TeamSection />
+            </div>
+
             <div id="news">
               <NewsSection />
             </div>
@@ -116,7 +148,13 @@ function App() {
             <div id="law">
               <LawSection />
             </div>
+
+            <div id="faq">
+              <FaqSection />
+            </div>
           </div>
+          
+          <Footer />
         </div>
 
         {/* Dock with smooth show/hide animation */}
