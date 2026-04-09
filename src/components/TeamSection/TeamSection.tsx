@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
-import { Quote, ShieldCheck } from "lucide-react";
+import { Quote, ShieldCheck, UserCircle2 } from "lucide-react";
 import contentData from "../../data";
+import { useNavigate } from "react-router-dom";
 
 export const TeamSection = () => {
+    const navigate = useNavigate();
+
     return (
         <section id="team" className="max-w-7xl mx-auto px-6 py-16 relative overflow-hidden">
             {/* Background elements */}
@@ -39,10 +42,11 @@ export const TeamSection = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                {contentData.team.members.map((member, idx) => (
+                {contentData.team.members.map((member: any, idx) => (
                     <motion.div
                         key={idx}
-                        className="group relative flex flex-col items-center"
+                        className="group relative flex flex-col items-center cursor-pointer"
+                        onClick={() => navigate(`/team/${member.id}`)}
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -58,10 +62,16 @@ export const TeamSection = () => {
                             {/* Glass overlay on hover */}
                             <div className="absolute inset-0 bg-gradient-to-t from-union-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                             
+                            <div className="absolute top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-500 scale-90 group-hover:scale-100">
+                               <div className="bg-white/20 backdrop-blur-xl border border-white/20 px-4 py-1 rounded-full text-[10px] font-black text-white uppercase tracking-widest flex items-center gap-2">
+                                  <UserCircle2 size={14} /> Переглянути профіль
+                               </div>
+                            </div>
+
                             <div className="absolute bottom-6 left-6 right-6 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                                 <div className="flex flex-col gap-2 p-5 rounded-2xl bg-white/10 backdrop-blur-3xl border border-white/20">
                                     <Quote size={20} className="text-union-accent mb-2" aria-hidden="true" />
-                                    <p className="text-white text-xs font-medium leading-relaxed italic">
+                                    <p className="text-white text-xs font-medium leading-relaxed italic line-clamp-2">
                                         «{member.quote}»
                                     </p>
                                 </div>

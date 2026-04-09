@@ -28,6 +28,116 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
+import { RecommendationDetail } from "./components/RecommendationsSection/RecommendationDetail";
+import { NewsDetail } from "./components/NewsSection/NewsDetail";
+import { MemberDetail } from "./components/TeamSection/MemberDetail";
+
+// Scroll to top on route change
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
+
+const LandingPage = ({ dockItems, showDock }: { dockItems: any[]; showDock: boolean }) => {
+  return (
+    <>
+      <div id="hero" className="min-h-[80vh] flex items-center justify-center">
+        <HeroSection />
+      </div>
+      
+      <div className="">
+        <div id="about">
+          <AboutSection />
+        </div>
+        
+        <div id="join">
+          <JoinSection />
+        </div>
+
+        <div id="team">
+          <TeamSection />
+        </div>
+
+        <div id="news">
+          <NewsSection />
+        </div>
+        
+        <div id="recommendations">
+          <RecommendationsSection />
+        </div>
+        
+        <div id="law">
+          <LawSection />
+        </div>
+
+        <div id="faq">
+          <FaqSection />
+        </div>
+      </div>
+
+      {/* Dock with smooth show/hide animation */}
+      <AnimatePresence>
+        {showDock && (
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 100, opacity: 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[999]"
+          >
+            <Dock
+              items={dockItems}
+              position="bottom"
+              magnification={70}
+              baseItemSize={50}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
+
+const AppContent = ({ dockItems, showDock }: { dockItems: any[]; showDock: boolean }) => {
+  const location = useLocation();
+  const isDetailPage = location.pathname.startsWith("/recommendations/") || 
+                     location.pathname.startsWith("/news/") || 
+                     location.pathname.startsWith("/team/");
+
+  return (
+    <div className="bg-background min-h-screen flex flex-col w-full">
+      <StripedBackground className={"fixed z-0"} />
+      <ScrollProgress />
+
+      <ReactLenis root>
+        {!isDetailPage && <Header />}
+
+        <div className="relative z-10 w-full">
+          {/* Aurora Blobs Background */}
+          <div className="aurora-container">
+            <div className="aurora-blob aurora-blob-1"></div>
+            <div className="aurora-blob aurora-blob-2"></div>
+            <div className="aurora-blob aurora-blob-3"></div>
+          </div>
+
+          <Routes>
+            <Route path="/" element={<LandingPage dockItems={dockItems} showDock={showDock} />} />
+            <Route path="/recommendations/:id" element={<RecommendationDetail />} />
+            <Route path="/news/:id" element={<NewsDetail />} />
+            <Route path="/team/:id" element={<MemberDetail />} />
+          </Routes>
+          
+          {!isDetailPage && <Footer />}
+        </div>
+      </ReactLenis>
+    </div>
+  );
+};
+
 function App() {
   const [showDock, setShowDock] = useState(false);
   const lastScrollY = useRef(0);
@@ -105,80 +215,10 @@ function App() {
   ];
 
   return (
-    <div className="bg-background min-h-screen flex flex-col w-full">
-      <StripedBackground className={"fixed z-0"} />
-      <ScrollProgress />
-
-      <ReactLenis root>
-        <Header />
-
-        <div className="relative z-10 w-full">
-          {/* Aurora Blobs Background */}
-          <div className="aurora-container">
-            <div className="aurora-blob aurora-blob-1"></div>
-            <div className="aurora-blob aurora-blob-2"></div>
-            <div className="aurora-blob aurora-blob-3"></div>
-          </div>
-
-          <div id="hero" className="min-h-[80vh] flex items-center justify-center">
-            <HeroSection />
-          </div>
-          
-          <div className="">
-            <div id="about">
-              <AboutSection />
-            </div>
-            
-            <div id="join">
-              <JoinSection />
-            </div>
-
-            <div id="team">
-              <TeamSection />
-            </div>
-
-            <div id="news">
-              <NewsSection />
-            </div>
-            
-            <div id="recommendations">
-              <RecommendationsSection />
-            </div>
-            
-            <div id="law">
-              <LawSection />
-            </div>
-
-            <div id="faq">
-              <FaqSection />
-            </div>
-          </div>
-          
-          <Footer />
-        </div>
-
-        {/* Dock with smooth show/hide animation */}
-        <AnimatePresence>
-          {showDock && (
-            <motion.div
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 100, opacity: 0 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-              className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[999]"
-            >
-              <Dock
-                items={dockItems}
-                position="bottom"
-                magnification={70}
-                baseItemSize={50}
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </ReactLenis>
-
-    </div>
+    <HashRouter>
+      <ScrollToTop />
+      <AppContent dockItems={dockItems} showDock={showDock} />
+    </HashRouter>
   );
 }
 

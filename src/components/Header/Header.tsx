@@ -5,6 +5,7 @@ import type { Variants, MotionProps } from "framer-motion";
 import { Menu, X, Sun, Moon, ArrowRight } from "lucide-react";
 import { useLenis } from "lenis/react";
 import { BorderBeam } from "../lightswind/border-beam";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import contentData from "../../data";
 
@@ -43,6 +44,8 @@ export default function Header() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const lenis = useLenis();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // Theme toggle
   useEffect(() => {
@@ -73,8 +76,16 @@ export default function Header() {
   }, [lastScrollY]);
 
   const handleScrollTo = (id: string) => {
-    if (lenis) {
-      lenis.scrollTo(id);
+    if (location.pathname !== "/") {
+      navigate("/");
+      // Wait for navigation and layout shift
+      setTimeout(() => {
+        if (lenis) lenis.scrollTo(id);
+      }, 100);
+    } else {
+      if (lenis) {
+        lenis.scrollTo(id);
+      }
     }
     setIsMobileMenuOpen(false); // Close mobile menu on click
   };

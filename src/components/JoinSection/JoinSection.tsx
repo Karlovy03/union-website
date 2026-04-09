@@ -81,13 +81,24 @@ export const JoinSection = () => {
               </div>
 
               {step.button && (
-                <button 
-                  className="mt-4 px-6 py-2.5 rounded-full bg-union-primary/5 text-union-primary border border-union-primary/10 hover:bg-union-primary hover:text-white transition-all font-bold text-sm shadow-md group/btn flex items-center gap-2 uppercase tracking-wide"
-                  aria-label={step.button}
-                >
-                  {step.button}
-                  <ChevronRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
-                </button>
+                step.downloadUrl ? (
+                  <a 
+                    href={step.downloadUrl}
+                    download
+                    className="mt-4 px-6 py-2.5 rounded-full bg-union-primary/5 text-union-primary border border-union-primary/10 hover:bg-union-primary hover:text-white transition-all font-bold text-sm shadow-md group/btn flex items-center gap-2 uppercase tracking-wide"
+                  >
+                    {step.button}
+                    <ChevronRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                  </a>
+                ) : (
+                  <button 
+                    className="mt-4 px-6 py-2.5 rounded-full bg-union-primary/5 text-union-primary border border-union-primary/10 hover:bg-union-primary hover:text-white transition-all font-bold text-sm shadow-md group/btn flex items-center gap-2 uppercase tracking-wide"
+                    aria-label={step.button}
+                  >
+                    {step.button}
+                    <ChevronRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                  </button>
+                )
               )}
             </motion.div>
           );

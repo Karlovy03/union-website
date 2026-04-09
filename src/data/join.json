@@ -7,6 +7,7 @@
       "title": "Завантажте заяву",
       "description": "Першим кроком є завантаження офіційного бланка заяви про вступ до нашої організації.",
       "button": "Завантажити Бланк",
+      "downloadUrl": "documents/blank_zayava.pdf",
       "icon": "file-down"
     },
     {
