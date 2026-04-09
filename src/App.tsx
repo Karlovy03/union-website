@@ -6,8 +6,8 @@ import { HeroSection } from "./components/HeroSection/HeroSection";
 import StripedBackground from "./components/lightswind/StripedBackground";
 import { AboutSection } from "./components/AboutSection/AboutSection";
 import { RecommendationsSection } from "./components/RecommendationsSection/RecommendationsSection";
-import { EducationSection as NewsSection } from "./components/NewsSection/EducationSection";
-import { CareerTimeline as LawSection } from "./components/LawSection/CareerTimeline";
+import { NewsSection } from "./components/NewsSection/NewsSection";
+import { LawSection } from "./components/LawSection/LawSection";
 import ReactLenis from "lenis/react";
 import contentData from "./data";
 import Dock from "./components/lightswind/dock";
@@ -178,7 +178,6 @@ function App() {
         </AnimatePresence>
       </ReactLenis>
 
-      {/* <SmoothCursor /> */}
     </div>
   );
 }

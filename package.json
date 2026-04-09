@@ -1,5 +1,5 @@
 {
-  "name": "portfolio01",
+  "name": "union-website",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -16,11 +16,9 @@
     "lenis": "^1.3.8",
     "lightswind": "^3.1.15",
     "lucide-react": "^0.539.0",
-    "path": "^0.12.7",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "tailwindcss-animate": "^1.0.7",
-    "url": "^0.11.4"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",

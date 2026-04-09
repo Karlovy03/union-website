@@ -13,7 +13,7 @@ const IconMap = {
 
 export const AboutSection = () => {
   return (
-    <div id="about" className="max-w-7xl mx-auto w-full px-6 py-24 space-y-24">
+    <section id="about" className="max-w-7xl mx-auto w-full px-6 py-24 space-y-24">
       <motion.div
         className="text-foreground space-y-6 text-center"
         initial={{ opacity: 0, y: 50, filter: "blur(5px)" }}
@@ -70,7 +70,7 @@ export const AboutSection = () => {
                 <Card className="h-full bg-white/40 dark:bg-white/5 border-white/20 dark:border-white/10 shadow-xl backdrop-blur-xl hover:bg-white/60 dark:hover:bg-white/10 transition-all duration-300 group/card">
                   <CardHeader className="pb-4">
                     <div className="w-14 h-14 rounded-2xl bg-union-primary/10 dark:bg-union-accent/10 flex items-center justify-center mb-6 group-hover/card:scale-110 transition-transform duration-500 shadow-inner">
-                      <IconComponent className="h-7 w-7 text-union-primary dark:text-union-accent" />
+                      <IconComponent className="h-7 w-7 text-union-primary dark:text-union-accent" aria-hidden="true" />
                     </div>
                     <CardTitle className="text-xl font-bold text-union-primary leading-tight">
                       {benefit.title}
@@ -89,6 +89,6 @@ export const AboutSection = () => {
       </motion.div>
 
       <Separator />
-    </div>
+    </section>
   );
 };

@@ -8,8 +8,32 @@ import { BorderBeam } from "../lightswind/border-beam";
 
 import contentData from "../../data";
 
-const navItems = contentData.header.navItems;
-const ctaButton = (contentData.header as any).ctaButton;
+interface NavItem {
+  name: string;
+  href: string;
+}
+
+interface CTAButton {
+  name: string;
+  href: string;
+}
+
+interface BrandData {
+  name: string;
+  subtitle: string;
+  logoAlt: string;
+}
+
+interface HeaderData {
+  brand: BrandData;
+  navItems: NavItem[];
+  ctaButton: CTAButton;
+}
+
+const headerData = contentData.header as unknown as HeaderData;
+const navItems = headerData.navItems;
+const ctaButton = headerData.ctaButton;
+const brand = headerData.brand;
 
 export default function Header() {
   const [theme, setTheme] = useState<string>(() => {
@@ -121,16 +145,20 @@ export default function Header() {
 
             {/* Logo / Brand */}
             <a
-              onClick={() => handleScrollTo("#hero")}
+              href="#hero"
+              onClick={(e) => {
+                e.preventDefault();
+                handleScrollTo("#hero");
+              }}
               className="cursor-pointer flex items-center gap-3 group shrink-0"
             >
               <div className="relative">
-                 <img src={unionLogo} alt="Logo" className="h-10 w-auto object-contain transition-transform group-hover:rotate-12 duration-500" />
+                 <img src={unionLogo} alt={brand.logoAlt} className="h-10 w-auto object-contain transition-transform group-hover:rotate-12 duration-500" />
                  <div className="absolute inset-0 bg-union-accent/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </div>
               <div className="flex flex-col -space-y-1">
-                 <span className="font-black text-sm uppercase tracking-tight text-union-primary">Профспілка</span>
-                 <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest hidden lg:block overflow-hidden whitespace-nowrap">Національної поліції</span>
+                 <span className="font-black text-sm uppercase tracking-tight text-union-primary">{brand.name}</span>
+                 <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest hidden lg:block overflow-hidden whitespace-nowrap">{brand.subtitle}</span>
               </div>
             </a>
 
@@ -143,7 +171,11 @@ export default function Header() {
                     className="relative"
                   >
                     <a
-                      onClick={() => handleScrollTo(item.href)}
+                      href={item.href}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleScrollTo(item.href);
+                      }}
                       className="cursor-pointer px-4 py-2 text-[13px] font-bold text-union-primary/80 hover:text-union-primary dark:text-white/60 dark:hover:text-white transition-all rounded-xl hover:bg-union-primary/5 dark:hover:bg-white/5 block"
                     >
                       {item.name}
@@ -161,9 +193,10 @@ export default function Header() {
                   className="p-2.5 rounded-2xl bg-union-primary/5 dark:bg-white/5 text-union-primary dark:text-white hover:bg-union-primary/10 transition-colors hidden sm:flex items-center justify-center"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  aria-label={theme === "dark" ? "Увімкнути світлу тему" : "Увімкнути темну тему"}
                 >
                   <AnimatePresence mode="wait" initial={false}>
-                    {theme === "dark" ? <Moon size={18} /> : <Sun size={18} />}
+                    {theme === "dark" ? <Moon size={18} aria-hidden="true" /> : <Sun size={18} aria-hidden="true" />}
                   </AnimatePresence>
                 </motion.button>
 
@@ -185,8 +218,9 @@ export default function Header() {
                 <button
                   onClick={() => setIsMobileMenuOpen(true)}
                   className="md:hidden w-10 h-10 rounded-2xl bg-union-primary text-white flex items-center justify-center shadow-lg"
+                  aria-label="Відкрити меню"
                 >
-                  <Menu size={20} />
+                  <Menu size={20} aria-hidden="true" />
                 </button>
             </div>
           </div>
@@ -208,8 +242,9 @@ export default function Header() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="absolute top-8 right-8 w-12 h-12 rounded-2xl bg-union-primary/5 flex items-center justify-center text-union-primary"
                   whileHover={{ rotate: 90 }}
+                  aria-label="Закрити меню"
                 >
-                  <X size={28} />
+                  <X size={28} aria-hidden="true" />
                 </motion.button>
 
                 <motion.ul
@@ -218,13 +253,17 @@ export default function Header() {
                   } as MotionProps)}
                   className="flex flex-col items-center justify-center h-full space-y-6"
                 >
-                  {[...navItems, ctaButton].map((item: any) => (
+                  {[...navItems, ctaButton].map((item: NavItem | CTAButton) => (
                     <motion.li
                       key={item.name}
                       {...({ variants: itemVariants } as MotionProps)}
                     >
                       <a
-                        onClick={() => handleScrollTo(item.href)}
+                        href={item.href}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleScrollTo(item.href);
+                        }}
                         className={`text-3xl font-black uppercase tracking-tighter cursor-pointer transition-colors ${
                           item.name === ctaButton.name ? "text-union-accent" : "text-union-primary dark:text-white"
                         }`}

@@ -24,7 +24,7 @@ export const JoinSection = () => {
            viewport={{ once: true }}
            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-union-primary/10 text-union-primary text-xs font-bold uppercase tracking-widest"
         >
-          <Sparkles size={14} />
+          <Sparkles size={14} aria-hidden="true" />
           Приєднуйтесь до нас
         </motion.div>
         <motion.h2 
@@ -81,7 +81,10 @@ export const JoinSection = () => {
               </div>
 
               {step.button && (
-                <button className="mt-4 px-6 py-2.5 rounded-full bg-union-primary/5 text-union-primary border border-union-primary/10 hover:bg-union-primary hover:text-white transition-all font-bold text-sm shadow-md group/btn flex items-center gap-2 uppercase tracking-wide">
+                <button 
+                  className="mt-4 px-6 py-2.5 rounded-full bg-union-primary/5 text-union-primary border border-union-primary/10 hover:bg-union-primary hover:text-white transition-all font-bold text-sm shadow-md group/btn flex items-center gap-2 uppercase tracking-wide"
+                  aria-label={step.button}
+                >
                   {step.button}
                   <ChevronRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
                 </button>
@@ -98,7 +101,7 @@ export const JoinSection = () => {
          className="mt-24 text-center"
       >
         <p className="text-2xl font-bold italic bg-gradient-to-r from-union-primary to-union-accent bg-clip-text text-transparent">
-          "{join.cta}"
+          «{join.cta}»
         </p>
       </motion.div>
     </section>

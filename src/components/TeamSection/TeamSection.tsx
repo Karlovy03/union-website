@@ -15,7 +15,7 @@ export const TeamSection = () => {
                    viewport={{ once: true }}
                    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-union-accent/10 text-union-primary text-xs font-bold uppercase tracking-widest border border-union-accent/20"
                 >
-                  <ShieldCheck size={14} className="text-union-accent" />
+                  <ShieldCheck size={14} className="text-union-accent" aria-hidden="true" />
                   Наша Гордість
                 </motion.div>
                 <motion.h2 
@@ -52,7 +52,7 @@ export const TeamSection = () => {
                         <div className="relative w-full aspect-[4/5] rounded-[2.5rem] overflow-hidden mb-8 shadow-2xl transition-all duration-700 group-hover:scale-[1.02] ring-1 ring-black/5 dark:ring-white/5">
                             <img 
                                 src={member.image} 
-                                alt={member.name} 
+                                alt={`Фото команди: ${member.name}`} 
                                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 brightness-90 group-hover:brightness-100"
                             />
                             {/* Glass overlay on hover */}
@@ -60,9 +60,9 @@ export const TeamSection = () => {
                             
                             <div className="absolute bottom-6 left-6 right-6 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                                 <div className="flex flex-col gap-2 p-5 rounded-2xl bg-white/10 backdrop-blur-3xl border border-white/20">
-                                    <Quote size={20} className="text-union-accent mb-2" />
+                                    <Quote size={20} className="text-union-accent mb-2" aria-hidden="true" />
                                     <p className="text-white text-xs font-medium leading-relaxed italic">
-                                        "{member.quote}"
+                                        «{member.quote}»
                                     </p>
                                 </div>
                             </div>

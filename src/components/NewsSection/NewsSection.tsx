@@ -2,7 +2,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "../lightswind/card";
 import { motion } from "framer-motion";
 import contentData from "../../data";
 
-export const EducationSection = () => {
+export const NewsSection = () => {
   return (
     <section id="news" className="max-w-7xl mx-auto px-6 py-24 relative overflow-hidden">
       {/* Background decoration */}
@@ -57,7 +57,7 @@ export const EducationSection = () => {
                 <ul className="space-y-2 mt-4">
                   {news.points.map((point, pIdx) => (
                     <li key={pIdx} className="flex items-start gap-3">
-                      <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-union-accent shrink-0" />
+                      <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-union-accent shrink-0" aria-hidden="true" />
                       <span className="text-sm font-medium">{point}</span>
                     </li>
                   ))}

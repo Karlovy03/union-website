@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export const HeroSection = () => {
   return (
-    <motion.div
+    <motion.section
       id="hero"
       className="text-foreground bg-transparent flex flex-col md:flex-row 
       items-center justify-center max-w-7xl mx-auto w-full"
@@ -58,10 +58,16 @@ export const HeroSection = () => {
             transition: { duration: 0.8, ease: "easeOut" },
           }}
         >
-          <button className="px-8 py-4 bg-union-primary text-primary-foreground rounded-full font-bold hover:bg-union-secondary transition-all hover:scale-105 active:scale-95 shadow-xl shadow-union-primary/20">
+          <button 
+            className="px-8 py-4 bg-union-primary text-primary-foreground rounded-full font-bold hover:bg-union-secondary transition-all hover:scale-105 active:scale-95 shadow-xl shadow-union-primary/20"
+            aria-label={contentData.hero.primaryButton}
+          >
             {contentData.hero.primaryButton}
           </button>
-          <button className="px-8 py-4 bg-background/50 backdrop-blur-md text-union-primary border border-union-primary/30 rounded-full font-bold hover:bg-union-primary/10 transition-all hover:scale-105 active:scale-95">
+          <button 
+            className="px-8 py-4 bg-background/50 backdrop-blur-md text-union-primary border border-union-primary/30 rounded-full font-bold hover:bg-union-primary/10 transition-all hover:scale-105 active:scale-95"
+            aria-label={contentData.hero.secondaryButton}
+          >
             {contentData.hero.secondaryButton}
           </button>
         </motion.div>
@@ -81,13 +87,13 @@ export const HeroSection = () => {
         <div className="w-80 h-80 md:w-96 md:h-96 relative rounded-3xl overflow-hidden shadow-2xl border-2 border-union-accent/20 rotate-3 hover:rotate-0 transition-transform duration-700">
           <img
             src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=2670&auto=format&fit=crop"
-            alt="Union Members"
+            alt="Представники Профспілки Національної поліції України"
             className="w-full h-full object-cover scale-110 hover:scale-100 transition-transform duration-700"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-union-primary/60 to-transparent mix-blend-multiply opacity-60"></div>
           <div className="absolute inset-0 bg-union-secondary/10"></div>
         </div>
       </motion.div>
-    </motion.div>
+    </motion.section>
   );
 };
