@@ -1,4 +1,3 @@
-import { Separator } from "../lightswind/separator";
 import { Card, CardHeader, CardTitle, CardContent } from "../lightswind/card";
 import { motion } from "framer-motion";
 import { Shield, WalletCards, HeartHandshake } from "lucide-react";
