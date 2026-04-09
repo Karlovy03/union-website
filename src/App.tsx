@@ -1,5 +1,5 @@
 // App.jsx
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import { HeroSection } from "./components/HeroSection/HeroSection";
@@ -30,27 +30,27 @@ import { motion, AnimatePresence } from "framer-motion";
 
 function App() {
   const [showDock, setShowDock] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollY = useRef(0);
 
   // Track scroll direction
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      if (currentScrollY > lastScrollY) {
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
         // scrolling down -> show Dock
         setShowDock(true);
-      } else {
+      } else if (currentScrollY < lastScrollY.current) {
         // scrolling up -> hide Dock
         setShowDock(false);
       }
 
-      setLastScrollY(currentScrollY);
+      lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   // Helper for smooth scroll
   const scrollToSection = (id: string) => {
@@ -105,8 +105,8 @@ function App() {
   ];
 
   return (
-    <div className="bg-background min-h-screen flex items-center justify-center">
-      <StripedBackground className={"fixed z-0 blur-xs"} />
+    <div className="bg-background min-h-screen flex flex-col w-full">
+      <StripedBackground className={"fixed z-0"} />
       <ScrollProgress />
 
       <ReactLenis root>

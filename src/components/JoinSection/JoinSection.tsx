@@ -12,7 +12,7 @@ export const JoinSection = () => {
   const { join } = contentData;
 
   return (
-    <section id="join" className="max-w-7xl mx-auto px-6 py-24 relative overflow-hidden">
+    <section id="join" className="max-w-7xl mx-auto px-6 py-16 relative overflow-hidden">
       {/* Background accents */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-union-accent/5 rounded-full blur-3xl -z-10"></div>
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-union-primary/5 rounded-full blur-3xl -z-10"></div>

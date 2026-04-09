@@ -4,7 +4,7 @@ import contentData from "../../data";
 
 export const TeamSection = () => {
     return (
-        <section id="team" className="max-w-7xl mx-auto px-6 py-32 relative overflow-hidden">
+        <section id="team" className="max-w-7xl mx-auto px-6 py-16 relative overflow-hidden">
             {/* Background elements */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-union-primary/[0.02] dark:bg-white/[0.01] rounded-full blur-3xl pointer-events-none"></div>
 

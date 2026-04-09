@@ -157,8 +157,8 @@ export default function Header() {
                  <div className="absolute inset-0 bg-union-accent/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </div>
               <div className="flex flex-col -space-y-1">
-                 <span className="font-black text-sm uppercase tracking-tight text-union-primary">{brand.name}</span>
-                 <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest hidden lg:block overflow-hidden whitespace-nowrap">{brand.subtitle}</span>
+                 <span className="font-black text-sm uppercase tracking-tight text-union-primary font-display">{brand.name}</span>
+                 <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest hidden lg:block overflow-hidden whitespace-nowrap font-display">{brand.subtitle}</span>
               </div>
             </a>
 
@@ -176,7 +176,7 @@ export default function Header() {
                         e.preventDefault();
                         handleScrollTo(item.href);
                       }}
-                      className="cursor-pointer px-4 py-2 text-[13px] font-bold text-union-primary/80 hover:text-union-primary dark:text-white/60 dark:hover:text-white transition-all rounded-xl hover:bg-union-primary/5 dark:hover:bg-white/5 block"
+                      className="cursor-pointer px-4 py-2 text-[13px] font-bold text-union-primary/80 hover:text-union-primary dark:text-white/60 dark:hover:text-white transition-all rounded-xl hover:bg-union-primary/5 dark:hover:bg-white/5 block font-display"
                     >
                       {item.name}
                     </a>

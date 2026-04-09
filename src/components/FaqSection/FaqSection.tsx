@@ -1,18 +1,36 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus, HelpCircle, MessageCircleQuestion } from "lucide-react";
+import { useLenis } from 'lenis/react';
 import contentData from "../../data";
 
 export const FaqSection = () => {
     const { faq } = contentData;
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
+    const lenis = useLenis();
 
     const toggleFaq = (index: number) => {
         setActiveIndex(activeIndex === index ? null : index);
     };
 
+    // Force Lenis to recalculate height multiple times during animation
+    useEffect(() => {
+        if (lenis && activeIndex !== null) {
+            const interval = setInterval(() => lenis.resize(), 20);
+            const timeout = setTimeout(() => {
+                clearInterval(interval);
+                lenis.resize();
+            }, 600); // Covers animation duration (400ms) + buffer
+            
+            return () => {
+                clearInterval(interval);
+                clearTimeout(timeout);
+            };
+        }
+    }, [activeIndex, lenis]);
+
     return (
-        <section id="faq" className="max-w-7xl mx-auto px-6 py-24 relative overflow-hidden">
+        <section id="faq" className="max-w-7xl mx-auto px-6 py-16 relative">
              {/* Background decoration */}
             <div className="absolute bottom-0 right-0 w-64 h-64 bg-union-secondary/5 rounded-full blur-3xl -z-10 animate-pulse"></div>
 
@@ -34,21 +52,17 @@ export const FaqSection = () => {
                 </p>
             </div>
 
-            <div className="space-y-4">
+            <div className="relative space-y-4">
                 {faq.items.map((item, idx) => {
                     const isOpen = activeIndex === idx;
                     return (
-                        <motion.div
+                        <div
                             key={idx}
-                            className={`rounded-2xl border transition-all duration-300 ${
+                            className={`relative rounded-2xl border transition-all duration-500 ${
                                 isOpen 
                                 ? "border-union-accent/50 bg-union-light/50 dark:bg-white/5 shadow-2xl" 
                                 : "border-union-accent/10 bg-white/40 dark:bg-white/[0.02] hover:bg-white/60 dark:hover:bg-white/[0.04]"
                             }`}
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1 }}
                         >
                             <button
                                 onClick={() => toggleFaq(idx)}
@@ -77,7 +91,10 @@ export const FaqSection = () => {
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: "auto", opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
-                                        transition={{ duration: 0.4, ease: "easeOut" }}
+                                        transition={{ 
+                                            height: { duration: 0.5, ease: [0.04, 0.62, 0.23, 0.98] },
+                                            opacity: { duration: 0.3 }
+                                        }}
                                         className="overflow-hidden"
                                     >
                                         <div className="px-6 md:px-8 pb-8 pt-0 border-t border-union-accent/5 mt-2">
@@ -88,7 +105,7 @@ export const FaqSection = () => {
                                     </motion.div>
                                 )}
                             </AnimatePresence>
-                        </motion.div>
+                        </div>
                     );
                 })}
             </div>

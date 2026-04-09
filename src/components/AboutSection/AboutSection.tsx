@@ -3,6 +3,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "../lightswind/card";
 import { motion } from "framer-motion";
 import { Shield, WalletCards, HeartHandshake } from "lucide-react";
 import contentData from "../../data";
+import { CountUp } from "../lightswind/count-up";
 
 // Map string icon names to actual Lucide components
 const IconMap = {
@@ -13,7 +14,7 @@ const IconMap = {
 
 export const AboutSection = () => {
   return (
-    <section id="about" className="max-w-7xl mx-auto w-full px-6 py-24 space-y-24">
+    <section id="about" className="max-w-7xl mx-auto w-full px-6 py-16 space-y-24">
       <motion.div
         className="text-foreground space-y-6 text-center"
         initial={{ opacity: 0, y: 50, filter: "blur(5px)" }}
@@ -26,21 +27,36 @@ export const AboutSection = () => {
           {contentData.about.description}
         </p>
         <div className="flex flex-wrap justify-center gap-12 mt-12">
-          {contentData.about.stats.map((stat, index) => (
-            <div key={index} className="flex flex-col items-center relative group">
-              <span className="text-5xl font-bold bg-gradient-to-tr from-union-primary via-union-secondary to-union-accent bg-clip-text text-transparent">
-                {stat.value}
-              </span>
-              <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest mt-2">
-                {stat.label}
-              </span>
-              <div className="absolute -bottom-2 left-0 w-0 h-1 bg-union-accent group-hover:w-full transition-all duration-500"></div>
-            </div>
-          ))}
+          {contentData.about.stats.map((stat, index) => {
+            const numericValue = parseInt(stat.value.replace(/[^0-9]/g, ""));
+            const suffix = stat.value.replace(/[0-9]/g, "");
+            const isNumeric = !isNaN(numericValue);
+
+            return (
+              <div key={index} className="flex flex-col items-center relative group">
+                {isNumeric ? (
+                  <CountUp 
+                    value={numericValue} 
+                    suffix={suffix} 
+                    duration={3} 
+                    className="text-5xl font-bold bg-gradient-to-tr from-union-primary via-union-secondary to-union-accent bg-clip-text text-transparent"
+                    numberClassName="text-transparent"
+                  />
+                ) : (
+                  <span className="text-5xl font-bold bg-gradient-to-tr from-union-primary via-union-secondary to-union-accent bg-clip-text text-transparent">
+                    {stat.value}
+                  </span>
+                )}
+                <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest mt-2 text-center">
+                  {stat.label}
+                </span>
+                <div className="absolute -bottom-2 left-0 w-0 h-1 bg-union-accent group-hover:w-full transition-all duration-500"></div>
+              </div>
+            );
+          })}
         </div>
       </motion.div>
 
-      <Separator className="opacity-20" />
 
       <motion.div
         className="space-y-16"
@@ -88,7 +104,6 @@ export const AboutSection = () => {
         </div>
       </motion.div>
 
-      <Separator />
     </section>
   );
 };

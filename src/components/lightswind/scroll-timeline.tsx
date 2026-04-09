@@ -9,6 +9,7 @@ import {
 import { cn } from "../lib/utils";
 import { Card, CardContent } from "./card";
 import { Calendar } from "lucide-react";
+import { BorderBeam } from "./border-beam";
 
 export interface TimelineEvent {
   id?: string;
@@ -329,13 +330,16 @@ export const ScrollTimeline = ({
                   </div>
 
                   <motion.div
-                    className={cn(getCardClasses(index), "mt-12 lg:mt-0")}
+                    className={cn(getCardClasses(index), "mt-12 lg:mt-0 group overflow-hidden")}
                     initial={animationProps.initial}
                     whileInView={animationProps.whileInView}
                     viewport={animationProps.viewport}
                     style={parallaxIntensity > 0 ? { y: yOffset } : undefined}
                   >
-                    <Card className="bg-background border">
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-40">
+                      <BorderBeam size={80} duration={4} colorFrom="var(--union-accent)" colorTo="var(--union-primary)" />
+                    </div>
+                    <Card className="bg-background border relative z-30">
                       <CardContent className="p-6">
                         {dateFormat === "badge" ? (
                           <div className="flex items-center mb-2">

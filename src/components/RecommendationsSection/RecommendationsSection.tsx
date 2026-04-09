@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Award, ShieldAlert, Sparkles, Files, Briefcase, ChevronRight, FileDown } from "lucide-react";
 import contentData from "../../data";
 import { Card, CardContent, CardHeader, CardTitle } from "../lightswind/card";
+import { BorderBeam } from "../lightswind/border-beam";
 
 const iconMap = {
   "Ваші права та соціальні пільги": Award,
@@ -13,7 +14,7 @@ export const RecommendationsSection = () => {
   return (
     <motion.section
       id="recommendations"
-      className="max-w-7xl mx-auto px-6 py-24 relative overflow-hidden"
+      className="max-w-7xl mx-auto px-6 py-16 relative overflow-hidden"
       initial={{ opacity: 0, y: 50, filter: "blur(5px)" }}
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once: true, amount: 0.2 }}
@@ -55,6 +56,9 @@ export const RecommendationsSection = () => {
               <div className="absolute inset-x-4 -bottom-4 h-full bg-union-primary/5 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
               
               <Card className="relative flex-1 bg-white/60 dark:bg-white/5 border-union-accent/10 dark:border-white/10 shadow-2xl backdrop-blur-3xl group-hover:border-union-accent/40 transition-all duration-500 z-10 overflow-hidden flex flex-col">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <BorderBeam size={80} duration={4} colorFrom="var(--union-accent)" colorTo="var(--union-secondary)" />
+                </div>
                 {/* Visual Accent */}
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-union-primary via-union-secondary to-union-accent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 

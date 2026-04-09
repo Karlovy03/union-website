@@ -1,9 +1,11 @@
+/* Fonts are imported locally in src/main.tsx via @fontsource */
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-sans: var(--font-geist-sans);
+  --font-display: "Montserrat", sans-serif;
 
   /* Noguchi Color Palette - Standard Tailwind v4 mapping */
   --color-union-primary: var(--union-primary);
@@ -102,15 +104,25 @@
 
 .aurora-container {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
   z-index: -1;
   overflow: hidden;
-  filter: blur(100px);
-  opacity: 0.5;
+  filter: blur(80px); /* Slightly increased blur for better blending */
+  opacity: 0.45;
   pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, var(--background) 0%, transparent 100%);
+}
+
+.aurora-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3%3C/filter%3%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3%3C/svg%3");
+  opacity: 0.1; /* Reduced opacity for less GPU strain */
+  mix-blend-mode: overlay;
+  z-index: 10;
 }
 
 .aurora-blob {
@@ -119,8 +131,9 @@
   height: 40vw;
   border-radius: 50%;
   background: var(--union-primary);
-  opacity: 0.2;
-  animation: move 20s infinite alternate;
+  opacity: 0.15;
+  animation: move 20s infinite alternate linear;
+  will-change: transform; /* Hardware acceleration */
 }
 
 .aurora-blob-1 {
@@ -143,7 +156,7 @@
   width: 30vw;
   height: 30vw;
   animation-delay: -10s;
-  opacity: 0.1;
+  opacity: 0.08;
 }
 
 @keyframes move {
@@ -151,38 +164,22 @@
     transform: translate(0, 0) rotate(0deg);
   }
   to {
-    transform: translate(10vw, 10vh) rotate(360deg);
+    transform: translate(5vw, 5vh) rotate(180deg);
   }
 }
 
 .dark .aurora-blob {
-  opacity: 0.15;
+  opacity: 0.1;
 }
-
-
-
-@font-face {
-  font-family: "Geist Sans";
-  src: url("../node_modules/@vercel/fonts/geist-sans/GeistSans-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Geist Sans";
-  src: url("../node_modules/@vercel/fonts/geist-sans/GeistSans-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Geist Sans";
-  src: url("../node_modules/@vercel/fonts/geist-sans/GeistSans-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-}
-
 
 * {
-  font-family: "Geist Sans", sans-serif !important;
+  font-family: inherit;
+}
+
+body {
+  font-family: "Geist Sans", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: "Montserrat", sans-serif !important;
 }

@@ -19,21 +19,22 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="relative w-full border-t border-union-accent/20 bg-union-light/30 dark:bg-union-dark/60 backdrop-blur-3xl pt-24 pb-12 overflow-hidden mt-32">
-      {/* Decorative background gradients */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-union-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-union-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <footer className="relative w-full border-t border-union-accent/20 bg-union-light/30 dark:bg-union-dark/60 backdrop-blur-3xl pt-32 pb-12 overflow-hidden mt-40">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-union-primary/5 rounded-full blur-[140px] pointer-events-none"></div>
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-union-accent/5 rounded-full blur-[140px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 border-b border-union-accent/10 pb-20">
           
           {/* Logo & Info */}
-          <div className="space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-union-primary to-union-secondary flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-lg">П</span>
+          <div className="space-y-8">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-union-primary to-union-secondary flex items-center justify-center shadow-2xl relative group/logo overflow-hidden">
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/logo:translate-y-0 transition-transform duration-500"></div>
+                <span className="text-white font-bold text-2xl relative z-10">П</span>
               </div>
-              <h3 className="text-xl font-bold text-union-primary">
+              <h3 className="text-2xl font-black text-union-primary tracking-tight font-display">
                 {footer.title}
               </h3>
             </div>
@@ -48,7 +49,7 @@ export const Footer = () => {
                     key={idx}
                     href={social.url}
                     whileHover={{ y: -4, scale: 1.1 }}
-                    className="w-10 h-10 rounded-lg border border-union-accent/20 bg-white/50 dark:bg-white/5 flex items-center justify-center text-union-primary hover:bg-union-primary hover:text-white transition-all shadow-sm"
+                    className="w-11 h-11 rounded-xl border border-union-accent/20 bg-white/50 dark:bg-white/5 flex items-center justify-center text-union-primary hover:bg-union-primary hover:text-white transition-all shadow-md active:scale-95"
                     aria-label={social.name}
                   >
                     <Icon size={18} />
@@ -60,7 +61,7 @@ export const Footer = () => {
 
           {/* Quick Links */}
           <div className="space-y-6">
-            <h4 className="text-sm font-bold uppercase tracking-widest text-union-primary/60">
+            <h4 className="text-xs font-black uppercase tracking-[0.2em] text-union-primary/40 font-display">
               Навігація
             </h4>
             <ul className="space-y-4">
@@ -68,9 +69,9 @@ export const Footer = () => {
                 <li key={idx}>
                   <button
                     onClick={() => handleScrollTo(link.href)}
-                    className="text-muted-foreground hover:text-union-primary transition-colors text-sm font-medium flex items-center gap-2 group"
+                    className="text-muted-foreground hover:text-union-primary transition-all text-sm font-semibold flex items-center gap-2 group/btn py-1"
                   >
-                    <span className="w-0 h-0.5 bg-union-accent group-hover:w-4 transition-all duration-300"></span>
+                    <span className="w-1 h-1 rounded-full bg-union-accent opacity-0 group-hover/btn:opacity-100 group-hover/btn:scale-150 transition-all duration-300"></span>
                     {link.name}
                   </button>
                 </li>
@@ -80,7 +81,7 @@ export const Footer = () => {
 
           {/* Contacts */}
           <div className="space-y-6">
-            <h4 className="text-sm font-bold uppercase tracking-widest text-union-primary/60">
+            <h4 className="text-xs font-black uppercase tracking-[0.2em] text-union-primary/40 font-display">
               Контакти
             </h4>
             <div className="space-y-5">
@@ -90,7 +91,7 @@ export const Footer = () => {
                 </div>
                 <div className="space-y-1">
                   <p className="text-xs text-muted-foreground">Гаряча лінія</p>
-                  <a href={`tel:${footer.contacts.phone}`} className="text-sm font-bold text-union-primary hover:underline">
+                  <a href={`tel:${footer.contacts.phone}`} className="text-base font-bold text-union-primary hover:text-union-accent transition-colors">
                     {footer.contacts.phone}
                   </a>
                 </div>
@@ -101,7 +102,7 @@ export const Footer = () => {
                 </div>
                 <div className="space-y-1">
                   <p className="text-xs text-muted-foreground">Email</p>
-                  <a href={`mailto:${footer.contacts.email}`} className="text-sm font-bold text-union-primary hover:underline">
+                  <a href={`mailto:${footer.contacts.email}`} className="text-base font-bold text-union-primary hover:text-union-accent transition-colors">
                     {footer.contacts.email}
                   </a>
                 </div>
@@ -111,7 +112,7 @@ export const Footer = () => {
 
           {/* Address */}
           <div className="space-y-6">
-            <h4 className="text-sm font-bold uppercase tracking-widest text-union-primary/60">
+            <h4 className="text-xs font-black uppercase tracking-[0.2em] text-union-primary/40 font-display">
               Адреса
             </h4>
             <div className="flex items-start gap-3 group">
@@ -123,22 +124,25 @@ export const Footer = () => {
               </p>
             </div>
             
-            {/* Newsletter placeholder or Badge */}
-            <div className="pt-4">
-               <div className="rounded-2xl p-4 bg-gradient-to-br from-union-primary/5 to-union-accent/5 border border-union-accent/10">
-                  <p className="text-xs font-bold text-union-primary mb-2 italic">На варті ваших прав</p>
-                  <p className="text-[10px] text-muted-foreground">Приєднуйтесь до лав профспілки та отримайте повний захист сьогодні.</p>
+            {/* Official Badge area */}
+            <div className="pt-6">
+               <div className="rounded-2xl p-6 bg-gradient-to-br from-union-primary/5 via-union-secondary/5 to-union-accent/5 border border-union-accent/10 relative overflow-hidden group/badge">
+                  <div className="absolute -right-4 -top-4 w-24 h-24 bg-union-accent/10 rounded-full blur-2xl group-hover/badge:scale-150 transition-transform duration-700"></div>
+                  <p className="text-sm font-black text-union-primary mb-2 font-display uppercase tracking-wider">На варті ваших прав</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    Ми — офіційна профспілкова організація, що забезпечує соціальний та правовий захист співробітників поліції.
+                  </p>
                </div>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center py-12 gap-6 text-xs font-medium text-muted-foreground/60 tracking-wider uppercase">
-          <p>{footer.copyright}</p>
-          <div className="flex gap-8">
-            <a href="#" className="hover:text-union-primary transition-colors">Політика конфіденційності</a>
-            <a href="#" className="hover:text-union-primary transition-colors">Юридичні умови</a>
+        <div className="flex flex-col md:flex-row justify-between items-center py-10 gap-6 text-[10px] font-black text-muted-foreground/40 tracking-[0.2em] uppercase font-display border-t border-union-accent/5 mt-12">
+          <p>{footer.copyright} • Розроблено для захисників</p>
+          <div className="flex gap-10">
+            <a href="#" className="hover:text-union-primary transition-colors hover:tracking-[0.3em] duration-300">Політика конфіденційності</a>
+            <a href="#" className="hover:text-union-primary transition-colors hover:tracking-[0.3em] duration-300">Юридичні умови</a>
           </div>
         </div>
       </div>
