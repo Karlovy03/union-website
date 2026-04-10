@@ -42,11 +42,11 @@ export const Footer = () => {
               {footer.subtitle}
             </p>
             <div className="flex gap-4">
-              {footer.socials.map((social, idx) => {
+              {footer.socials.map((social) => {
                 const Icon = iconMap[social.icon as keyof typeof iconMap] || Send;
                 return (
                   <motion.a
-                    key={idx}
+                    key={social.name}
                     href={social.url}
                     whileHover={{ y: -4, scale: 1.1 }}
                     className="w-11 h-11 rounded-xl border border-union-accent/20 bg-white/50 dark:bg-white/5 flex items-center justify-center text-union-primary hover:bg-union-primary hover:text-white transition-all shadow-md active:scale-95"
@@ -62,11 +62,11 @@ export const Footer = () => {
           {/* Quick Links */}
           <div className="space-y-6">
             <h4 className="text-xs font-black uppercase tracking-[0.2em] text-union-primary/40 font-display">
-              Навігація
+              {footer.sections.navigation}
             </h4>
             <ul className="space-y-4">
-              {footer.links.map((link, idx) => (
-                <li key={idx}>
+              {footer.links.map((link) => (
+                <li key={link.href}>
                   <button
                     onClick={() => handleScrollTo(link.href)}
                     className="text-muted-foreground hover:text-union-primary transition-all text-sm font-semibold flex items-center gap-2 group/btn py-1"
@@ -82,7 +82,7 @@ export const Footer = () => {
           {/* Contacts */}
           <div className="space-y-6">
             <h4 className="text-xs font-black uppercase tracking-[0.2em] text-union-primary/40 font-display">
-              Контакти
+              {footer.sections.contacts}
             </h4>
             <div className="space-y-5">
               <div className="flex items-start gap-3 group">
@@ -90,7 +90,7 @@ export const Footer = () => {
                   <Phone size={14} />
                 </div>
                 <div className="space-y-1">
-                  <p className="text-xs text-muted-foreground">Гаряча лінія</p>
+                  <p className="text-xs text-muted-foreground">{footer.sections.hotline}</p>
                   <a href={`tel:${footer.contacts.phone}`} className="text-base font-bold text-union-primary hover:text-union-accent transition-colors">
                     {footer.contacts.phone}
                   </a>
@@ -113,7 +113,7 @@ export const Footer = () => {
           {/* Address */}
           <div className="space-y-6">
             <h4 className="text-xs font-black uppercase tracking-[0.2em] text-union-primary/40 font-display">
-              Адреса
+              {footer.sections.address}
             </h4>
             <div className="flex items-start gap-3 group">
               <div className="w-8 h-8 rounded-lg bg-union-primary/5 flex items-center justify-center text-union-primary shrink-0 group-hover:bg-union-primary group-hover:text-white transition-colors">
@@ -128,9 +128,9 @@ export const Footer = () => {
             <div className="pt-6">
                <div className="rounded-2xl p-6 bg-gradient-to-br from-union-primary/5 via-union-secondary/5 to-union-accent/5 border border-union-accent/10 relative overflow-hidden group/badge">
                   <div className="absolute -right-4 -top-4 w-24 h-24 bg-union-accent/10 rounded-full blur-2xl group-hover/badge:scale-150 transition-transform duration-700"></div>
-                  <p className="text-sm font-black text-union-primary mb-2 font-display uppercase tracking-wider">На варті ваших прав</p>
+                  <p className="text-sm font-black text-union-primary mb-2 font-display uppercase tracking-wider">{footer.badge.title}</p>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    Ми — офіційна профспілкова організація, що забезпечує соціальний та правовий захист співробітників поліції.
+                    {footer.badge.description}
                   </p>
                </div>
             </div>
@@ -139,10 +139,10 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center py-10 gap-6 text-[10px] font-black text-muted-foreground/40 tracking-[0.2em] uppercase font-display border-t border-union-accent/5 mt-12">
-          <p>{footer.copyright} • Розроблено для захисників</p>
+          <p>{footer.copyright} • {footer.bottomNote}</p>
           <div className="flex gap-10">
-            <a href="#" className="hover:text-union-primary transition-colors hover:tracking-[0.3em] duration-300">Політика конфіденційності</a>
-            <a href="#" className="hover:text-union-primary transition-colors hover:tracking-[0.3em] duration-300">Юридичні умови</a>
+            <a href="#" className="hover:text-union-primary transition-colors hover:tracking-[0.3em] duration-300">{footer.policyLink}</a>
+            <a href="#" className="hover:text-union-primary transition-colors hover:tracking-[0.3em] duration-300">{footer.termsLink}</a>
           </div>
         </div>
       </div>

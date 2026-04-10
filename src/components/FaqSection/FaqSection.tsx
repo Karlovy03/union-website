@@ -16,7 +16,7 @@ export const FaqSection = () => {
     // Force Lenis to recalculate height multiple times during animation
     useEffect(() => {
         if (lenis && activeIndex !== null) {
-            const interval = setInterval(() => lenis.resize(), 20);
+            const interval = setInterval(() => lenis.resize(), 80);
             const timeout = setTimeout(() => {
                 clearInterval(interval);
                 lenis.resize();
@@ -42,7 +42,7 @@ export const FaqSection = () => {
                     className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-union-secondary/10 text-union-primary text-xs font-bold uppercase tracking-widest"
                 >
                     <HelpCircle size={14} />
-                    Питання та Відповіді
+                    {faq.badge}
                 </motion.div>
                 <h2 className="text-4xl md:text-5xl font-bold text-union-primary">
                     {faq.title}
@@ -112,7 +112,7 @@ export const FaqSection = () => {
 
             <div className="text-center pt-8">
                 <p className="text-sm font-medium text-muted-foreground">
-                    Не знайшли відповіді? <a href="#footer" className="text-union-accent hover:underline font-bold">Зв'яжіться з нами</a> напряму.
+                    {faq.contactPrompt} <a href="#footer" className="text-union-accent hover:underline font-bold">{faq.contactLink}</a> {faq.contactSuffix}
                 </p>
             </div>
         </section>

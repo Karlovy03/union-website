@@ -9,7 +9,7 @@ import {
   Bookmark
 } from "lucide-react";
 import contentData from "../../data";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export const NewsDetail = () => {
   const { id } = useParams();
@@ -17,29 +17,25 @@ export const NewsDetail = () => {
   const [direction, setDirection] = useState(0);
 
   const items = contentData.news.items;
-  const currentIndex = items.findIndex((i: any) => i.id === id);
+  const currentIndex = items.findIndex((i) => i.id === id);
   const item = items[currentIndex];
-
-  const prevItem = items[(currentIndex - 1 + items.length) % items.length];
-  const nextItem = items[(currentIndex + 1) % items.length];
-
-  useEffect(() => {
-    // Scroll handling is done in App.tsx mainly, but we can ensure stability here
-  }, [id]);
 
   if (!item) {
     return (
       <div className="min-h-screen flex items-center justify-center p-6 text-center">
         <div className="space-y-6 max-w-md">
-          <h1 className="text-3xl font-bold text-union-primary">Новину не знайдено</h1>
+          <h1 className="text-3xl font-bold text-union-primary">{contentData.news.notFound}</h1>
           <Link to="/" className="inline-flex items-center gap-2 px-6 py-3 bg-union-primary text-white rounded-full font-bold">
             <ArrowLeft size={18} />
-            Повернутися на головну
+            {contentData.news.backHome}
           </Link>
         </div>
       </div>
     );
   }
+
+  const prevItem = items[(currentIndex - 1 + items.length) % items.length];
+  const nextItem = items[(currentIndex + 1) % items.length];
 
   const slideVariants = {
     enter: (direction: number) => ({
@@ -66,7 +62,7 @@ export const NewsDetail = () => {
         className="fixed left-2 lg:left-6 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-0.5 group transition-all duration-300 hidden md:flex"
       >
         <span className="text-[9px] font-black text-union-primary/20 group-hover:text-union-accent tracking-[3px] uppercase transition-colors whitespace-nowrap">
-           ПОПЕРЕДНЯ НОВИНА
+           {contentData.news.prevLabel}
         </span>
         <motion.div animate={{ x: [0, -5, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="text-union-primary/30 group-hover:text-union-accent transition-colors">
           <ChevronLeft size={48} strokeWidth={1} />
@@ -78,7 +74,7 @@ export const NewsDetail = () => {
         className="fixed right-2 lg:right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-0.5 group transition-all duration-300 hidden md:flex"
       >
         <span className="text-[9px] font-black text-union-primary/20 group-hover:text-union-accent tracking-[3px] uppercase transition-colors whitespace-nowrap">
-           НАСТУПНА НОВИНА
+           {contentData.news.nextLabel}
         </span>
         <motion.div animate={{ x: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="text-union-primary/30 group-hover:text-union-accent transition-colors">
           <ChevronRight size={48} strokeWidth={1} />
@@ -86,12 +82,17 @@ export const NewsDetail = () => {
       </motion.button>
 
       <div className="max-w-4xl mx-auto px-6 relative">
-        <motion.button 
-          onClick={() => navigate("/")}
+        <motion.button
+          onClick={() => {
+            navigate("/");
+            setTimeout(() => {
+              document.getElementById("news")?.scrollIntoView({ behavior: "smooth" });
+            }, 150);
+          }}
           className="mb-12 flex items-center gap-3 px-6 py-2.5 rounded-2xl bg-union-primary text-white shadow-xl hover:bg-union-accent transition-all font-bold text-sm"
         >
           <ArrowLeft size={18} />
-          <span>До списку новин</span>
+          <span>{contentData.news.backButton}</span>
         </motion.button>
 
         <AnimatePresence mode="wait" custom={direction}>
@@ -129,7 +130,7 @@ export const NewsDetail = () => {
 
               {item.points && (
                 <div className="p-8 rounded-[2rem] bg-union-primary/5 border border-union-primary/10 space-y-6">
-                   <h3 className="text-xl font-bold text-union-primary">Ключові тези:</h3>
+                   <h3 className="text-xl font-bold text-union-primary">{contentData.news.keyPoints}</h3>
                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                      {item.points.map((point: string, idx: number) => (
                        <li key={idx} className="flex items-center gap-3 p-4 rounded-xl bg-white dark:bg-white/5 shadow-sm border border-black/5">
@@ -144,19 +145,37 @@ export const NewsDetail = () => {
               <div className="pt-12 border-t border-union-primary/5 flex items-center justify-between text-muted-foreground">
                  <div className="flex items-center gap-6">
                     <button className="flex items-center gap-2 hover:text-union-accent transition-colors">
-                      <Share2 size={18} /> <span className="text-xs font-bold uppercase tracking-widest">Поділитися</span>
+                      <Share2 size={18} /> <span className="text-xs font-bold uppercase tracking-widest">{contentData.news.share}</span>
                     </button>
                     <button className="flex items-center gap-2 hover:text-union-accent transition-colors">
-                      <Bookmark size={18} /> <span className="text-xs font-bold uppercase tracking-widest">Зберегти</span>
+                      <Bookmark size={18} /> <span className="text-xs font-bold uppercase tracking-widest">{contentData.news.save}</span>
                     </button>
                  </div>
                  <div className="text-[10px] font-black uppercase tracking-[3px] opacity-30">
-                    © Профспілка Національної Поліції
+                    {contentData.news.copyright}
                  </div>
               </div>
             </div>
           </motion.article>
         </AnimatePresence>
+      </div>
+
+      {/* Mobile bottom navigation */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white/80 dark:bg-union-dark/90 backdrop-blur-xl border-t border-union-accent/20 px-4 py-3 flex items-center justify-between">
+        <button
+          onClick={() => handleNavigate(prevItem.id, -1)}
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-union-primary/5 text-union-primary font-bold text-xs"
+        >
+          <ChevronLeft size={16} />
+          <span className="truncate max-w-[100px]">{prevItem.title}</span>
+        </button>
+        <button
+          onClick={() => handleNavigate(nextItem.id, 1)}
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-union-primary/5 text-union-primary font-bold text-xs"
+        >
+          <span className="truncate max-w-[100px]">{nextItem.title}</span>
+          <ChevronRight size={16} />
+        </button>
       </div>
     </div>
   );

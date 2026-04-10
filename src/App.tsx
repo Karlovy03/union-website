@@ -1,5 +1,5 @@
-// App.jsx
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, lazy, Suspense } from "react";
+import type { DockItem } from "./types";
 import "./App.css";
 import Header from "./components/Header/Header";
 import { HeroSection } from "./components/HeroSection/HeroSection";
@@ -29,20 +29,28 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 
 import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
-import { RecommendationDetail } from "./components/RecommendationsSection/RecommendationDetail";
-import { NewsDetail } from "./components/NewsSection/NewsDetail";
-import { MemberDetail } from "./components/TeamSection/MemberDetail";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 
-// Scroll to top on route change
+const RecommendationDetail = lazy(() => import("./components/RecommendationsSection/RecommendationDetail").then(m => ({ default: m.RecommendationDetail })));
+const NewsDetail = lazy(() => import("./components/NewsSection/NewsDetail").then(m => ({ default: m.NewsDetail })));
+const MemberDetail = lazy(() => import("./components/TeamSection/MemberDetail").then(m => ({ default: m.MemberDetail })));
+
+// Scroll to top only when navigating TO a detail page (not when returning to landing)
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const isDetailPage =
+      pathname.startsWith("/recommendations/") ||
+      pathname.startsWith("/news/") ||
+      pathname.startsWith("/team/");
+    if (isDetailPage) {
+      window.scrollTo(0, 0);
+    }
   }, [pathname]);
   return null;
 };
 
-const LandingPage = ({ dockItems, showDock }: { dockItems: any[]; showDock: boolean }) => {
+const LandingPage = ({ dockItems, showDock }: { dockItems: DockItem[]; showDock: boolean }) => {
   return (
     <>
       <div id="hero" className="min-h-[80vh] flex items-center justify-center">
@@ -102,7 +110,7 @@ const LandingPage = ({ dockItems, showDock }: { dockItems: any[]; showDock: bool
   );
 };
 
-const AppContent = ({ dockItems, showDock }: { dockItems: any[]; showDock: boolean }) => {
+const AppContent = ({ dockItems, showDock }: { dockItems: DockItem[]; showDock: boolean }) => {
   const location = useLocation();
   const isDetailPage = location.pathname.startsWith("/recommendations/") || 
                      location.pathname.startsWith("/news/") || 
@@ -124,12 +132,18 @@ const AppContent = ({ dockItems, showDock }: { dockItems: any[]; showDock: boole
             <div className="aurora-blob aurora-blob-3"></div>
           </div>
 
-          <Routes>
-            <Route path="/" element={<LandingPage dockItems={dockItems} showDock={showDock} />} />
-            <Route path="/recommendations/:id" element={<RecommendationDetail />} />
-            <Route path="/news/:id" element={<NewsDetail />} />
-            <Route path="/team/:id" element={<MemberDetail />} />
-          </Routes>
+          <Suspense fallback={
+            <div className="min-h-screen flex items-center justify-center">
+              <div className="w-8 h-8 border-4 border-union-accent border-t-transparent rounded-full animate-spin" />
+            </div>
+          }>
+            <Routes>
+              <Route path="/" element={<LandingPage dockItems={dockItems} showDock={showDock} />} />
+              <Route path="/recommendations/:id" element={<RecommendationDetail />} />
+              <Route path="/news/:id" element={<NewsDetail />} />
+              <Route path="/team/:id" element={<MemberDetail />} />
+            </Routes>
+          </Suspense>
           
           {!isDetailPage && <Footer />}
         </div>
@@ -215,10 +229,12 @@ function App() {
   ];
 
   return (
-    <HashRouter>
-      <ScrollToTop />
-      <AppContent dockItems={dockItems} showDock={showDock} />
-    </HashRouter>
+    <ErrorBoundary>
+      <HashRouter>
+        <ScrollToTop />
+        <AppContent dockItems={dockItems} showDock={showDock} />
+      </HashRouter>
+    </ErrorBoundary>
   );
 }
 

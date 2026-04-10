@@ -30,7 +30,7 @@ export const HeroSection = () => {
            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-union-accent/10 border border-union-accent/20 text-union-primary text-xs font-bold uppercase tracking-widest mb-4"
         >
           <ShieldCheck size={16} className="text-union-accent" />
-          Офіційна Профспілка НПУ
+          {contentData.hero.badge}
         </motion.div>
         <motion.h1
           className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-union-primary"
@@ -73,14 +73,16 @@ export const HeroSection = () => {
         <div className="w-80 h-80 md:w-[450px] md:h-[550px] relative rounded-[40px] overflow-hidden shadow-2xl border border-white/20 dark:border-white/10 group">
           <img
             src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=2670&auto=format&fit=crop"
-            alt="Профспілка Національної поліції України"
+            alt={contentData.hero.imageAlt}
+            width={2670}
+            height={1780}
             className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-union-primary/80 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-700"></div>
           
           <div className="absolute bottom-8 left-8 right-8 p-6 backdrop-blur-2xl bg-white/10 border border-white/20 rounded-3xl translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700">
-             <p className="text-white font-bold text-lg mb-1">Ми — Разом</p>
-             <p className="text-white/70 text-sm">Ваш захист та впевненість у майбутньому</p>
+             <p className="text-white font-bold text-lg mb-1">{contentData.hero.imageOverlayTitle}</p>
+             <p className="text-white/70 text-sm">{contentData.hero.imageOverlaySubtitle}</p>
           </div>
         </div>
       </motion.div>
@@ -92,7 +94,7 @@ export const HeroSection = () => {
         transition={{ delay: 1.5, duration: 1, repeat: Infinity, repeatType: "reverse" }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
       >
-        <span className="text-[10px] uppercase tracking-[0.3em] text-union-primary/40 font-bold">Дізнатись більше</span>
+        <span className="text-[10px] uppercase tracking-[0.3em] text-union-primary/40 font-bold">{contentData.hero.scrollHint}</span>
         <ChevronDown size={20} className="text-union-accent" />
       </motion.div>
     </motion.section>

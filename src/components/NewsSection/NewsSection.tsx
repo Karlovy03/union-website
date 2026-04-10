@@ -20,7 +20,7 @@ export const NewsSection = () => {
            viewport={{ once: true }}
            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-union-secondary/10 text-union-primary text-xs font-bold uppercase tracking-widest"
         >
-          Актуально
+          {contentData.news.badge}
         </motion.div>
         <motion.h2 
           className="text-4xl md:text-5xl font-bold text-union-primary"
@@ -48,10 +48,14 @@ export const NewsSection = () => {
         transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        {contentData.news.items.map((news: any, idx) => (
-          <Card 
-            key={idx} 
+        {contentData.news.items.map((news) => (
+          <Card
+            key={news.id}
             onClick={() => navigate(`/news/${news.id}`)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e: React.KeyboardEvent) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigate(`/news/${news.id}`); } }}
+            aria-label={news.title}
             className="group relative bg-white/40 dark:bg-white/5 border-white/20 dark:border-white/10 shadow-xl backdrop-blur-3xl hover:bg-white/60 dark:hover:bg-white/10 transition-all duration-300 rounded-3xl overflow-hidden cursor-pointer"
           >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -60,7 +64,7 @@ export const NewsSection = () => {
             
             <div className="absolute top-6 right-8 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
                <div className="flex items-center gap-2 text-union-accent font-black text-[10px] uppercase tracking-widest">
-                  Читати далі <ArrowUpRight size={14} strokeWidth={3} />
+                  {contentData.news.readMore} <ArrowUpRight size={14} strokeWidth={3} />
                </div>
             </div>
 

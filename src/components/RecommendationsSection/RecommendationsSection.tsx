@@ -30,7 +30,7 @@ export const RecommendationsSection = () => {
            viewport={{ once: true }}
            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-union-accent/10 text-union-primary text-xs font-bold uppercase tracking-widest"
         >
-          Експертний ресурс
+          {contentData.recommendations.badge}
         </motion.div>
         <motion.h2 
           className="text-4xl md:text-5xl font-bold text-union-primary mb-4"
@@ -46,15 +46,19 @@ export const RecommendationsSection = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {contentData.recommendations.items.map((item, idx) => {
+        {contentData.recommendations.items.map((item) => {
           const IconComp = iconMap[item.id as keyof typeof iconMap] || Briefcase;
           return (
             <motion.div
-              key={idx}
+              key={item.id}
               whileHover={{ y: -8 }}
               transition={{ type: "spring", stiffness: 300 }}
               className="relative group h-full flex flex-col cursor-pointer"
               onClick={() => navigate(`/recommendations/${item.id}`)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e: React.KeyboardEvent) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigate(`/recommendations/${item.id}`); } }}
+              aria-label={item.title}
             >
               {/* Outer Glow */}
               <div className="absolute inset-x-4 -bottom-4 h-full bg-union-primary/5 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>

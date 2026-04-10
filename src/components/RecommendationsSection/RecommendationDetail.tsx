@@ -15,7 +15,7 @@ import {
   ChevronLeft
 } from "lucide-react";
 import contentData from "../../data";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const iconMap = {
   "rights": Award,
@@ -29,16 +29,8 @@ export const RecommendationDetail = () => {
   const [direction, setDirection] = useState(0);
 
   const items = contentData.recommendations.items;
-  const currentIndex = items.findIndex((i: any) => i.id === id);
+  const currentIndex = items.findIndex((i) => i.id === id);
   const item = items[currentIndex];
-
-  const prevItem = items[(currentIndex - 1 + items.length) % items.length];
-  const nextItem = items[(currentIndex + 1) % items.length];
-
-  useEffect(() => {
-    // We remove the auto-scroll to top to satisfy user request 
-    // about staying on the same scroll level during transitions
-  }, [id]);
 
   if (!item) {
     return (
@@ -47,17 +39,19 @@ export const RecommendationDetail = () => {
           <div className="w-20 h-20 bg-destructive/10 text-destructive rounded-full flex items-center justify-center mx-auto">
             <ShieldAlert size={40} />
           </div>
-          <h1 className="text-3xl font-bold text-union-primary">Інформацію не знайдено</h1>
-          <p className="text-muted-foreground">На жаль, за вказаним посиланням нічого не виявлено.</p>
+          <h1 className="text-3xl font-bold text-union-primary">{contentData.recommendations.notFound}</h1>
+          <p className="text-muted-foreground">{contentData.recommendations.notFoundDescription}</p>
           <Link to="/" className="inline-flex items-center gap-2 px-6 py-3 bg-union-primary text-white rounded-full font-bold hover:bg-union-accent transition-colors">
             <ArrowLeft size={18} />
-            Повернутися на головну
+            {contentData.recommendations.backButton}
           </Link>
         </div>
       </div>
     );
   }
 
+  const prevItem = items[(currentIndex - 1 + items.length) % items.length];
+  const nextItem = items[(currentIndex + 1) % items.length];
   const IconComp = iconMap[item.id as keyof typeof iconMap] || BookOpen;
 
   const slideVariants = {
@@ -96,7 +90,7 @@ export const RecommendationDetail = () => {
         aria-label="Попередня категорія"
       >
         <span className="text-[9px] font-black text-union-primary/20 group-hover:text-union-accent tracking-[3px] uppercase transition-colors whitespace-nowrap">
-           ДІЗНАТИСЬ БІЛЬШЕ
+           {contentData.recommendations.navLabel}
         </span>
         <motion.div
           animate={{ x: [0, -5, 0] }}
@@ -115,7 +109,7 @@ export const RecommendationDetail = () => {
         aria-label="Наступна категорія"
       >
         <span className="text-[9px] font-black text-union-primary/20 group-hover:text-union-accent tracking-[3px] uppercase transition-colors whitespace-nowrap">
-           ДІЗНАТИСЬ БІЛЬШЕ
+           {contentData.recommendations.navLabel}
         </span>
         <motion.div
           animate={{ x: [0, 5, 0] }}
@@ -137,16 +131,21 @@ export const RecommendationDetail = () => {
           animate={{ opacity: 1, y: 0 }}
           className="mb-16 flex items-center gap-6"
         >
-          <button 
-            onClick={() => navigate("/")}
+          <button
+            onClick={() => {
+              navigate("/");
+              setTimeout(() => {
+                document.getElementById("recommendations")?.scrollIntoView({ behavior: "smooth" });
+              }, 150);
+            }}
             className="flex items-center gap-3 px-6 py-2.5 rounded-2xl bg-union-primary text-white shadow-xl shadow-union-primary/20 hover:bg-union-accent hover:-translate-x-1 transition-all group font-bold text-sm"
           >
             <ArrowLeft size={18} className="transition-transform" />
-            <span>Повернутися на головну</span>
+            <span>{contentData.recommendations.backButton}</span>
           </button>
           
           <div className="hidden sm:flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-union-primary/40">
-             <span>Методичні матеріали</span>
+             <span>{contentData.recommendations.breadcrumb}</span>
              <ChevronRight size={14} />
              <span className="text-union-accent truncate max-w-[200px]">{item.title}</span>
           </div>
@@ -184,7 +183,7 @@ export const RecommendationDetail = () => {
               <div className="space-y-6 flex-1">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-union-accent/10 text-union-accent text-[10px] font-bold uppercase tracking-widest">
                   <ShieldCheck size={14} />
-                  Статус: Актуально
+                  {contentData.recommendations.statusLabel}
                 </div>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-union-primary leading-[1.1] tracking-tighter">
                   {item.title}
@@ -211,16 +210,12 @@ export const RecommendationDetail = () => {
                   <div className="w-12 h-12 rounded-2xl bg-union-primary text-white flex items-center justify-center shadow-lg shadow-union-primary/20">
                      <BookOpen size={24} />
                   </div>
-                  <h2 className="text-3xl font-black text-union-primary tracking-tight">Розширена довідка</h2>
+                  <h2 className="text-3xl font-black text-union-primary tracking-tight">{contentData.recommendations.sectionTitle}</h2>
                 </div>
                 
                 <div className="prose prose-lg dark:prose-invert max-w-none text-muted-foreground leading-relaxed">
-                  <p>
-                    Даний розділ був сформований на основі запитів членів нашої Профспілки та досвіду юридичного супроводу поліцейських під час виконання службових обов'язків. Ми намагалися зробити матеріали максимально прикладними та зрозумілими.
-                  </p>
-                  <p>
-                    Нижче наведено перелік офіційних документів, які допоможуть вам правомірно відстоювати свої інтереси. Кожен документ супроводжується коротким описом та готовий до миттєвого завантаження.
-                  </p>
+                  <p>{contentData.recommendations.sectionDescription1}</p>
+                  <p>{contentData.recommendations.sectionDescription2}</p>
                 </div>
               </section>
 
@@ -230,11 +225,11 @@ export const RecommendationDetail = () => {
                   <div className="w-12 h-12 rounded-2xl bg-union-accent text-white flex items-center justify-center shadow-lg shadow-union-accent/20">
                      <Download size={24} />
                   </div>
-                  <h2 className="text-3xl font-black text-union-primary tracking-tight">Документи для роботи</h2>
+                  <h2 className="text-3xl font-black text-union-primary tracking-tight">{contentData.recommendations.docsTitle}</h2>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {item.docs && item.docs.map((doc: any, idx: number) => (
+                  {item.docs && item.docs.map((doc, idx) => (
                     <motion.a
                       key={idx}
                       href={doc.url}
@@ -255,9 +250,9 @@ export const RecommendationDetail = () => {
                         {doc.name}
                       </h3>
                       <div className="flex items-center gap-4">
-                        <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/50">Формат: PDF</span>
+                        <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/50">{contentData.recommendations.formatLabel}</span>
                         <div className="h-1 w-1 rounded-full bg-union-accent/30"></div>
-                        <span className="text-[10px] font-black uppercase tracking-widest text-union-accent">Перевірено юристом</span>
+                        <span className="text-[10px] font-black uppercase tracking-widest text-union-accent">{contentData.recommendations.verifiedLabel}</span>
                       </div>
                     </motion.a>
                   ))}
@@ -266,6 +261,24 @@ export const RecommendationDetail = () => {
             </div>
           </motion.div>
         </AnimatePresence>
+      </div>
+
+      {/* Mobile bottom navigation */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white/80 dark:bg-union-dark/90 backdrop-blur-xl border-t border-union-accent/20 px-4 py-3 flex items-center justify-between">
+        <button
+          onClick={() => handleNavigate(prevItem.id, -1)}
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-union-primary/5 text-union-primary font-bold text-xs"
+        >
+          <ChevronLeft size={16} />
+          <span className="truncate max-w-[100px]">{prevItem.title}</span>
+        </button>
+        <button
+          onClick={() => handleNavigate(nextItem.id, 1)}
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-union-primary/5 text-union-primary font-bold text-xs"
+        >
+          <span className="truncate max-w-[100px]">{nextItem.title}</span>
+          <ChevronRight size={16} />
+        </button>
       </div>
     </div>
   );

@@ -19,7 +19,7 @@ export const TeamSection = () => {
                    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-union-accent/10 text-union-primary text-xs font-bold uppercase tracking-widest border border-union-accent/20"
                 >
                   <ShieldCheck size={14} className="text-union-accent" aria-hidden="true" />
-                  Наша Гордість
+                  {contentData.team.badge}
                 </motion.div>
                 <motion.h2 
                     className="text-4xl md:text-5xl font-bold text-union-primary"
@@ -42,11 +42,12 @@ export const TeamSection = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                {contentData.team.members.map((member: any, idx) => (
-                    <motion.div
-                        key={idx}
-                        className="group relative flex flex-col items-center cursor-pointer"
+                {contentData.team.members.map((member, idx) => (
+                    <motion.button
+                        key={member.id}
+                        className="group relative flex flex-col items-center cursor-pointer text-left"
                         onClick={() => navigate(`/team/${member.id}`)}
+                        aria-label={`${contentData.team.viewProfile}: ${member.name}`}
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -54,9 +55,12 @@ export const TeamSection = () => {
                     >
                         {/* Member Image Wrapper */}
                         <div className="relative w-full aspect-[4/5] rounded-[2.5rem] overflow-hidden mb-8 shadow-2xl transition-all duration-700 group-hover:scale-[1.02] ring-1 ring-black/5 dark:ring-white/5">
-                            <img 
-                                src={member.image} 
-                                alt={`Фото команди: ${member.name}`} 
+                            <img
+                                src={member.image}
+                                alt={`Фото команди: ${member.name}`}
+                                width={2574}
+                                height={3218}
+                                loading="lazy"
                                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 brightness-90 group-hover:brightness-100"
                             />
                             {/* Glass overlay on hover */}
@@ -64,7 +68,7 @@ export const TeamSection = () => {
                             
                             <div className="absolute top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-500 scale-90 group-hover:scale-100">
                                <div className="bg-white/20 backdrop-blur-xl border border-white/20 px-4 py-1 rounded-full text-[10px] font-black text-white uppercase tracking-widest flex items-center gap-2">
-                                  <UserCircle2 size={14} /> Переглянути профіль
+                                  <UserCircle2 size={14} /> {contentData.team.viewProfile}
                                </div>
                             </div>
 
@@ -89,7 +93,7 @@ export const TeamSection = () => {
                                 <span className="w-4 h-0.5 bg-union-accent"></span>
                             </p>
                         </div>
-                    </motion.div>
+                    </motion.button>
                 ))}
             </div>
         </section>

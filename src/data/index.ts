@@ -1,3 +1,5 @@
+import type { ContentData } from '../types';
+
 import header from './header.json';
 import footer from './footer.json';
 import join from './join.json';
@@ -11,7 +13,7 @@ import recommendations from './recommendations.json';
 import news from './news.json';
 import law from './law.json';
 
-const contentData = {
+const contentData: ContentData = {
   header,
   footer,
   join,

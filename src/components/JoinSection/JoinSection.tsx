@@ -25,7 +25,7 @@ export const JoinSection = () => {
            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-union-primary/10 text-union-primary text-xs font-bold uppercase tracking-widest"
         >
           <Sparkles size={14} aria-hidden="true" />
-          Приєднуйтесь до нас
+          {join.badge}
         </motion.div>
         <motion.h2 
           className="text-4xl md:text-5xl font-bold text-union-primary"

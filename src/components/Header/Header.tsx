@@ -8,30 +8,9 @@ import { BorderBeam } from "../lightswind/border-beam";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import contentData from "../../data";
+import type { NavItem } from "../../types";
 
-interface NavItem {
-  name: string;
-  href: string;
-}
-
-interface CTAButton {
-  name: string;
-  href: string;
-}
-
-interface BrandData {
-  name: string;
-  subtitle: string;
-  logoAlt: string;
-}
-
-interface HeaderData {
-  brand: BrandData;
-  navItems: NavItem[];
-  ctaButton: CTAButton;
-}
-
-const headerData = contentData.header as unknown as HeaderData;
+const headerData = contentData.header;
 const navItems = headerData.navItems;
 const ctaButton = headerData.ctaButton;
 const brand = headerData.brand;
@@ -264,7 +243,7 @@ export default function Header() {
                   } as MotionProps)}
                   className="flex flex-col items-center justify-center h-full space-y-6"
                 >
-                  {[...navItems, ctaButton].map((item: NavItem | CTAButton) => (
+                  {[...navItems, ctaButton].map((item: NavItem) => (
                     <motion.li
                       key={item.name}
                       {...({ variants: itemVariants } as MotionProps)}
