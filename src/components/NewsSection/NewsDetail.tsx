@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import contentData from "../../data";
 import { useState } from "react";
+import { slideVariantsSimple } from "../shared/slideVariants";
 
 export const NewsDetail = () => {
   const { id } = useParams();
@@ -36,18 +37,6 @@ export const NewsDetail = () => {
 
   const prevItem = items[(currentIndex - 1 + items.length) % items.length];
   const nextItem = items[(currentIndex + 1) % items.length];
-
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 500 : -500,
-      opacity: 0,
-    }),
-    center: { x: 0, opacity: 1 },
-    exit: (direction: number) => ({
-      x: direction < 0 ? 500 : -500,
-      opacity: 0,
-    })
-  };
 
   const handleNavigate = (newId: string, newDirection: number) => {
     setDirection(newDirection);
@@ -99,7 +88,7 @@ export const NewsDetail = () => {
           <motion.article
              key={id}
              custom={direction}
-             variants={slideVariants}
+             variants={slideVariantsSimple}
              initial="enter"
              animate="center"
              exit="exit"
@@ -132,8 +121,8 @@ export const NewsDetail = () => {
                 <div className="p-8 rounded-[2rem] bg-union-primary/5 border border-union-primary/10 space-y-6">
                    <h3 className="text-xl font-bold text-union-primary">{contentData.news.keyPoints}</h3>
                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                     {item.points.map((point: string, idx: number) => (
-                       <li key={idx} className="flex items-center gap-3 p-4 rounded-xl bg-white dark:bg-white/5 shadow-sm border border-black/5">
+                     {item.points.map((point: string) => (
+                       <li key={point} className="flex items-center gap-3 p-4 rounded-xl bg-white dark:bg-white/5 shadow-sm border border-black/5">
                           <div className="w-2 h-2 rounded-full bg-union-accent shrink-0" />
                           <span className="text-sm font-semibold">{point}</span>
                        </li>

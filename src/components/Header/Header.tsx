@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import unionLogo from "../../assets/union-logo.png";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants, MotionProps } from "framer-motion";
@@ -15,12 +15,41 @@ const navItems = headerData.navItems;
 const ctaButton = headerData.ctaButton;
 const brand = headerData.brand;
 
+const menuVariants: Variants = {
+  open: {
+    clipPath: "circle(1200px at 90% 5%)",
+    transition: { type: "spring", stiffness: 20, restDelta: 2 },
+  },
+  closed: {
+    clipPath: "circle(20px at 90% 5%)",
+    transition: { type: "spring", stiffness: 400, damping: 40 },
+  },
+};
+
+const listVariants: Variants = {
+  open: { transition: { staggerChildren: 0.07, delayChildren: 0.2 } },
+  closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } },
+};
+
+const itemVariants: Variants = {
+  open: {
+    y: 0,
+    opacity: 1,
+    transition: { y: { stiffness: 1000, velocity: -100 } },
+  },
+  closed: {
+    y: 50,
+    opacity: 0,
+    transition: { y: { stiffness: 1000 } },
+  },
+};
+
 export default function Header() {
   const [theme, setTheme] = useState<string>(() => {
     return localStorage.getItem("theme") || "light";
   });
   const [showHeader, setShowHeader] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollYRef = useRef(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const lenis = useLenis();
   const location = useLocation();
@@ -42,17 +71,17 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+      if (currentScrollY > lastScrollYRef.current && currentScrollY > 80) {
         setShowHeader(false); // Scrolling down
       } else {
         setShowHeader(true); // Scrolling up
       }
-      setLastScrollY(currentScrollY);
+      lastScrollYRef.current = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   const handleScrollTo = (id: string) => {
     if (location.pathname !== "/") {
@@ -67,52 +96,6 @@ export default function Header() {
       }
     }
     setIsMobileMenuOpen(false); // Close mobile menu on click
-  };
-
-  // ✅ Typed variants
-  const menuVariants: Variants = {
-    open: {
-      clipPath: "circle(1200px at 90% 5%)",
-      transition: {
-        type: "spring",
-        stiffness: 20,
-        restDelta: 2,
-      },
-    },
-    closed: {
-      clipPath: "circle(20px at 90% 5%)",
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 40,
-      },
-    },
-  };
-
-  const listVariants: Variants = {
-    open: {
-      transition: { staggerChildren: 0.07, delayChildren: 0.2 },
-    },
-    closed: {
-      transition: { staggerChildren: 0.05, staggerDirection: -1 },
-    },
-  };
-
-  const itemVariants: Variants = {
-    open: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        y: { stiffness: 1000, velocity: -100 },
-      },
-    },
-    closed: {
-      y: 50,
-      opacity: 0,
-      transition: {
-        y: { stiffness: 1000 },
-      },
-    },
   };
 
   return (

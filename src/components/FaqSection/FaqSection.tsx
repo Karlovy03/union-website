@@ -16,7 +16,7 @@ export const FaqSection = () => {
     // Force Lenis to recalculate height multiple times during animation
     useEffect(() => {
         if (lenis && activeIndex !== null) {
-            const interval = setInterval(() => lenis.resize(), 80);
+            const interval = setInterval(() => lenis.resize(), 200);
             const timeout = setTimeout(() => {
                 clearInterval(interval);
                 lenis.resize();
@@ -57,7 +57,7 @@ export const FaqSection = () => {
                     const isOpen = activeIndex === idx;
                     return (
                         <div
-                            key={idx}
+                            key={item.id}
                             className={`relative rounded-2xl border transition-all duration-500 ${
                                 isOpen 
                                 ? "border-union-accent/50 bg-union-light/50 dark:bg-white/5 shadow-2xl" 

@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import contentData from "../../data";
 import { useState } from "react";
+import { slideVariants } from "../shared/slideVariants";
 
 const iconMap = {
   "rights": Award,
@@ -53,26 +54,6 @@ export const RecommendationDetail = () => {
   const prevItem = items[(currentIndex - 1 + items.length) % items.length];
   const nextItem = items[(currentIndex + 1) % items.length];
   const IconComp = iconMap[item.id as keyof typeof iconMap] || BookOpen;
-
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 500 : -500,
-      opacity: 0,
-      filter: "blur(10px)"
-    }),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1,
-      filter: "blur(0px)"
-    },
-    exit: (direction: number) => ({
-      zIndex: 0,
-      x: direction < 0 ? 500 : -500,
-      opacity: 0,
-      filter: "blur(10px)"
-    })
-  };
 
   const handleNavigate = (newId: string, newDirection: number) => {
     setDirection(newDirection);
@@ -194,7 +175,7 @@ export const RecommendationDetail = () => {
 
                 <div className="flex flex-wrap justify-center md:justify-start gap-6 pt-4 opacity-60">
                    <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide">
-                     <Clock size={14} /> Оновлено: 09.04.2026
+                     <Clock size={14} /> Оновлено: {item.lastUpdated}
                    </div>
                    <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide">
                      <Files size={14} /> {item.docs?.length || 0} Додатків
@@ -229,9 +210,9 @@ export const RecommendationDetail = () => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {item.docs && item.docs.map((doc, idx) => (
+                  {item.docs && item.docs.map((doc) => (
                     <motion.a
-                      key={idx}
+                      key={doc.url}
                       href={doc.url}
                       download
                       whileHover={{ y: -5, scale: 1.01 }}

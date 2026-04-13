@@ -54,6 +54,9 @@ export interface TeamMember {
   quote: string;
   bio: string;
   image: string;
+  email?: string;
+  linkedin?: string;
+  twitter?: string;
 }
 
 export interface TeamData {
@@ -106,6 +109,7 @@ export interface RecommendationItem {
   id: string;
   title: string;
   description: string;
+  lastUpdated: string;
   docs: RecommendationDoc[];
 }
 
@@ -144,6 +148,7 @@ export interface LawData {
 }
 
 export interface FaqItem {
+  id: string;
   question: string;
   answer: string;
 }

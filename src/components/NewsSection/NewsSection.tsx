@@ -78,8 +78,8 @@ export const NewsSection = () => {
               <p className="leading-relaxed line-clamp-3">{news.content}</p>
               {news.points && (
                 <ul className="space-y-2 mt-4">
-                  {news.points.slice(0, 2).map((point: string, pIdx: number) => (
-                    <li key={pIdx} className="flex items-start gap-3">
+                  {news.points.slice(0, 2).map((point: string) => (
+                    <li key={point} className="flex items-start gap-3">
                       <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-union-accent shrink-0" aria-hidden="true" />
                       <span className="text-sm font-medium">{point}</span>
                     </li>

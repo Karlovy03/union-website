@@ -76,7 +76,9 @@ export const HeroSection = () => {
             alt={contentData.hero.imageAlt}
             width={2670}
             height={1780}
+            loading="eager"
             className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+            onError={(e) => { e.currentTarget.style.display = "none"; }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-union-primary/80 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-700"></div>
           

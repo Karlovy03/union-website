@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, lazy, Suspense } from "react";
+import { useState, useEffect, useRef, lazy, Suspense, useMemo } from "react";
 import type { DockItem } from "./types";
 import "./App.css";
 import Header from "./components/Header/Header";
@@ -35,15 +35,16 @@ const RecommendationDetail = lazy(() => import("./components/RecommendationsSect
 const NewsDetail = lazy(() => import("./components/NewsSection/NewsDetail").then(m => ({ default: m.NewsDetail })));
 const MemberDetail = lazy(() => import("./components/TeamSection/MemberDetail").then(m => ({ default: m.MemberDetail })));
 
+const isDetailPath = (pathname: string) =>
+  pathname.startsWith("/recommendations/") ||
+  pathname.startsWith("/news/") ||
+  pathname.startsWith("/team/");
+
 // Scroll to top only when navigating TO a detail page (not when returning to landing)
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
-    const isDetailPage =
-      pathname.startsWith("/recommendations/") ||
-      pathname.startsWith("/news/") ||
-      pathname.startsWith("/team/");
-    if (isDetailPage) {
+    if (isDetailPath(pathname)) {
       window.scrollTo(0, 0);
     }
   }, [pathname]);
@@ -112,9 +113,7 @@ const LandingPage = ({ dockItems, showDock }: { dockItems: DockItem[]; showDock:
 
 const AppContent = ({ dockItems, showDock }: { dockItems: DockItem[]; showDock: boolean }) => {
   const location = useLocation();
-  const isDetailPage = location.pathname.startsWith("/recommendations/") || 
-                     location.pathname.startsWith("/news/") || 
-                     location.pathname.startsWith("/team/");
+  const isDetailPage = isDetailPath(location.pathname);
 
   return (
     <div className="bg-background min-h-screen flex flex-col w-full">
@@ -185,7 +184,7 @@ function App() {
   };
 
   // Dock items
-  const dockItems = [
+  const dockItems = useMemo(() => [
     {
       icon: <Home size={24} />,
       label: contentData.dock.items.home,
@@ -226,7 +225,7 @@ function App() {
       label: contentData.dock.items.faq,
       onClick: () => scrollToSection("faq"),
     },
-  ];
+  ], []);
 
   return (
     <ErrorBoundary>

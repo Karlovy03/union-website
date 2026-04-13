@@ -7,11 +7,12 @@ import {
   Quote,
   ShieldCheck,
   Mail,
-  Linkedin,
-  Twitter
+  Linkedin as LinkedinIcon,
+  Twitter as TwitterIcon
 } from "lucide-react";
 import contentData from "../../data";
 import { useState } from "react";
+import { slideVariants } from "../shared/slideVariants";
 
 export const MemberDetail = () => {
   const { id } = useParams();
@@ -38,20 +39,6 @@ export const MemberDetail = () => {
 
   const prevMember = members[(currentIndex - 1 + members.length) % members.length];
   const nextMember = members[(currentIndex + 1) % members.length];
-
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 500 : -500,
-      opacity: 0,
-      filter: "blur(10px)"
-    }),
-    center: { x: 0, opacity: 1, filter: "blur(0px)" },
-    exit: (direction: number) => ({
-      x: direction < 0 ? 500 : -500,
-      opacity: 0,
-      filter: "blur(10px)"
-    })
-  };
 
   const handleNavigate = (newId: string, newDirection: number) => {
     setDirection(newDirection);
@@ -119,7 +106,9 @@ export const MemberDetail = () => {
                   alt={member.name}
                   width={2574}
                   height={3218}
+                  loading="lazy"
                   className="w-full h-full object-cover grayscale-0 brightness-110"
+                  onError={(e) => { e.currentTarget.style.display = "none"; }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-union-primary/60 via-transparent to-transparent"></div>
               </div>
@@ -159,20 +148,28 @@ export const MemberDetail = () => {
                  </div>
               </div>
 
+              {(member.email || member.linkedin || member.twitter) && (
               <div className="pt-10 border-t border-union-primary/5 space-y-6">
                  <h3 className="text-sm font-black text-union-primary uppercase tracking-widest">{contentData.team.contactTitle}</h3>
                  <div className="flex flex-wrap gap-4">
-                    <button className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-union-primary/5 text-union-primary hover:bg-union-primary hover:text-white transition-all font-bold text-sm">
-                       <Mail size={18} /> <span>Пошта</span>
-                    </button>
-                    <button className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-union-primary/5 text-union-primary hover:bg-union-primary hover:text-white transition-all font-bold text-sm">
-                       <Linkedin size={18} /> <span>LinkedIn</span>
-                    </button>
-                    <button className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-union-primary/5 text-union-primary hover:bg-union-primary hover:text-white transition-all font-bold text-sm">
-                       <Twitter size={18} /> <span>Twitter</span>
-                    </button>
+                    {member.email && (
+                      <a href={`mailto:${member.email}`} className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-union-primary/5 text-union-primary hover:bg-union-primary hover:text-white transition-all font-bold text-sm">
+                        <Mail size={18} /> <span>Пошта</span>
+                      </a>
+                    )}
+                    {member.linkedin && (
+                      <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-union-primary/5 text-union-primary hover:bg-union-primary hover:text-white transition-all font-bold text-sm">
+                        <LinkedinIcon size={18} /> <span>LinkedIn</span>
+                      </a>
+                    )}
+                    {member.twitter && (
+                      <a href={member.twitter} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-union-primary/5 text-union-primary hover:bg-union-primary hover:text-white transition-all font-bold text-sm">
+                        <TwitterIcon size={18} /> <span>Twitter</span>
+                      </a>
+                    )}
                  </div>
               </div>
+              )}
             </div>
           </motion.div>
         </AnimatePresence>
