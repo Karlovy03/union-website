@@ -47,7 +47,9 @@ export const MemberDetail = () => {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden pt-32 pb-24">
-      {/* Side Navigation */}
+      {/* Side Navigation — only show when more than 1 member */}
+      {members.length > 1 && (
+      <>
       <motion.button
         onClick={() => handleNavigate(prevMember.id, -1)}
         className="fixed left-2 lg:left-6 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-0.5 group transition-all duration-300 hidden md:flex"
@@ -71,6 +73,8 @@ export const MemberDetail = () => {
           <ChevronRight size={48} strokeWidth={1} />
         </motion.div>
       </motion.button>
+      </>
+      )}
 
       <div className="max-w-6xl mx-auto px-6 relative">
         <motion.button
@@ -113,13 +117,15 @@ export const MemberDetail = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-union-primary/60 via-transparent to-transparent"></div>
               </div>
               
-              {/* Floating Quote */}
+              {/* Floating Quote — only show when quote exists */}
+              {member.quote && (
               <div className="absolute -bottom-8 -right-8 w-64 p-6 rounded-3xl bg-white dark:bg-union-dark border border-union-accent/20 shadow-2xl backdrop-blur-3xl hidden md:block">
                  <Quote size={20} className="text-union-accent mb-3" />
                  <p className="text-xs font-bold text-union-primary leading-relaxed italic">
                     «{member.quote}»
                  </p>
               </div>
+              )}
             </div>
 
             {/* Info Section */}
@@ -140,9 +146,11 @@ export const MemberDetail = () => {
               </div>
 
               <div className="prose prose-lg dark:prose-invert text-muted-foreground leading-relaxed">
+                 {member.quote && (
                  <p className="font-semibold text-union-primary italic text-2xl mb-8">
                    "{member.quote}"
                  </p>
+                 )}
                  <div className="space-y-6 text-lg">
                     {member.bio}
                  </div>
@@ -175,7 +183,8 @@ export const MemberDetail = () => {
         </AnimatePresence>
       </div>
 
-      {/* Mobile bottom navigation */}
+      {/* Mobile bottom navigation — only show when more than 1 member */}
+      {members.length > 1 && (
       <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white/80 dark:bg-union-dark/90 backdrop-blur-xl border-t border-union-accent/20 px-4 py-3 flex items-center justify-between">
         <button
           onClick={() => handleNavigate(prevMember.id, -1)}
@@ -192,6 +201,7 @@ export const MemberDetail = () => {
           <ChevronRight size={16} />
         </button>
       </div>
+      )}
     </div>
   );
 };

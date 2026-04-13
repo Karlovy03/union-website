@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { FileDown, UserPlus, Mail, ChevronRight, Sparkles } from "lucide-react";
+import { FileDown, UserPlus, Mail, ChevronRight, Sparkles, ShieldCheck } from "lucide-react";
 import contentData from "../../data";
 
 const iconMap = {
   "file-down": FileDown,
   "user-plus": UserPlus,
   "mail": Mail,
+  "shield-check": ShieldCheck,
 };
 
 export const JoinSection = () => {
@@ -47,9 +48,9 @@ export const JoinSection = () => {
         </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative">
         {/* Connection line for desktop */}
-        <div className="hidden md:block absolute top-1/2 left-[15%] right-[15%] h-0.5 border-t-2 border-dashed border-union-accent/20 -translate-y-1/2 -z-10"></div>
+        <div className="hidden lg:block absolute top-1/2 left-[10%] right-[10%] h-0.5 border-t-2 border-dashed border-union-accent/20 -translate-y-1/2 -z-10"></div>
 
         {join.steps.map((step, idx) => {
           const Icon = iconMap[step.icon as keyof typeof iconMap] || Mail;
@@ -75,14 +76,14 @@ export const JoinSection = () => {
                 <h3 className="text-xl font-bold text-union-primary uppercase tracking-tight">
                   {step.title}
                 </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed max-w-[250px]">
+                <p className="text-muted-foreground text-base leading-relaxed max-w-[250px]">
                   {step.description}
                 </p>
               </div>
 
               {step.button && step.downloadUrl && (
                 <a
-                  href={step.downloadUrl}
+                  href={`/union-website/${step.downloadUrl}`}
                   download
                   className="mt-4 px-6 py-2.5 rounded-full bg-union-primary/5 text-union-primary border border-union-primary/10 hover:bg-union-primary hover:text-white transition-all font-bold text-sm shadow-md group/btn flex items-center gap-2 uppercase tracking-wide"
                 >

@@ -72,6 +72,7 @@ export const TeamSection = () => {
                                </div>
                             </div>
 
+                            {member.quote && (
                             <div className="absolute bottom-6 left-6 right-6 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                                 <div className="flex flex-col gap-2 p-5 rounded-2xl bg-white/10 backdrop-blur-3xl border border-white/20">
                                     <Quote size={20} className="text-union-accent mb-2" aria-hidden="true" />
@@ -80,6 +81,7 @@ export const TeamSection = () => {
                                     </p>
                                 </div>
                             </div>
+                            )}
                         </div>
 
                         {/* Text info */}

@@ -1,17 +1,38 @@
 {
   "brand": {
     "name": "Профспілка",
-    "subtitle": "Національної поліції",
-    "logoAlt": "Логотип Профспілки Національної поліції України"
+    "subtitle": "Працівників ЦОУП",
+    "logoAlt": "Логотип Первинної профспілкової організації працівників ЦОУП"
   },
   "navItems": [
-    { "name": "Головна", "href": "#hero" },
-    { "name": "Про нас", "href": "#about" },
-    { "name": "Команда", "href": "#team" },
-    { "name": "Новини", "href": "#news" },
-    { "name": "Матеріали", "href": "#recommendations" },
-    { "name": "Право", "href": "#law" },
-    { "name": "FAQ", "href": "#faq" }
+    {
+      "name": "Головна",
+      "href": "#hero"
+    },
+    {
+      "name": "Про нас",
+      "href": "#about"
+    },
+    {
+      "name": "Команда",
+      "href": "#team"
+    },
+    {
+      "name": "Новини",
+      "href": "#news"
+    },
+    {
+      "name": "Матеріали",
+      "href": "#recommendations"
+    },
+    {
+      "name": "Право",
+      "href": "#law"
+    },
+    {
+      "name": "FAQ",
+      "href": "#faq"
+    }
   ],
   "ctaButton": {
     "name": "Вступ",

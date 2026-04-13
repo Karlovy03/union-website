@@ -19,8 +19,9 @@ import { useState } from "react";
 import { slideVariants } from "../shared/slideVariants";
 
 const iconMap = {
-  "rights": Award,
+  "membership": Award,
   "samples": Files,
+  "rights": Award,
   "defense": ShieldAlert,
 };
 
@@ -213,7 +214,7 @@ export const RecommendationDetail = () => {
                   {item.docs && item.docs.map((doc) => (
                     <motion.a
                       key={doc.url}
-                      href={doc.url}
+                      href={`/union-website/${doc.url}`}
                       download
                       whileHover={{ y: -5, scale: 1.01 }}
                       whileTap={{ scale: 0.98 }}

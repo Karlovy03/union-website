@@ -24,16 +24,16 @@ export const HeroSection = () => {
         initial={false}
       >
         <motion.div
-           initial={{ opacity: 0, x: -20 }}
-           animate={{ opacity: 1, x: 0 }}
-           transition={{ delay: 0.2 }}
-           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-union-accent/10 border border-union-accent/20 text-union-primary text-xs font-bold uppercase tracking-widest mb-4"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2 }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-union-accent/10 border border-union-accent/20 text-union-primary text-xs font-bold uppercase tracking-widest mb-4"
         >
           <ShieldCheck size={16} className="text-union-accent" />
           {contentData.hero.badge}
         </motion.div>
         <motion.h1
-          className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-union-primary"
+          className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight text-union-primary"
           initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
           animate={{
             opacity: 1,
@@ -69,7 +69,7 @@ export const HeroSection = () => {
         transition={{ delay: 0.4, duration: 1.2, ease: "easeOut" }}
       >
         <div className="absolute inset-0 bg-union-accent/5 rounded-full blur-3xl -z-10 animate-pulse"></div>
-        
+
         <div className="w-80 h-80 md:w-[450px] md:h-[550px] relative rounded-[40px] overflow-hidden shadow-2xl border border-white/20 dark:border-white/10 group">
           <img
             src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=2670&auto=format&fit=crop"
@@ -81,16 +81,16 @@ export const HeroSection = () => {
             onError={(e) => { e.currentTarget.style.display = "none"; }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-union-primary/80 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-700"></div>
-          
+
           <div className="absolute bottom-8 left-8 right-8 p-6 backdrop-blur-2xl bg-white/10 border border-white/20 rounded-3xl translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700">
-             <p className="text-white font-bold text-lg mb-1">{contentData.hero.imageOverlayTitle}</p>
-             <p className="text-white/70 text-sm">{contentData.hero.imageOverlaySubtitle}</p>
+            <p className="text-white font-bold text-lg mb-1">{contentData.hero.imageOverlayTitle}</p>
+            <p className="text-white/70 text-sm">{contentData.hero.imageOverlaySubtitle}</p>
           </div>
         </div>
       </motion.div>
 
       {/* Scroll Hint */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5, duration: 1, repeat: Infinity, repeatType: "reverse" }}

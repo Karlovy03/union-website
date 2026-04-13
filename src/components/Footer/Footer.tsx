@@ -1,12 +1,5 @@
-import { motion } from "framer-motion";
-import { Facebook, Youtube, Send, Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import contentData from "../../data";
-
-const iconMap = {
-  facebook: Facebook,
-  youtube: Youtube,
-  send: Send,
-};
 
 export const Footer = () => {
   const { footer } = contentData;
@@ -41,22 +34,6 @@ export const Footer = () => {
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
               {footer.subtitle}
             </p>
-            <div className="flex gap-4">
-              {footer.socials.map((social) => {
-                const Icon = iconMap[social.icon as keyof typeof iconMap] || Send;
-                return (
-                  <motion.a
-                    key={social.name}
-                    href={social.url}
-                    whileHover={{ y: -4, scale: 1.1 }}
-                    className="w-11 h-11 rounded-xl border border-union-accent/20 bg-white/50 dark:bg-white/5 flex items-center justify-center text-union-primary hover:bg-union-primary hover:text-white transition-all shadow-md active:scale-95"
-                    aria-label={social.name}
-                  >
-                    <Icon size={18} />
-                  </motion.a>
-                );
-              })}
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -138,12 +115,8 @@ export const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center py-10 gap-6 text-[10px] font-black text-muted-foreground/40 tracking-[0.2em] uppercase font-display border-t border-union-accent/5 mt-12">
+        <div className="flex flex-col md:flex-row justify-center items-center py-10 gap-6 text-[10px] font-black text-muted-foreground/40 tracking-[0.2em] uppercase font-display border-t border-union-accent/5 mt-12">
           <p>{footer.copyright} • {footer.bottomNote}</p>
-          <div className="flex gap-10">
-            <a href="#" className="hover:text-union-primary transition-colors hover:tracking-[0.3em] duration-300">{footer.policyLink}</a>
-            <a href="#" className="hover:text-union-primary transition-colors hover:tracking-[0.3em] duration-300">{footer.termsLink}</a>
-          </div>
         </div>
       </div>
     </footer>

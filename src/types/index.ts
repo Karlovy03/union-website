@@ -182,11 +182,6 @@ export interface HeaderData {
   ctaButton: NavItem;
 }
 
-export interface FooterSocial {
-  name: string;
-  url: string;
-  icon: string;
-}
 
 export interface FooterLink {
   name: string;
@@ -207,14 +202,11 @@ export interface FooterData {
     description: string;
   };
   bottomNote: string;
-  policyLink: string;
-  termsLink: string;
   contacts: {
     phone: string;
     email: string;
     address: string;
   };
-  socials: FooterSocial[];
   links: FooterLink[];
   copyright: string;
 }

@@ -7,8 +7,9 @@ import { BorderBeam } from "../lightswind/border-beam";
 import { useNavigate } from "react-router-dom";
 
 const iconMap = {
-  "rights": Award,
+  "membership": Award,
   "samples": Files,
+  "rights": Award,
   "defense": ShieldAlert,
 };
 
@@ -45,7 +46,7 @@ export const RecommendationsSection = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {contentData.recommendations.items.map((item) => {
           const IconComp = iconMap[item.id as keyof typeof iconMap] || Briefcase;
           return (
@@ -90,7 +91,7 @@ export const RecommendationsSection = () => {
                     {item.docs && item.docs.slice(0, 2).map((doc, dIdx) => (
                       <motion.a
                         key={dIdx}
-                        href={doc.url}
+                        href={`/union-website/${doc.url}`}
                         download
                         onClick={(e) => e.stopPropagation()}
                         className="flex items-center justify-between p-2.5 rounded-xl bg-union-primary/5 hover:bg-union-primary hover:text-white transition-all text-xs font-semibold text-union-primary group/doc"
