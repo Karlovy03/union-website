@@ -64,7 +64,7 @@ export const RecommendationsSection = () => {
               {/* Outer Glow */}
               <div className="absolute inset-x-4 -bottom-4 h-full bg-union-primary/5 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
               
-              <Card className="relative flex-1 bg-white/60 dark:bg-white/5 border-union-accent/10 dark:border-white/10 shadow-2xl backdrop-blur-3xl group-hover:border-union-accent/40 transition-all duration-500 z-10 overflow-hidden flex flex-col">
+              <Card className="relative flex-1 bg-white/60 dark:bg-white/[0.1] border-union-accent/10 dark:border-white/10 shadow-2xl backdrop-blur-3xl group-hover:border-union-accent/40 transition-all duration-500 z-10 overflow-hidden flex flex-col">
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <BorderBeam size={80} duration={4} colorFrom="var(--union-accent)" colorTo="var(--union-secondary)" />
                 </div>
@@ -72,7 +72,7 @@ export const RecommendationsSection = () => {
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-union-primary via-union-secondary to-union-accent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 
                 <CardHeader className="pt-10">
-                  <div className="mb-6 inline-flex items-center justify-center rounded-2xl bg-gradient-to-br from-union-primary to-union-secondary text-white w-14 h-14 shadow-lg shadow-union-primary/20 group-hover:scale-110 group-hover:shadow-union-accent/40 transition-all duration-500">
+                  <div className="mb-6 inline-flex items-center justify-center rounded-2xl bg-gradient-to-br from-union-primary to-union-secondary text-white dark:text-union-dark w-14 h-14 shadow-lg shadow-union-primary/20 group-hover:scale-110 group-hover:shadow-union-accent/40 transition-all duration-500">
                     <IconComp className="h-7 w-7" />
                   </div>
                   <CardTitle className="text-xl font-bold text-union-primary transition-colors group-hover:text-union-accent">
@@ -94,10 +94,10 @@ export const RecommendationsSection = () => {
                         href={`/union-website/${doc.url}`}
                         download
                         onClick={(e) => e.stopPropagation()}
-                        className="flex items-center justify-between p-2.5 rounded-xl bg-union-primary/5 hover:bg-union-primary hover:text-white transition-all text-xs font-semibold text-union-primary group/doc"
+                        className="flex items-center justify-between p-2.5 rounded-xl bg-union-primary/5 hover:bg-union-primary hover:text-white dark:hover:text-union-dark transition-all text-xs font-semibold text-union-primary group/doc"
                       >
                         <div className="flex items-center gap-2">
-                           <FileDown size={14} className="group-hover/doc:text-white" />
+                           <FileDown size={14} className="group-hover/doc:text-white dark:group-hover/doc:text-union-dark" />
                            <span className="truncate max-w-[150px]">{doc.name}</span>
                         </div>
                         <ChevronRight size={14} className="opacity-0 group-hover/doc:opacity-100 transition-all -translate-x-2 group-hover/doc:translate-x-0" />
@@ -105,7 +105,7 @@ export const RecommendationsSection = () => {
                     ))}
                   </div>
 
-                  <div className="mt-6 w-full py-3 px-4 rounded-xl bg-union-primary text-white flex items-center justify-center gap-2 font-bold text-sm uppercase tracking-wider group-hover:bg-union-accent group-hover:shadow-lg transition-all duration-300">
+                  <div className="mt-6 w-full py-3 px-4 rounded-xl bg-union-primary text-white dark:text-union-dark flex items-center justify-center gap-2 font-bold text-sm uppercase tracking-wider group-hover:bg-union-accent group-hover:shadow-lg transition-all duration-300">
                     <span>{contentData.recommendations.detailedButton}</span>
                     <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform" />
                   </div>

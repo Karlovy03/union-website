@@ -145,7 +145,7 @@ export const ScrollTimeline = ({
     const baseClasses = "relative z-30 rounded-lg transition-all duration-300";
     const variantClasses = {
       default: "bg-card border shadow-sm",
-      elevated: "bg-card border border-border/40 shadow-md",
+      elevated: "bg-white/70 dark:bg-white/[0.08] backdrop-blur-2xl border border-union-primary/10 dark:border-white/10 shadow-md",
       outlined: "bg-card/50 backdrop-blur border-2 border-primary/20",
       filled: "bg-primary/10 border border-primary/30",
     };

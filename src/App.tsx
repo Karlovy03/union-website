@@ -24,7 +24,7 @@ import {
   HelpCircle,
   GraduationCap,
   Briefcase,
-  BookCheckIcon,
+  Newspaper,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -206,12 +206,12 @@ function App() {
       onClick: () => scrollToSection("team"),
     },
     {
-      icon: <GraduationCap size={24} />,
+      icon: <Newspaper size={24} />,
       label: contentData.dock.items.news,
       onClick: () => scrollToSection("news"),
     },
     {
-      icon: <BookCheckIcon size={24} />,
+      icon: <GraduationCap size={24} />,
       label: contentData.dock.items.recommendations,
       onClick: () => scrollToSection("recommendations"),
     },

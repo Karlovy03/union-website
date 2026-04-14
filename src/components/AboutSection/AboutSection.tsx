@@ -86,7 +86,7 @@ export const AboutSection = () => {
                 whileHover={{ y: -8 }}
                 className="group/card relative"
               >
-                <div className="h-full relative overflow-hidden rounded-3xl bg-white/60 dark:bg-white/[0.03] border border-union-primary/10 dark:border-white/5 backdrop-blur-2xl p-8 md:p-10 transition-all duration-500 hover:shadow-[0_25px_60px_-12px_rgba(34,49,72,0.15)] dark:hover:shadow-[0_25px_60px_-12px_rgba(0,0,0,0.4)] hover:border-union-accent/30">
+                <div className="h-full relative overflow-hidden rounded-3xl bg-white/60 dark:bg-white/[0.08] border border-union-primary/10 dark:border-white/10 backdrop-blur-2xl p-8 md:p-10 transition-all duration-500 hover:shadow-[0_25px_60px_-12px_rgba(34,49,72,0.15)] dark:hover:shadow-[0_25px_60px_-12px_rgba(0,0,0,0.6)] hover:border-union-accent/30">
                   
                   {/* Декоративний номер */}
                   <span className="absolute top-6 right-6 text-7xl font-black text-union-primary/[0.04] dark:text-white/[0.04] select-none leading-none group-hover/card:text-union-accent/10 transition-colors duration-500">

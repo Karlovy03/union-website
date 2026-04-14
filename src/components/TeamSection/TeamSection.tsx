@@ -54,14 +54,17 @@ export const TeamSection = () => {
                         transition={{ delay: idx * 0.2 }}
                     >
                         {/* Member Image Wrapper */}
-                        <div className="relative w-full aspect-[4/5] rounded-[2.5rem] overflow-hidden mb-8 shadow-2xl transition-all duration-700 group-hover:scale-[1.02] ring-1 ring-black/5 dark:ring-white/5">
+                        <div className="relative w-full aspect-[4/5] rounded-[2.5rem] overflow-hidden mb-8 shadow-2xl transition-all duration-700 group-hover:scale-[1.02] ring-1 ring-black/5 dark:ring-union-accent/20 bg-union-primary/5 dark:bg-white/5">
+                            {/* Inner Glow */}
+                            <div className="absolute inset-0 bg-union-accent/0 group-hover:bg-union-accent/[0.05] transition-colors duration-700 pointer-events-none"></div>
+                            
                             <img
                                 src={member.image}
                                 alt={`Фото команди: ${member.name}`}
                                 width={2574}
                                 height={3218}
                                 loading="lazy"
-                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 brightness-90 group-hover:brightness-100"
+                                className="w-full h-full object-cover grayscale dark:grayscale-0 group-hover:grayscale-0 transition-all duration-700 brightness-90 group-hover:brightness-100"
                             />
                             {/* Glass overlay on hover */}
                             <div className="absolute inset-0 bg-gradient-to-t from-union-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

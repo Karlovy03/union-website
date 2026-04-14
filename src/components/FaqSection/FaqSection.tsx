@@ -60,8 +60,8 @@ export const FaqSection = () => {
                             key={item.id}
                             className={`relative rounded-2xl border transition-all duration-500 ${
                                 isOpen 
-                                ? "border-union-accent/50 bg-union-light/50 dark:bg-white/5 shadow-2xl" 
-                                : "border-union-accent/10 bg-white/40 dark:bg-white/[0.02] hover:bg-white/60 dark:hover:bg-white/[0.04]"
+                                ? "border-union-accent/50 bg-union-light/50 dark:bg-white/10 shadow-2xl" 
+                                : "border-union-accent/10 bg-white/40 dark:bg-white/[0.05] hover:bg-white/60 dark:hover:bg-white/[0.08]"
                             }`}
                         >
                             <button
@@ -70,10 +70,10 @@ export const FaqSection = () => {
                             >
                                 <div className="flex items-center gap-4">
                                     <MessageCircleQuestion className={`h-6 w-6 transition-colors duration-300 ${
-                                        isOpen ? "text-union-accent" : "text-union-primary/40 group-hover:text-union-primary"
+                                        isOpen ? "text-union-accent" : "text-union-primary/60 group-hover:text-union-primary"
                                     }`} />
                                     <span className={`text-lg font-bold transition-colors duration-300 ${
-                                        isOpen ? "text-union-primary" : "text-union-primary/80"
+                                        isOpen ? "text-union-primary" : "text-union-primary dark:text-union-primary/90"
                                     }`}>
                                         {item.question}
                                     </span>

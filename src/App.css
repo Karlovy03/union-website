@@ -60,15 +60,15 @@
     --union-secondary: #2f486d;
     --union-accent: #d2c7b8;
     --union-light: #f3eae0;
-    --union-dark: #1A2536;
+    --union-dark: #0D1624; /* Deeper dark for base */
   }
 
   .dark {
     /* Swapping colors for Dark Mode */
-    --background: 218 36% 15%; /* #1A2536 darker */
+    --background: 218 36% 7%; /* Deeper, more premium dark base */
     --foreground: 34 32% 95%; /* #f3eae0 (Off-white) */
 
-    --card: 218 36% 12%;
+    --card: 218 36% 13%; /* Clearly lighter than background */
     --card-foreground: 34 32% 95%;
 
     --popover: 218 36% 10%;
@@ -80,17 +80,17 @@
     --secondary: 218 30% 25%;
     --secondary-foreground: 34 32% 95%;
 
-    --muted: 218 30% 20%;
+    --muted: 218 30% 15%;
     --muted-foreground: 34 10% 70%;
 
-    --accent: 218 30% 25%;
+    --accent: 218 30% 20%;
     --accent-foreground: 34 32% 95%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 218 30% 25%;
-    --input: 218 30% 25%;
+    --border: 218 30% 22%; /* More visible border */
+    --input: 218 30% 22%;
     --ring: 34 32% 95%;
 
     /* Semantic Hex Variables - Symmetrically flipped for dark */
@@ -98,7 +98,7 @@
     --union-secondary: #d2c7b8;
     --union-accent: #d2c7b8;
     --union-light: #2f486d;
-    --union-dark: #223148;
+    --union-dark: #0D1624;
   }
 }
 

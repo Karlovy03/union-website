@@ -84,7 +84,7 @@ export const MemberDetail = () => {
               document.getElementById("team")?.scrollIntoView({ behavior: "smooth" });
             }, 150);
           }}
-          className="mb-16 flex items-center gap-3 px-6 py-2.5 rounded-2xl bg-union-primary text-white shadow-xl hover:bg-union-accent transition-all font-bold text-sm"
+          className="mb-16 flex items-center gap-3 px-6 py-2.5 rounded-2xl bg-union-primary text-white dark:text-union-dark shadow-xl hover:bg-union-accent transition-all font-bold text-sm"
         >
           <ArrowLeft size={18} />
           <span>{contentData.team.backButton}</span>

@@ -120,7 +120,7 @@ export const RecommendationDetail = () => {
                 document.getElementById("recommendations")?.scrollIntoView({ behavior: "smooth" });
               }, 150);
             }}
-            className="flex items-center gap-3 px-6 py-2.5 rounded-2xl bg-union-primary text-white shadow-xl shadow-union-primary/20 hover:bg-union-accent hover:-translate-x-1 transition-all group font-bold text-sm"
+            className="flex items-center gap-3 px-6 py-2.5 rounded-2xl bg-union-primary text-white dark:text-union-dark shadow-xl shadow-union-primary/20 hover:bg-union-accent hover:-translate-x-1 transition-all group font-bold text-sm"
           >
             <ArrowLeft size={18} className="transition-transform" />
             <span>{contentData.recommendations.backButton}</span>

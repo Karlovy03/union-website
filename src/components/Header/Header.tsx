@@ -179,7 +179,7 @@ export default function Header() {
                     onClick={() => handleScrollTo(ctaButton.href)}
                     whileHover={{ scale: 1.02, y: -1 }}
                     whileTap={{ scale: 0.98 }}
-                    className="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-gradient-to-r from-union-primary to-union-secondary text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-union-primary/20 border border-white/10 group overflow-hidden relative"
+                    className="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-gradient-to-r from-union-primary to-union-secondary text-white dark:text-union-dark text-xs font-bold uppercase tracking-wider shadow-lg shadow-union-primary/20 border border-white/10 group overflow-hidden relative"
                   >
                      <div className="absolute inset-0 bg-gradient-to-r from-union-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                      <span className="relative z-10">{ctaButton.name}</span>
