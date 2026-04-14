@@ -146,11 +146,6 @@ export const MemberDetail = () => {
               </div>
 
               <div className="prose prose-lg dark:prose-invert text-muted-foreground leading-relaxed">
-                 {member.quote && (
-                 <p className="font-semibold text-union-primary italic text-2xl mb-8">
-                   "{member.quote}"
-                 </p>
-                 )}
                  <div className="space-y-6 text-lg">
                     {member.bio}
                  </div>
