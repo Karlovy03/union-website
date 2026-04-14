@@ -4,8 +4,7 @@
   "sections": {
     "navigation": "Навігація",
     "contacts": "Контакти",
-    "address": "Адреса",
-    "hotline": "Гаряча лінія"
+    "address": "Адреса"
   },
   "badge": {
     "title": "На варті ваших прав",
@@ -13,7 +12,6 @@
   },
   "bottomNote": "Розроблено для захисників",
   "contacts": {
-    "phone": "+38 (000) 000-00-00",
     "email": "info@example.ua",
     "address": "м. Київ"
   },

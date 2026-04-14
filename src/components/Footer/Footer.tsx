@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import contentData from "../../data";
 
 export const Footer = () => {
@@ -62,17 +62,6 @@ export const Footer = () => {
               {footer.sections.contacts}
             </h4>
             <div className="space-y-5">
-              <div className="flex items-start gap-3 group">
-                <div className="w-8 h-8 rounded-lg bg-union-primary/5 flex items-center justify-center text-union-primary shrink-0 group-hover:bg-union-primary group-hover:text-white transition-colors">
-                  <Phone size={14} />
-                </div>
-                <div className="space-y-1">
-                  <p className="text-xs text-muted-foreground">{footer.sections.hotline}</p>
-                  <a href={`tel:${footer.contacts.phone}`} className="text-base font-bold text-union-primary hover:text-union-accent transition-colors">
-                    {footer.contacts.phone}
-                  </a>
-                </div>
-              </div>
               <div className="flex items-start gap-3 group">
                 <div className="w-8 h-8 rounded-lg bg-union-primary/5 flex items-center justify-center text-union-primary shrink-0 group-hover:bg-union-primary group-hover:text-white transition-colors">
                   <Mail size={14} />

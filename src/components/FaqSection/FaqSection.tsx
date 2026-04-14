@@ -110,11 +110,7 @@ export const FaqSection = () => {
                 })}
             </div>
 
-            <div className="text-center pt-8">
-                <p className="text-sm font-medium text-muted-foreground">
-                    {faq.contactPrompt} <a href="#footer" className="text-union-accent hover:underline font-bold">{faq.contactLink}</a> {faq.contactSuffix}
-                </p>
-            </div>
+
         </section>
     );
 };

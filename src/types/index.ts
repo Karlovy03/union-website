@@ -77,7 +77,9 @@ export interface TeamData {
 export interface NewsItem {
   id: string;
   title: string;
-  subtitle: string;
+  subtitle?: string;
+  date?: string;
+  image?: string;
   content: string;
   fullContent?: string;
   points?: string[];
@@ -90,7 +92,7 @@ export interface NewsData {
   readMore: string;
   keyPoints: string;
   share: string;
-  save: string;
+  copied: string;
   notFound: string;
   backButton: string;
   backHome: string;
@@ -158,9 +160,6 @@ export interface FaqData {
   title: string;
   subtitle: string;
   items: FaqItem[];
-  contactPrompt: string;
-  contactLink: string;
-  contactSuffix: string;
 }
 
 export interface DockData {
@@ -195,7 +194,6 @@ export interface FooterData {
     navigation: string;
     contacts: string;
     address: string;
-    hotline: string;
   };
   badge: {
     title: string;
@@ -203,7 +201,6 @@ export interface FooterData {
   };
   bottomNote: string;
   contacts: {
-    phone: string;
     email: string;
     address: string;
   };

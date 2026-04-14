@@ -6,7 +6,8 @@ import {
   ChevronLeft,
   Calendar,
   Share2,
-  Bookmark
+  Check,
+  ImageOff
 } from "lucide-react";
 import contentData from "../../data";
 import { useState } from "react";
@@ -16,6 +17,8 @@ export const NewsDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [direction, setDirection] = useState(0);
+  const [copied, setCopied] = useState(false);
+  const [imgError, setImgError] = useState(false);
 
   const items = contentData.news.items;
   const currentIndex = items.findIndex((i) => i.id === id);
@@ -40,7 +43,36 @@ export const NewsDetail = () => {
 
   const handleNavigate = (newId: string, newDirection: number) => {
     setDirection(newDirection);
+    setImgError(false);
     navigate(`/news/${newId}`);
+  };
+
+  const handleShare = async () => {
+    const shareUrl = window.location.href;
+    const shareData = {
+      title: item.title,
+      text: item.content,
+      url: shareUrl,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        await navigator.clipboard.writeText(shareUrl);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2500);
+      }
+    } catch {
+      // Fallback: copy to clipboard
+      try {
+        await navigator.clipboard.writeText(shareUrl);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2500);
+      } catch {
+        // Silent fail
+      }
+    }
   };
 
   return (
@@ -99,18 +131,32 @@ export const NewsDetail = () => {
               <div className="space-y-4">
                 <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-union-accent">
                    <Calendar size={14} />
-                   <span>{item.subtitle}</span>
+                   <span>{item.date}</span>
                 </div>
                 <h1 className="text-4xl md:text-6xl font-black text-union-primary leading-[1.1] tracking-tighter">
                   {item.title}
                 </h1>
               </div>
 
+              {/* Реальне зображення новини */}
               <div className="aspect-video rounded-[2.5rem] bg-union-primary/5 overflow-hidden border border-union-primary/10 relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-union-primary/20 to-transparent opacity-50"></div>
-                  <div className="w-full h-full flex items-center justify-center text-union-primary/20 italic">
-                    [ Зображення новини: {item.title} ]
+                {!imgError && item.image ? (
+                  <motion.img
+                    src={item.image}
+                    alt={item.title}
+                    onError={() => setImgError(true)}
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center text-union-primary/20 gap-4">
+                    <ImageOff size={48} strokeWidth={1} />
+                    <span className="text-sm italic">Зображення недоступне</span>
                   </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
               </div>
 
               <div className="prose prose-xl dark:prose-invert max-w-none text-muted-foreground leading-relaxed first-letter:text-5xl first-letter:font-black first-letter:text-union-primary first-letter:mr-3 first-letter:float-left">
@@ -131,13 +177,26 @@ export const NewsDetail = () => {
                 </div>
               )}
 
+              {/* Нижня панель: тільки кнопка "Поділитись" */}
               <div className="pt-12 border-t border-union-primary/5 flex items-center justify-between text-muted-foreground">
                  <div className="flex items-center gap-6">
-                    <button className="flex items-center gap-2 hover:text-union-accent transition-colors">
-                      <Share2 size={18} /> <span className="text-xs font-bold uppercase tracking-widest">{contentData.news.share}</span>
-                    </button>
-                    <button className="flex items-center gap-2 hover:text-union-accent transition-colors">
-                      <Bookmark size={18} /> <span className="text-xs font-bold uppercase tracking-widest">{contentData.news.save}</span>
+                    <button 
+                      onClick={handleShare}
+                      className="flex items-center gap-2 hover:text-union-accent transition-colors group relative"
+                    >
+                      {copied ? (
+                        <>
+                          <Check size={18} className="text-green-500" />
+                          <span className="text-xs font-bold uppercase tracking-widest text-green-500">
+                            {contentData.news.copied}
+                          </span>
+                        </>
+                      ) : (
+                        <>
+                          <Share2 size={18} />
+                          <span className="text-xs font-bold uppercase tracking-widest">{contentData.news.share}</span>
+                        </>
+                      )}
                     </button>
                  </div>
                  <div className="text-[10px] font-black uppercase tracking-[3px] opacity-30">
