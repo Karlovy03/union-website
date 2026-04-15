@@ -9,18 +9,19 @@ import {
   Check,
   ImageOff
 } from "lucide-react";
-import contentData from "../../data";
+import { useLanguage } from "../../context/LanguageContext";
 import { useState } from "react";
 import { slideVariantsSimple } from "../shared/slideVariants";
 
 export const NewsDetail = () => {
-  const { id } = useParams();
+  const { content } = useLanguage();
+    const { id } = useParams();
   const navigate = useNavigate();
   const [direction, setDirection] = useState(0);
   const [copied, setCopied] = useState(false);
   const [imgError, setImgError] = useState(false);
 
-  const items = contentData.news.items;
+  const items = content.news.items;
   const currentIndex = items.findIndex((i) => i.id === id);
   const item = items[currentIndex];
 
@@ -28,10 +29,10 @@ export const NewsDetail = () => {
     return (
       <div className="min-h-screen flex items-center justify-center p-6 text-center">
         <div className="space-y-6 max-w-md">
-          <h1 className="text-3xl font-bold text-union-primary">{contentData.news.notFound}</h1>
+          <h1 className="text-3xl font-bold text-union-primary">{content.news.notFound}</h1>
           <Link to="/" className="inline-flex items-center gap-2 px-6 py-3 bg-union-primary text-white rounded-full font-bold">
             <ArrowLeft size={18} />
-            {contentData.news.backHome}
+            {content.news.backHome}
           </Link>
         </div>
       </div>
@@ -83,7 +84,7 @@ export const NewsDetail = () => {
         className="fixed left-2 lg:left-6 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-0.5 group transition-all duration-300 hidden md:flex"
       >
         <span className="text-[9px] font-black text-union-primary/20 group-hover:text-union-accent tracking-[3px] uppercase transition-colors whitespace-nowrap">
-           {contentData.news.prevLabel}
+           {content.news.prevLabel}
         </span>
         <motion.div animate={{ x: [0, -5, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="text-union-primary/30 group-hover:text-union-accent transition-colors">
           <ChevronLeft size={48} strokeWidth={1} />
@@ -95,7 +96,7 @@ export const NewsDetail = () => {
         className="fixed right-2 lg:right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-0.5 group transition-all duration-300 hidden md:flex"
       >
         <span className="text-[9px] font-black text-union-primary/20 group-hover:text-union-accent tracking-[3px] uppercase transition-colors whitespace-nowrap">
-           {contentData.news.nextLabel}
+           {content.news.nextLabel}
         </span>
         <motion.div animate={{ x: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="text-union-primary/30 group-hover:text-union-accent transition-colors">
           <ChevronRight size={48} strokeWidth={1} />
@@ -113,7 +114,7 @@ export const NewsDetail = () => {
           className="mb-12 flex items-center gap-3 px-6 py-2.5 rounded-2xl bg-union-primary text-white dark:text-union-dark shadow-xl hover:bg-union-accent transition-all font-bold text-sm"
         >
           <ArrowLeft size={18} />
-          <span>{contentData.news.backButton}</span>
+          <span>{content.news.backButton}</span>
         </motion.button>
 
         <AnimatePresence mode="wait" custom={direction}>
@@ -153,7 +154,7 @@ export const NewsDetail = () => {
                 ) : (
                   <div className="w-full h-full flex flex-col items-center justify-center text-union-primary/20 gap-4">
                     <ImageOff size={48} strokeWidth={1} />
-                    <span className="text-sm italic">Зображення недоступне</span>
+                    <span className="text-sm italic">{content.ui.imageNotAvailable}</span>
                   </div>
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
@@ -165,7 +166,7 @@ export const NewsDetail = () => {
 
               {item.points && (
                 <div className="p-8 rounded-[2rem] bg-union-primary/5 border border-union-primary/10 space-y-6">
-                   <h3 className="text-xl font-bold text-union-primary">{contentData.news.keyPoints}</h3>
+                   <h3 className="text-xl font-bold text-union-primary">{content.news.keyPoints}</h3>
                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                      {item.points.map((point: string) => (
                        <li key={point} className="flex items-center gap-3 p-4 rounded-xl bg-white dark:bg-white/5 shadow-sm border border-black/5">
@@ -188,19 +189,19 @@ export const NewsDetail = () => {
                         <>
                           <Check size={18} className="text-green-500" />
                           <span className="text-xs font-bold uppercase tracking-widest text-green-500">
-                            {contentData.news.copied}
+                            {content.news.copied}
                           </span>
                         </>
                       ) : (
                         <>
                           <Share2 size={18} />
-                          <span className="text-xs font-bold uppercase tracking-widest">{contentData.news.share}</span>
+                          <span className="text-xs font-bold uppercase tracking-widest">{content.news.share}</span>
                         </>
                       )}
                     </button>
                  </div>
                  <div className="text-[10px] font-black uppercase tracking-[3px] opacity-30">
-                    {contentData.news.copyright}
+                    {content.news.copyright}
                  </div>
               </div>
             </div>

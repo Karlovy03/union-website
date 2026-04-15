@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { FileDown, UserPlus, Mail, ChevronRight, Sparkles, ShieldCheck } from "lucide-react";
-import contentData from "../../data";
+import { useLanguage } from "../../context/LanguageContext";
 
 const iconMap = {
   "file-down": FileDown,
@@ -10,8 +10,9 @@ const iconMap = {
 };
 
 export const JoinSection = () => {
-  const { join } = contentData;
-
+  const { content } = useLanguage();
+  const { join } = content;
+    
   return (
     <section id="join" className="max-w-7xl mx-auto px-6 py-16 relative overflow-hidden">
       {/* Background accents */}

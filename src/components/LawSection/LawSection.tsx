@@ -1,16 +1,17 @@
 import { ScrollTimeline } from "../lightswind/scroll-timeline";
 import { Layers, FileText, Scale, ShieldCheck } from "lucide-react";
-import contentData from "../../data";
+import { useLanguage } from "../../context/LanguageContext";
 
 export const LawSection = () => {
-  const iconFallback = [
+  const { content } = useLanguage();
+    const iconFallback = [
     <FileText className="h-5 w-5 text-white" key="1" />,
     <Scale className="h-5 w-5 text-white" key="2" />,
     <ShieldCheck className="h-5 w-5 text-white" key="3" />,
     <Layers className="h-5 w-5 text-white" key="4" />
   ];
 
-  const careerEvents = contentData.law.timeline.map((item, index) => ({
+  const careerEvents = content.law.timeline.map((item, index) => ({
     year: item.year,
     title: item.title,
     subtitle: item.subtitle,
@@ -25,8 +26,8 @@ export const LawSection = () => {
 
       <ScrollTimeline
         events={careerEvents}
-        title={contentData.law.title}
-        subtitle={contentData.law.subtitle}
+        title={content.law.title}
+        subtitle={content.law.subtitle}
         animationOrder="staggered"
         cardAlignment="alternating"
         cardVariant="elevated"

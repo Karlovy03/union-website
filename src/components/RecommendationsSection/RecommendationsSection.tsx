@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Award, ShieldAlert, Sparkles, Files, Briefcase, ChevronRight, FileDown } from "lucide-react";
-import contentData from "../../data";
+import { useLanguage } from "../../context/LanguageContext";
 import { Card, CardContent, CardHeader, CardTitle } from "../lightswind/card";
 import { BorderBeam } from "../lightswind/border-beam";
 
@@ -14,7 +14,8 @@ const iconMap = {
 };
 
 export const RecommendationsSection = () => {
-  const navigate = useNavigate();
+  const { content } = useLanguage();
+    const navigate = useNavigate();
   return (
     <motion.section
       id="recommendations"
@@ -31,7 +32,7 @@ export const RecommendationsSection = () => {
            viewport={{ once: true }}
            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-union-accent/10 text-union-primary text-xs font-bold uppercase tracking-widest"
         >
-          {contentData.recommendations.badge}
+          {content.recommendations.badge}
         </motion.div>
         <motion.h2 
           className="text-4xl md:text-5xl font-bold text-union-primary mb-4"
@@ -39,15 +40,15 @@ export const RecommendationsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          {contentData.recommendations.title}
+          {content.recommendations.title}
         </motion.h2>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-          {contentData.recommendations.subtitle}
+          {content.recommendations.subtitle}
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {contentData.recommendations.items.map((item) => {
+        {content.recommendations.items.map((item) => {
           const IconComp = iconMap[item.id as keyof typeof iconMap] || Briefcase;
           return (
             <motion.div
@@ -106,7 +107,7 @@ export const RecommendationsSection = () => {
                   </div>
 
                   <div className="mt-6 w-full py-3 px-4 rounded-xl bg-union-primary text-white dark:text-union-dark flex items-center justify-center gap-2 font-bold text-sm uppercase tracking-wider group-hover:bg-union-accent group-hover:shadow-lg transition-all duration-300">
-                    <span>{contentData.recommendations.detailedButton}</span>
+                    <span>{content.recommendations.detailedButton}</span>
                     <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform" />
                   </div>
                 </CardContent>

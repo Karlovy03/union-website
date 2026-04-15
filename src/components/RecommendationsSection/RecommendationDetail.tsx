@@ -14,7 +14,7 @@ import {
   BookOpen,
   ChevronLeft
 } from "lucide-react";
-import contentData from "../../data";
+import { useLanguage } from "../../context/LanguageContext";
 import { useState } from "react";
 import { slideVariants } from "../shared/slideVariants";
 
@@ -26,11 +26,12 @@ const iconMap = {
 };
 
 export const RecommendationDetail = () => {
-  const { id } = useParams();
+  const { content } = useLanguage();
+    const { id } = useParams();
   const navigate = useNavigate();
   const [direction, setDirection] = useState(0);
 
-  const items = contentData.recommendations.items;
+  const items = content.recommendations.items;
   const currentIndex = items.findIndex((i) => i.id === id);
   const item = items[currentIndex];
 
@@ -41,11 +42,11 @@ export const RecommendationDetail = () => {
           <div className="w-20 h-20 bg-destructive/10 text-destructive rounded-full flex items-center justify-center mx-auto">
             <ShieldAlert size={40} />
           </div>
-          <h1 className="text-3xl font-bold text-union-primary">{contentData.recommendations.notFound}</h1>
-          <p className="text-muted-foreground">{contentData.recommendations.notFoundDescription}</p>
+          <h1 className="text-3xl font-bold text-union-primary">{content.recommendations.notFound}</h1>
+          <p className="text-muted-foreground">{content.recommendations.notFoundDescription}</p>
           <Link to="/" className="inline-flex items-center gap-2 px-6 py-3 bg-union-primary text-white rounded-full font-bold hover:bg-union-accent transition-colors">
             <ArrowLeft size={18} />
-            {contentData.recommendations.backButton}
+            {content.recommendations.backButton}
           </Link>
         </div>
       </div>
@@ -69,10 +70,10 @@ export const RecommendationDetail = () => {
         className="fixed left-2 lg:left-6 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-0.5 group transition-all duration-300 pointer-events-auto hidden md:flex"
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
-        aria-label="Попередня категорія"
+        aria-label={content.ui.prevCategory}
       >
         <span className="text-[9px] font-black text-union-primary/20 group-hover:text-union-accent tracking-[3px] uppercase transition-colors whitespace-nowrap">
-           {contentData.recommendations.navLabel}
+           {content.recommendations.navLabel}
         </span>
         <motion.div
           animate={{ x: [0, -5, 0] }}
@@ -88,10 +89,10 @@ export const RecommendationDetail = () => {
         className="fixed right-2 lg:right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-0.5 group transition-all duration-300 pointer-events-auto hidden md:flex"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
-        aria-label="Наступна категорія"
+        aria-label={content.ui.nextCategory}
       >
         <span className="text-[9px] font-black text-union-primary/20 group-hover:text-union-accent tracking-[3px] uppercase transition-colors whitespace-nowrap">
-           {contentData.recommendations.navLabel}
+           {content.recommendations.navLabel}
         </span>
         <motion.div
           animate={{ x: [0, 5, 0] }}
@@ -123,11 +124,11 @@ export const RecommendationDetail = () => {
             className="flex items-center gap-3 px-6 py-2.5 rounded-2xl bg-union-primary text-white dark:text-union-dark shadow-xl shadow-union-primary/20 hover:bg-union-accent hover:-translate-x-1 transition-all group font-bold text-sm"
           >
             <ArrowLeft size={18} className="transition-transform" />
-            <span>{contentData.recommendations.backButton}</span>
+            <span>{content.recommendations.backButton}</span>
           </button>
           
           <div className="hidden sm:flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-union-primary/40">
-             <span>{contentData.recommendations.breadcrumb}</span>
+             <span>{content.recommendations.breadcrumb}</span>
              <ChevronRight size={14} />
              <span className="text-union-accent truncate max-w-[200px]">{item.title}</span>
           </div>
@@ -165,7 +166,7 @@ export const RecommendationDetail = () => {
               <div className="space-y-6 flex-1">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-union-accent/10 text-union-accent text-[10px] font-bold uppercase tracking-widest">
                   <ShieldCheck size={14} />
-                  {contentData.recommendations.statusLabel}
+                  {content.recommendations.statusLabel}
                 </div>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-union-primary leading-[1.1] tracking-tighter">
                   {item.title}
@@ -176,10 +177,10 @@ export const RecommendationDetail = () => {
 
                 <div className="flex flex-wrap justify-center md:justify-start gap-6 pt-4 opacity-60">
                    <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide">
-                     <Clock size={14} /> Оновлено: {item.lastUpdated}
+                     <Clock size={14} /> {content.ui.updated} {item.lastUpdated}
                    </div>
                    <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide">
-                     <Files size={14} /> {item.docs?.length || 0} Додатків
+                     <Files size={14} /> {item.docs?.length || 0} {content.ui.attachments}
                    </div>
                 </div>
               </div>
@@ -192,12 +193,12 @@ export const RecommendationDetail = () => {
                   <div className="w-12 h-12 rounded-2xl bg-union-primary text-white flex items-center justify-center shadow-lg shadow-union-primary/20">
                      <BookOpen size={24} />
                   </div>
-                  <h2 className="text-3xl font-black text-union-primary tracking-tight">{contentData.recommendations.sectionTitle}</h2>
+                  <h2 className="text-3xl font-black text-union-primary tracking-tight">{content.recommendations.sectionTitle}</h2>
                 </div>
                 
                 <div className="prose prose-lg dark:prose-invert max-w-none text-muted-foreground leading-relaxed">
-                  <p>{contentData.recommendations.sectionDescription1}</p>
-                  <p>{contentData.recommendations.sectionDescription2}</p>
+                  <p>{content.recommendations.sectionDescription1}</p>
+                  <p>{content.recommendations.sectionDescription2}</p>
                 </div>
               </section>
 
@@ -207,7 +208,7 @@ export const RecommendationDetail = () => {
                   <div className="w-12 h-12 rounded-2xl bg-union-accent text-white flex items-center justify-center shadow-lg shadow-union-accent/20">
                      <Download size={24} />
                   </div>
-                  <h2 className="text-3xl font-black text-union-primary tracking-tight">{contentData.recommendations.docsTitle}</h2>
+                  <h2 className="text-3xl font-black text-union-primary tracking-tight">{content.recommendations.docsTitle}</h2>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -232,9 +233,9 @@ export const RecommendationDetail = () => {
                         {doc.name}
                       </h3>
                       <div className="flex items-center gap-4">
-                        <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/50">{contentData.recommendations.formatLabel}</span>
+                        <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/50">{content.recommendations.formatLabel}</span>
                         <div className="h-1 w-1 rounded-full bg-union-accent/30"></div>
-                        <span className="text-[10px] font-black uppercase tracking-widest text-union-accent">{contentData.recommendations.verifiedLabel}</span>
+                        <span className="text-[10px] font-black uppercase tracking-widest text-union-accent">{content.recommendations.verifiedLabel}</span>
                       </div>
                     </motion.a>
                   ))}

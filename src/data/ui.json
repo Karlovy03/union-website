@@ -1,0 +1,38 @@
+{
+  "uk": {
+    "themeLight": "Світла тема",
+    "themeDark": "Темна тема",
+    "openMenu": "Відкрити меню",
+    "closeMenu": "Закрити меню",
+    "mail": "Пошта",
+    "imageNotAvailable": "Зображення недоступне",
+    "errorTitle": "Щось пішло не так...",
+    "errorDescription": "Виникла несподівана помилка. Спробуйте оновити сторінку.",
+    "errorButton": "Оновити сторінку",
+    "prevCategory": "Попередня категорія",
+    "nextCategory": "Наступна категорія",
+    "updated": "Оновлено:",
+    "attachments": "Додатків",
+    "languageEN": "Англійська мова",
+    "languageUK": "Українська мова",
+    "brandChar": "П"
+  },
+  "en": {
+    "themeLight": "Light Theme",
+    "themeDark": "Dark Theme",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mail": "Email",
+    "imageNotAvailable": "Image unavailable",
+    "errorTitle": "Something went wrong...",
+    "errorDescription": "An unexpected error occurred. Please try to refresh the page.",
+    "errorButton": "Refresh page",
+    "prevCategory": "Previous category",
+    "nextCategory": "Next category",
+    "updated": "Updated:",
+    "attachments": "Attachments",
+    "languageEN": "English language",
+    "languageUK": "Ukrainian language",
+    "brandChar": "TU"
+  }
+}

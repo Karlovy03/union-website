@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import contentData from "../../data";
+import { useLanguage } from "../../context/LanguageContext";
 import { BorderBeam } from "../lightswind/border-beam";
 import { useNavigate } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 
 export const NewsSection = () => {
-  const navigate = useNavigate();
+  const { content } = useLanguage();
+    const navigate = useNavigate();
 
   return (
     <section id="news" className="max-w-7xl mx-auto px-6 py-16 relative overflow-hidden">
@@ -19,7 +20,7 @@ export const NewsSection = () => {
            viewport={{ once: true }}
            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-union-secondary/10 text-union-primary text-xs font-bold uppercase tracking-widest"
         >
-          {contentData.news.badge}
+          {content.news.badge}
         </motion.div>
         <motion.h2 
           className="text-4xl md:text-5xl font-bold text-union-primary"
@@ -27,7 +28,7 @@ export const NewsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          {contentData.news.title}
+          {content.news.title}
         </motion.h2>
         <motion.p 
           className="text-muted-foreground text-lg max-w-2xl mx-auto"
@@ -36,7 +37,7 @@ export const NewsSection = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
         >
-          {contentData.news.subtitle}
+          {content.news.subtitle}
         </motion.p>
       </div>
 
@@ -47,7 +48,7 @@ export const NewsSection = () => {
         transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        {contentData.news.items.map((news, idx) => {
+        {content.news.items.map((news, idx) => {
           const number = String(idx + 1).padStart(2, "0");
           return (
             <motion.div
@@ -111,7 +112,7 @@ export const NewsSection = () => {
                   {/* Індикатор "Читати далі" - тепер знизу справа */}
                   <div className="pt-4 flex justify-end">
                     <div className="flex items-center gap-2 text-union-accent font-black text-[10px] uppercase tracking-[0.2em] opacity-0 translate-x-4 group-hover/card:opacity-100 group-hover/card:translate-x-0 transition-all duration-500">
-                      {contentData.news.readMore} <ArrowUpRight size={16} strokeWidth={3} />
+                      {content.news.readMore} <ArrowUpRight size={16} strokeWidth={3} />
                     </div>
                   </div>
                 </div>

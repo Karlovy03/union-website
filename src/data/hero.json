@@ -1,11 +1,24 @@
 {
-  "title": "Первинна профспілкова організація працівників центрального органу управління поліції",
-  "subtitle": "Всеукраїнської профспілки Національної поліції — добровільна неприбуткова організація, що об'єднує поліцейських та працівників для захисту їх трудових та соціально-економічних прав.",
-  "primaryButton": "Вступити до профспілки",
-  "secondaryButton": "Дізнатись більше",
-  "badge": "Профспілка працівників ЦОУП",
-  "imageAlt": "Первинна профспілкова організація ЦОУП",
-  "imageOverlayTitle": "Ми — Разом",
-  "imageOverlaySubtitle": "Ваш захист та впевненість у майбутньому",
-  "scrollHint": "Дізнатись більше"
+  "uk": {
+    "title": "Первинна профспілкова організація працівників центрального органу управління поліції",
+    "subtitle": "Всеукраїнської профспілки Національної поліції — добровільна неприбуткова організація, що об'єднує поліцейських та працівників для захисту їх трудових та соціально-економічних прав.",
+    "primaryButton": "Вступити до профспілки",
+    "secondaryButton": "Дізнатись більше",
+    "badge": "Профспілка працівників ЦОУП",
+    "imageAlt": "Первинна профспілкова організація ЦОУП",
+    "imageOverlayTitle": "Ми — Разом",
+    "imageOverlaySubtitle": "Ваш захист та впевненість у майбутньому",
+    "scrollHint": "Дізнатись більше"
+  },
+  "en": {
+    "title": "Primary Trade Union Organization of Central Police Management Body Employees",
+    "subtitle": "Of the All-Ukrainian Trade Union of the National Police — a voluntary non-profit organization uniting police officers and employees to protect their labor and socio-economic rights.",
+    "primaryButton": "Join the Trade Union",
+    "secondaryButton": "Learn More",
+    "badge": "Trade Union of CPMB Employees",
+    "imageAlt": "Primary Trade Union Organization of CPMB",
+    "imageOverlayTitle": "We Are Together",
+    "imageOverlaySubtitle": "Your protection and confidence in the future",
+    "scrollHint": "Learn More"
+  }
 }

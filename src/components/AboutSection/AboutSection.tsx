@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Shield, WalletCards, HeartHandshake } from "lucide-react";
-import contentData from "../../data";
+import { useLanguage } from "../../context/LanguageContext";
 import { CountUp } from "../lightswind/count-up";
 
 // Map string icon names to actual Lucide components
@@ -11,7 +11,8 @@ const IconMap = {
 };
 
 export const AboutSection = () => {
-  return (
+  const { content } = useLanguage();
+    return (
     <section id="about" className="max-w-7xl mx-auto w-full px-6 py-16 space-y-24">
       <motion.div
         className="text-foreground space-y-6 text-center"
@@ -20,12 +21,12 @@ export const AboutSection = () => {
         transition={{ duration: 1.2, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.2 }}
       >
-        <h2 className="text-4xl md:text-5xl font-bold text-union-primary">{contentData.about.title}</h2>
+        <h2 className="text-4xl md:text-5xl font-bold text-union-primary">{content.about.title}</h2>
         <p className="text-muted-foreground text-lg max-w-3xl leading-relaxed mx-auto">
-          {contentData.about.description}
+          {content.about.description}
         </p>
         <div className="flex flex-wrap justify-center gap-12 mt-12">
-          {contentData.about.stats.map((stat, index) => {
+          {content.about.stats.map((stat, index) => {
             const numericValue = parseInt(stat.value.replace(/[^0-9]/g, ""));
             const suffix = stat.value.replace(/[0-9]/g, "");
             const isNumeric = !isNaN(numericValue);
@@ -65,15 +66,15 @@ export const AboutSection = () => {
       >
         <div className="text-center space-y-4">
           <h2 className="text-4xl md:text-5xl font-bold text-union-primary">
-            {contentData.benefits.title}
+            {content.benefits.title}
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            {contentData.benefits.subtitle}
+            {content.benefits.subtitle}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {contentData.benefits.items.map((benefit, idx) => {
+          {content.benefits.items.map((benefit, idx) => {
             const IconComponent = IconMap[benefit.icon as keyof typeof IconMap] || Shield;
             const number = String(idx + 1).padStart(2, "0");
             return (

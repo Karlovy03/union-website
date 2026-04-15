@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import { Quote, ShieldCheck, UserCircle2 } from "lucide-react";
-import contentData from "../../data";
+import { useLanguage } from "../../context/LanguageContext";
 import { useNavigate } from "react-router-dom";
 
 export const TeamSection = () => {
-    const navigate = useNavigate();
+  const { content } = useLanguage();
+      const navigate = useNavigate();
 
     return (
         <section id="team" className="max-w-7xl mx-auto px-6 py-16 relative overflow-hidden">
@@ -19,7 +20,7 @@ export const TeamSection = () => {
                    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-union-accent/10 text-union-primary text-xs font-bold uppercase tracking-widest border border-union-accent/20"
                 >
                   <ShieldCheck size={14} className="text-union-accent" aria-hidden="true" />
-                  {contentData.team.badge}
+                  {content.team.badge}
                 </motion.div>
                 <motion.h2 
                     className="text-4xl md:text-5xl font-bold text-union-primary"
@@ -28,7 +29,7 @@ export const TeamSection = () => {
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 }}
                 >
-                    {contentData.team.title}
+                    {content.team.title}
                 </motion.h2>
                 <motion.p 
                     className="text-muted-foreground text-lg max-w-2xl mx-auto"
@@ -37,17 +38,17 @@ export const TeamSection = () => {
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
                 >
-                    {contentData.team.subtitle}
+                    {content.team.subtitle}
                 </motion.p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                {contentData.team.members.map((member, idx) => (
+                {content.team.members.map((member, idx) => (
                     <motion.button
                         key={member.id}
                         className="group relative flex flex-col items-center cursor-pointer text-left"
                         onClick={() => navigate(`/team/${member.id}`)}
-                        aria-label={`${contentData.team.viewProfile}: ${member.name}`}
+                        aria-label={`${content.team.viewProfile}: ${member.name}`}
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -71,7 +72,7 @@ export const TeamSection = () => {
                             
                             <div className="absolute top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-500 scale-90 group-hover:scale-100">
                                <div className="bg-white/20 backdrop-blur-xl border border-white/20 px-4 py-1 rounded-full text-[10px] font-black text-white uppercase tracking-widest flex items-center gap-2">
-                                  <UserCircle2 size={14} /> {contentData.team.viewProfile}
+                                  <UserCircle2 size={14} /> {content.team.viewProfile}
                                </div>
                             </div>
 

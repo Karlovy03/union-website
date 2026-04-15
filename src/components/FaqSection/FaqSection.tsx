@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus, HelpCircle, MessageCircleQuestion } from "lucide-react";
 import { useLenis } from 'lenis/react';
-import contentData from "../../data";
+import { useLanguage } from "../../context/LanguageContext";
 
 export const FaqSection = () => {
-    const { faq } = contentData;
-    const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const { content } = useLanguage();
+  const { faq } = content;
+        const [activeIndex, setActiveIndex] = useState<number | null>(null);
     const lenis = useLenis();
 
     const toggleFaq = (index: number) => {

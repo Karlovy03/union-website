@@ -1,36 +1,74 @@
 {
-  "badge": "Приєднуйтесь до нас",
-  "title": "Як вступити до профспілки",
-  "subtitle": "Приєднатися до нас просто. Дотримуйтесь цих кроків, щоб отримати повний юридичний та соціальний захист.",
-  "steps": [
-    {
-      "number": "01",
-      "title": "Завантажте заяву на вступ",
-      "description": "Першим кроком є завантаження офіційного бланка заяви про вступ до первинної профспілкової організації.",
-      "button": "Завантажити заяву",
-      "downloadUrl": "documents/Заява_про_вступ.docx",
-      "icon": "file-down"
-    },
-    {
-      "number": "02",
-      "title": "Згода на обробку персональних даних",
-      "description": "Завантажте та заповніть форму згоди на обробку персональних даних — це обов'язковий документ для вступу.",
-      "button": "Завантажити згоду",
-      "downloadUrl": "documents/Згода_на_обробку_даних.doc",
-      "icon": "shield-check"
-    },
-    {
-      "number": "03",
-      "title": "Заповніть документи",
-      "description": "Вкажіть ваші контактні дані, підрозділ та посаду у завантажених бланках.",
-      "icon": "user-plus"
-    },
-    {
-      "number": "04",
-      "title": "Передайте документи",
-      "description": "Члену профспілкового комітету: Свистунова\u00A0О.М., Панченко\u00A0Є.В., Солодуха\u00A0О.І., Бабенко\u00A0К.В., Попушой\u00A0Л.Ю., Бутенко\u00A0І.В.",
-      "icon": "mail"
-    }
-  ],
-  "cta": "Пам'ятайте: разом ми сильніші!"
+  "uk": {
+    "badge": "Приєднуйтесь до нас",
+    "title": "Як вступити до профспілки",
+    "subtitle": "Приєднатися до нас просто. Дотримуйтесь цих кроків, щоб отримати повний юридичний та соціальний захист.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Завантажте заяву на вступ",
+        "description": "Першим кроком є завантаження офіційного бланка заяви про вступ до первинної профспілкової організації.",
+        "button": "Завантажити заяву",
+        "downloadUrl": "documents/Заява_про_вступ.docx",
+        "icon": "file-down"
+      },
+      {
+        "number": "02",
+        "title": "Згода на обробку персональних даних",
+        "description": "Завантажте та заповніть форму згоди на обробку персональних даних — це обов'язковий документ для вступу.",
+        "button": "Завантажити згоду",
+        "downloadUrl": "documents/Згода_на_обробку_даних.doc",
+        "icon": "shield-check"
+      },
+      {
+        "number": "03",
+        "title": "Заповніть документи",
+        "description": "Вкажіть ваші контактні дані, підрозділ та посаду у завантажених бланках.",
+        "icon": "user-plus"
+      },
+      {
+        "number": "04",
+        "title": "Передайте документи",
+        "description": "Члену профспілкового комітету: Свистунова О.М., Панченко Є.В., Солодуха О.І., Бабенко К.В., Попушой Л.Ю., Бутенко І.В.",
+        "icon": "mail"
+      }
+    ],
+    "cta": "Пам'ятайте: разом ми сильніші!"
+  },
+  "en": {
+    "badge": "Join Us",
+    "title": "How to Join the Trade Union",
+    "subtitle": "Joining us is simple. Follow these steps to receive full legal and social protection.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Download the membership application",
+        "description": "The first step is to download the official application form for joining the primary trade union organization.",
+        "button": "Download application",
+        "downloadUrl": "documents/Заява_про_вступ.docx",
+        "icon": "file-down"
+      },
+      {
+        "number": "02",
+        "title": "Consent to personal data processing",
+        "description": "Download and fill out the consent form for the processing of personal data — this is a mandatory document for joining.",
+        "button": "Download consent",
+        "downloadUrl": "documents/Згода_на_обробку_даних.doc",
+        "icon": "shield-check"
+      },
+      {
+        "number": "03",
+        "title": "Fill out the documents",
+        "description": "Provide your contact details, department, and position in the downloaded forms.",
+        "icon": "user-plus"
+      },
+      {
+        "number": "04",
+        "title": "Submit the documents",
+        "description": "To a trade union committee member: Svystunova O.M., Panchenko Ye.V., Solodukha O.I., Babenko K.V., Popushoy L.Yu., Butenko I.V.",
+        "icon": "mail"
+      }
+    ],
+    "cta": "Remember: together we are stronger!"
+  }
 }

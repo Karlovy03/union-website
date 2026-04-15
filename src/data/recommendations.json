@@ -1,53 +1,108 @@
 {
-  "title": "Методичні рекомендації",
-  "subtitle": "Ваш путівник у питаннях соціального захисту, юридичної підтримки та службової діяльності.",
-  "badge": "Експертний ресурс",
-  "navLabel": "ДІЗНАТИСЬ БІЛЬШЕ",
-  "statusLabel": "Статус: Актуально",
-  "verifiedLabel": "Перевірено юристом",
-  "formatLabel": "Формат: DOCX",
-  "backButton": "Повернутися на головну",
-  "breadcrumb": "Методичні матеріали",
-  "notFound": "Інформацію не знайдено",
-  "notFoundDescription": "На жаль, за вказаним посиланням нічого не виявлено.",
-  "sectionTitle": "Розширена довідка",
-  "sectionDescription1": "Даний розділ був сформований на основі запитів членів нашої профспілкової організації. Ми намагалися зробити матеріали максимально прикладними та зрозумілими.",
-  "sectionDescription2": "Нижче наведено перелік документів, які допоможуть вам правомірно оформити необхідні заяви та рапорти. Кожен документ супроводжується коротким описом та готовий до миттєвого завантаження.",
-  "docsTitle": "Документи для роботи",
-  "items": [
-    {
-      "id": "membership",
-      "title": "Документи для вступу до профспілки",
-      "description": "Офіційні бланки заяви на вступ до первинної профспілкової організації та згоди на обробку персональних даних.",
-      "lastUpdated": "13.04.2026",
-      "docs": [
-        {
-          "name": "Заява на вступ до профспілки",
-          "url": "documents/Заява_про_вступ.docx"
-        },
-        {
-          "name": "Згода на обробку персональних даних",
-          "url": "documents/Згода_на_обробку_даних.doc"
-        }
-      ]
-    },
-    {
-      "id": "samples",
-      "title": "Зразки рапортів та заяв",
-      "description": "Затверджені зразки документів для звернень щодо матеріальної допомоги та фінансових питань.",
-      "lastUpdated": "13.04.2026",
-      "docs": [
-        {
-          "name": "Зразок: Матеріальна допомога при народженні дитини",
-          "url": "documents/Зразок_допомога_народження.docx"
-        },
-        {
-          "name": "Зразок: Матеріальна допомога (скрутне становище)",
-          "url": "documents/Зразок_допомога_становище.docx"
-        }
-      ]
-    }
-  ],
-  "detailedButton": "Відкрити",
-  "downloadLabel": "Завантажити"
+  "uk": {
+    "title": "Методичні рекомендації",
+    "subtitle": "Ваш путівник у питаннях соціального захисту, юридичної підтримки та службової діяльності.",
+    "badge": "Експертний ресурс",
+    "navLabel": "ДІЗНАТИСЬ БІЛЬШЕ",
+    "statusLabel": "Статус: Актуально",
+    "verifiedLabel": "Перевірено юристом",
+    "formatLabel": "Формат: DOCX",
+    "backButton": "Повернутися на головну",
+    "breadcrumb": "Методичні матеріали",
+    "notFound": "Інформацію не знайдено",
+    "notFoundDescription": "На жаль, за вказаним посиланням нічого не виявлено.",
+    "sectionTitle": "Розширена довідка",
+    "sectionDescription1": "Даний розділ був сформований на основі запитів членів нашої профспілкової організації. Ми намагалися зробити матеріали максимально прикладними та зрозумілими.",
+    "sectionDescription2": "Нижче наведено перелік документів, які допоможуть вам правомірно оформити необхідні заяви та рапорти. Кожен документ супроводжується коротким описом та готовий до миттєвого завантаження.",
+    "docsTitle": "Документи для роботи",
+    "items": [
+      {
+        "id": "membership",
+        "title": "Документи для вступу до профспілки",
+        "description": "Офіційні бланки заяви на вступ до первинної профспілкової організації та згоди на обробку персональних даних.",
+        "lastUpdated": "13.04.2026",
+        "docs": [
+          {
+            "name": "Заява на вступ до профспілки",
+            "url": "documents/Заява_про_вступ.docx"
+          },
+          {
+            "name": "Згода на обробку персональних даних",
+            "url": "documents/Згода_на_обробку_даних.doc"
+          }
+        ]
+      },
+      {
+        "id": "samples",
+        "title": "Зразки рапортів та заяв",
+        "description": "Затверджені зразки документів для звернень щодо матеріальної допомоги та фінансових питань.",
+        "lastUpdated": "13.04.2026",
+        "docs": [
+          {
+            "name": "Зразок: Матеріальна допомога при народженні дитини",
+            "url": "documents/Зразок_допомога_народження.docx"
+          },
+          {
+            "name": "Зразок: Матеріальна допомога (скрутне становище)",
+            "url": "documents/Зразок_допомога_становище.docx"
+          }
+        ]
+      }
+    ],
+    "detailedButton": "Відкрити",
+    "downloadLabel": "Завантажити"
+  },
+  "en": {
+    "title": "Methodological Recommendations",
+    "subtitle": "Your guide to social protection, legal support, and professional activities.",
+    "badge": "Expert Resource",
+    "navLabel": "LEARN MORE",
+    "statusLabel": "Status: Relevant",
+    "verifiedLabel": "Verified by a lawyer",
+    "formatLabel": "Format: DOCX",
+    "backButton": "Return to Home",
+    "breadcrumb": "Methodological Materials",
+    "notFound": "Information not found",
+    "notFoundDescription": "Unfortunately, nothing was found at the specified link.",
+    "sectionTitle": "Extended Reference",
+    "sectionDescription1": "This section was formed based on the requests of members of our trade union. We tried to make the materials as practical and understandable as possible.",
+    "sectionDescription2": "Below is a list of documents that will help you legally issue the necessary applications and reports. Each document is accompanied by a brief description and is ready for immediate download.",
+    "docsTitle": "Documents for Work",
+    "items": [
+      {
+        "id": "membership",
+        "title": "Documents for joining the trade union",
+        "description": "Official application forms for joining the primary trade union organization and consent to the processing of personal data.",
+        "lastUpdated": "04/13/2026",
+        "docs": [
+          {
+            "name": "Application for joining the trade union",
+            "url": "documents/Заява_про_вступ.docx"
+          },
+          {
+            "name": "Consent to personal data processing",
+            "url": "documents/Згода_на_обробку_даних.doc"
+          }
+        ]
+      },
+      {
+        "id": "samples",
+        "title": "Samples of reports and applications",
+        "description": "Approved sample documents for appeals regarding material assistance and financial issues.",
+        "lastUpdated": "04/13/2026",
+        "docs": [
+          {
+            "name": "Sample: Material assistance upon childbirth",
+            "url": "documents/Зразок_допомога_народження.docx"
+          },
+          {
+            "name": "Sample: Material assistance (difficult situation)",
+            "url": "documents/Зразок_допомога_становище.docx"
+          }
+        ]
+      }
+    ],
+    "detailedButton": "Open",
+    "downloadLabel": "Download"
+  }
 }

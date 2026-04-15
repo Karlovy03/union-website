@@ -9,7 +9,7 @@ import { RecommendationsSection } from "./components/RecommendationsSection/Reco
 import { NewsSection } from "./components/NewsSection/NewsSection";
 import { LawSection } from "./components/LawSection/LawSection";
 import ReactLenis from "lenis/react";
-import contentData from "./data";
+import { useLanguage } from "./context/LanguageContext";
 import Dock from "./components/lightswind/dock";
 import { Footer } from "./components/Footer/Footer";
 import { ScrollProgress } from "./components/ScrollProgress";
@@ -154,6 +154,7 @@ const AppContent = ({ dockItems, showDock }: { dockItems: DockItem[]; showDock: 
 function App() {
   const [showDock, setShowDock] = useState(false);
   const lastScrollY = useRef(0);
+  const { content } = useLanguage();
 
   // Track scroll direction
   useEffect(() => {
@@ -187,45 +188,45 @@ function App() {
   const dockItems = useMemo(() => [
     {
       icon: <Home size={24} />,
-      label: contentData.dock.items.home,
+      label: content.dock.items.home,
       onClick: () => scrollToSection("hero"),
     },
     {
       icon: <User size={24} />,
-      label: contentData.dock.items.about,
+      label: content.dock.items.about,
       onClick: () => scrollToSection("about"),
     },
     {
       icon: <UserPlus size={24} />,
-      label: contentData.dock.items.join,
+      label: content.dock.items.join,
       onClick: () => scrollToSection("join"),
     },
     {
       icon: <Users size={24} />,
-      label: contentData.dock.items.team,
+      label: content.dock.items.team,
       onClick: () => scrollToSection("team"),
     },
     {
       icon: <Newspaper size={24} />,
-      label: contentData.dock.items.news,
+      label: content.dock.items.news,
       onClick: () => scrollToSection("news"),
     },
     {
       icon: <GraduationCap size={24} />,
-      label: contentData.dock.items.recommendations,
+      label: content.dock.items.recommendations,
       onClick: () => scrollToSection("recommendations"),
     },
     {
       icon: <Briefcase size={24} />,
-      label: contentData.dock.items.law,
+      label: content.dock.items.law,
       onClick: () => scrollToSection("law"),
     },
     {
       icon: <HelpCircle size={24} />,
-      label: contentData.dock.items.faq,
+      label: content.dock.items.faq,
       onClick: () => scrollToSection("faq"),
     },
-  ], []);
+  ], [content.dock]);
 
   return (
     <ErrorBoundary>

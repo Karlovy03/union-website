@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { ShieldCheck, ChevronDown } from "lucide-react";
-import contentData from "../../data";
+import { useLanguage } from "../../context/LanguageContext";
 
 export const HeroSection = () => {
+  const { content } = useLanguage();
   return (
     <motion.section
       id="hero"
@@ -30,7 +31,7 @@ export const HeroSection = () => {
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-union-accent/10 border border-union-accent/20 text-union-primary text-xs font-bold uppercase tracking-widest mb-4"
         >
           <ShieldCheck size={16} className="text-union-accent" />
-          {contentData.hero.badge}
+          {content.hero.badge}
         </motion.div>
         <motion.h1
           className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight text-union-primary"
@@ -42,7 +43,7 @@ export const HeroSection = () => {
             transition: { duration: 0.8, ease: "easeOut" },
           }}
         >
-          {contentData.hero.title}
+          {content.hero.title}
           <span className="text-union-accent inline-flex ml-2">.</span>
         </motion.h1>
 
@@ -56,7 +57,7 @@ export const HeroSection = () => {
             transition: { duration: 0.8, ease: "easeOut" },
           }}
         >
-          {contentData.hero.subtitle}
+          {content.hero.subtitle}
         </motion.h2>
 
 
@@ -73,7 +74,7 @@ export const HeroSection = () => {
         <div className="w-80 h-80 md:w-[450px] md:h-[550px] relative rounded-[40px] overflow-hidden shadow-2xl border border-white/20 dark:border-white/10 group">
           <img
             src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=2670&auto=format&fit=crop"
-            alt={contentData.hero.imageAlt}
+            alt={content.hero.imageAlt}
             width={2670}
             height={1780}
             loading="eager"
@@ -83,8 +84,8 @@ export const HeroSection = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-union-primary/80 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-700"></div>
 
           <div className="absolute bottom-8 left-8 right-8 p-6 backdrop-blur-2xl bg-white/10 border border-white/20 rounded-3xl translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700">
-            <p className="text-white font-bold text-lg mb-1">{contentData.hero.imageOverlayTitle}</p>
-            <p className="text-white/70 text-sm">{contentData.hero.imageOverlaySubtitle}</p>
+            <p className="text-white font-bold text-lg mb-1">{content.hero.imageOverlayTitle}</p>
+            <p className="text-white/70 text-sm">{content.hero.imageOverlaySubtitle}</p>
           </div>
         </div>
       </motion.div>
@@ -96,7 +97,7 @@ export const HeroSection = () => {
         transition={{ delay: 1.5, duration: 1, repeat: Infinity, repeatType: "reverse" }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
       >
-        <span className="text-[10px] uppercase tracking-[0.3em] text-union-primary/40 font-bold">{contentData.hero.scrollHint}</span>
+        <span className="text-[10px] uppercase tracking-[0.3em] text-union-primary/40 font-bold">{content.hero.scrollHint}</span>
         <ChevronDown size={20} className="text-union-accent" />
       </motion.div>
     </motion.section>

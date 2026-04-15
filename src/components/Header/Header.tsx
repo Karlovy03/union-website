@@ -7,13 +7,8 @@ import { useLenis } from "lenis/react";
 import { BorderBeam } from "../lightswind/border-beam";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import contentData from "../../data";
+import { useLanguage } from "../../context/LanguageContext";
 import type { NavItem } from "../../types";
-
-const headerData = contentData.header;
-const navItems = headerData.navItems;
-const ctaButton = headerData.ctaButton;
-const brand = headerData.brand;
 
 const menuVariants: Variants = {
   open: {
@@ -54,6 +49,12 @@ export default function Header() {
   const lenis = useLenis();
   const location = useLocation();
   const navigate = useNavigate();
+  const { content, language, setLanguage } = useLanguage();
+
+  const headerData = content.header;
+  const navItems = headerData.navItems;
+  const ctaButton = headerData.ctaButton;
+  const brand = headerData.brand;
 
   // Theme toggle
   useEffect(() => {
@@ -126,12 +127,12 @@ export default function Header() {
               className="cursor-pointer flex items-center gap-3 group shrink-0"
             >
               <div className="relative">
-                 <img src={unionLogo} alt={brand.logoAlt} className="h-10 w-auto object-contain transition-transform group-hover:rotate-12 duration-500" />
-                 <div className="absolute inset-0 bg-union-accent/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <img src={unionLogo} alt={brand.logoAlt} className="h-10 w-auto object-contain transition-transform group-hover:rotate-12 duration-500" />
+                <div className="absolute inset-0 bg-union-accent/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </div>
               <div className="flex flex-col -space-y-1">
-                 <span className="font-black text-sm uppercase tracking-tight text-union-primary font-display">{brand.name}</span>
-                 <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest hidden lg:block overflow-hidden whitespace-nowrap font-display">{brand.subtitle}</span>
+                <span className="font-black text-sm uppercase tracking-tight text-union-primary font-display">{brand.name}</span>
+                <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest hidden lg:block overflow-hidden whitespace-nowrap font-display">{brand.subtitle}</span>
               </div>
             </a>
 
@@ -160,41 +161,51 @@ export default function Header() {
 
             {/* Right Side Actions */}
             <div className="flex items-center gap-3">
-               {/* Theme Toggle */}
+              {/* Language Toggle */}
+              <motion.button
+                onClick={() => setLanguage(language === "uk" ? "en" : "uk")}
+                className="p-2.5 rounded-2xl bg-union-primary/5 dark:bg-white/5 text-union-primary dark:text-white hover:bg-union-primary/10 transition-colors hidden sm:flex items-center justify-center font-black text-xs min-w-[40px]"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label={language === "uk" ? content.ui.languageEN : content.ui.languageUK}
+              >
+                {language === "uk" ? "EN" : "UA"}
+              </motion.button>
+              {/* Theme Toggle */}
+              <motion.button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="p-2.5 rounded-2xl bg-union-primary/5 dark:bg-white/5 text-union-primary dark:text-white hover:bg-union-primary/10 transition-colors hidden sm:flex items-center justify-center"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label={theme === "dark" ? content.ui.themeLight : content.ui.themeDark}
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  {theme === "dark" ? <Moon size={18} aria-hidden="true" /> : <Sun size={18} aria-hidden="true" />}
+                </AnimatePresence>
+              </motion.button>
+
+              {/* Primary CTA Button */}
+              {ctaButton && (
                 <motion.button
-                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                  className="p-2.5 rounded-2xl bg-union-primary/5 dark:bg-white/5 text-union-primary dark:text-white hover:bg-union-primary/10 transition-colors hidden sm:flex items-center justify-center"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  aria-label={theme === "dark" ? "Увімкнути світлу тему" : "Увімкнути темну тему"}
+                  onClick={() => handleScrollTo(ctaButton.href)}
+                  whileHover={{ scale: 1.02, y: -1 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-gradient-to-r from-union-primary to-union-secondary text-white dark:text-union-dark text-xs font-bold uppercase tracking-wider shadow-lg shadow-union-primary/20 border border-white/10 group overflow-hidden relative"
                 >
-                  <AnimatePresence mode="wait" initial={false}>
-                    {theme === "dark" ? <Moon size={18} aria-hidden="true" /> : <Sun size={18} aria-hidden="true" />}
-                  </AnimatePresence>
+                  <div className="absolute inset-0 bg-gradient-to-r from-union-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <span className="relative z-10">{ctaButton.name}</span>
+                  <ArrowRight size={14} className="relative z-10 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
+              )}
 
-                {/* Primary CTA Button */}
-                {ctaButton && (
-                  <motion.button
-                    onClick={() => handleScrollTo(ctaButton.href)}
-                    whileHover={{ scale: 1.02, y: -1 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-gradient-to-r from-union-primary to-union-secondary text-white dark:text-union-dark text-xs font-bold uppercase tracking-wider shadow-lg shadow-union-primary/20 border border-white/10 group overflow-hidden relative"
-                  >
-                     <div className="absolute inset-0 bg-gradient-to-r from-union-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                     <span className="relative z-10">{ctaButton.name}</span>
-                     <ArrowRight size={14} className="relative z-10 group-hover:translate-x-1 transition-transform" />
-                  </motion.button>
-                )}
-
-                {/* Mobile Menu Button - Hamburger */}
-                <button
-                  onClick={() => setIsMobileMenuOpen(true)}
-                  className="md:hidden w-10 h-10 rounded-2xl bg-union-primary text-white flex items-center justify-center shadow-lg"
-                  aria-label="Відкрити меню"
-                >
-                  <Menu size={20} aria-hidden="true" />
-                </button>
+              {/* Mobile Menu Button - Hamburger */}
+              <button
+                onClick={() => setIsMobileMenuOpen(true)}
+                className="md:hidden w-10 h-10 rounded-2xl bg-union-primary text-white flex items-center justify-center shadow-lg"
+                aria-label={content.ui.openMenu}
+              >
+                <Menu size={20} aria-hidden="true" />
+              </button>
             </div>
           </div>
 
@@ -215,7 +226,7 @@ export default function Header() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="absolute top-8 right-8 w-12 h-12 rounded-2xl bg-union-primary/5 flex items-center justify-center text-union-primary"
                   whileHover={{ rotate: 90 }}
-                  aria-label="Закрити меню"
+                  aria-label={content.ui.closeMenu}
                 >
                   <X size={28} aria-hidden="true" />
                 </motion.button>
@@ -237,24 +248,29 @@ export default function Header() {
                           e.preventDefault();
                           handleScrollTo(item.href);
                         }}
-                        className={`text-3xl font-black uppercase tracking-tighter cursor-pointer transition-colors ${
-                          item.name === ctaButton.name ? "text-union-accent" : "text-union-primary dark:text-white"
-                        }`}
+                        className={`text-3xl font-black uppercase tracking-tighter cursor-pointer transition-colors ${item.name === ctaButton.name ? "text-union-accent" : "text-union-primary dark:text-white"
+                          }`}
                       >
                         {item.name}
                       </a>
                     </motion.li>
                   ))}
-                  
+
                   {/* Theme toggle mobile */}
-                  <motion.li {...({ variants: itemVariants } as MotionProps)} className="pt-8">
-                     <button 
-                        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                        className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-union-primary/5 text-union-primary font-bold"
-                     >
-                        {theme === "dark" ? <Moon size={20} /> : <Sun size={20} />}
-                        {theme === "dark" ? "Темна тема" : "Світла тема"}
-                     </button>
+                  <motion.li {...({ variants: itemVariants } as MotionProps)} className="pt-8 flex flex-col gap-3">
+                    <button
+                      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                      className="flex items-center justify-center gap-3 px-6 py-3 rounded-2xl bg-union-primary/5 text-union-primary font-bold"
+                    >
+                      {theme === "dark" ? <Moon size={20} /> : <Sun size={20} />}
+                      {theme === "dark" ? content.ui.themeDark : content.ui.themeLight}
+                    </button>
+                    <button
+                      onClick={() => setLanguage(language === "uk" ? "en" : "uk")}
+                      className="flex items-center justify-center gap-3 px-6 py-3 rounded-2xl bg-union-primary/5 text-union-primary font-bold"
+                    >
+                      {language === "uk" ? "English (EN)" : "Українська (UA)"}
+                    </button>
                   </motion.li>
                 </motion.ul>
               </motion.div>

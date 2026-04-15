@@ -1,22 +1,46 @@
 {
-  "badge": "Питання та Відповіді",
-  "title": "Часті Запитання (FAQ)",
-  "subtitle": "Відповіді на найбільш поширені питання про діяльність нашої профспілкової організації та ваші права.",
-  "items": [
-    {
-      "id": "faq-membership",
-      "question": "Хто має право на вступ до нашої профспілки?",
-      "answer": "Кожен працівник центрального органу управління поліції, незалежно від посади та звання, має право приєднатися до первинної профспілкової організації для захисту своїх соціально-економічних та трудових прав та інтересів."
-    },
-    {
-      "id": "faq-financial-aid",
-      "question": "Чи можна отримати матеріальну допомогу від профспілки?",
-      "answer": "Так, члени профспілки мають право на матеріальну допомогу при народженні дитини та у складних життєвих ситуаціях. Для цього потрібно подати заяву встановленого зразка до профспілкового комітету."
-    },
-    {
-      "id": "faq-benefits",
-      "question": "Які додаткові пільги передбачені для членів профспілки?",
-      "answer": "Пільгове оздоровлення, юридична допомога у цивільних справах, представлення інтересів у судах та інші форми підтримки, передбачені чинним законодавством та Статутом Всеукраїнської профспілки Національної поліції."
-    }
-  ]
+  "uk": {
+    "badge": "Питання та Відповіді",
+    "title": "Часті Запитання (FAQ)",
+    "subtitle": "Відповіді на найбільш поширені питання про діяльність нашої профспілкової організації та ваші права.",
+    "items": [
+      {
+        "id": "faq-membership",
+        "question": "Хто має право на вступ до нашої профспілки?",
+        "answer": "Кожен працівник центрального органу управління поліції, незалежно від посади та звання, має право приєднатися до первинної профспілкової організації для захисту своїх соціально-економічних та трудових прав та інтересів."
+      },
+      {
+        "id": "faq-financial-aid",
+        "question": "Чи можна отримати матеріальну допомогу від профспілки?",
+        "answer": "Так, члени профспілки мають право на матеріальну допомогу при народженні дитини та у складних життєвих ситуаціях. Для цього потрібно подати заяву встановленого зразка до профспілкового комітету."
+      },
+      {
+        "id": "faq-benefits",
+        "question": "Які додаткові пільги передбачені для членів профспілки?",
+        "answer": "Пільгове оздоровлення, юридична допомога у цивільних справах, представлення інтересів у судах та інші форми підтримки, передбачені чинним законодавством та Статутом Всеукраїнської профспілки Національної поліції."
+      }
+    ]
+  },
+  "en": {
+    "badge": "Questions & Answers",
+    "title": "Frequently Asked Questions (FAQ)",
+    "subtitle": "Answers to the most common questions about the activities of our trade union organization and your rights.",
+    "items": [
+      {
+        "id": "faq-membership",
+        "question": "Who is eligible to join our trade union?",
+        "answer": "Every employee of the central police management body, regardless of position and rank, has the right to join the primary trade union organization to protect their socio-economic and labor rights and interests."
+      },
+      {
+        "id": "faq-financial-aid",
+        "question": "Is it possible to receive financial assistance from the trade union?",
+        "answer": "Yes, trade union members have the right to financial assistance upon the birth of a child and in difficult life situations. To do this, you need to submit an application of the established form to the trade union committee."
+      },
+      {
+        "id": "faq-benefits",
+        "question": "What additional benefits are provided for trade union members?",
+        "answer": "Preferential health improvement, legal assistance in civil cases, representation of interests in courts, and other forms of support provided by current legislation and the Charter of the All-Ukrainian Trade Union of the National Police."
+      }
+    ]
+  }
 }

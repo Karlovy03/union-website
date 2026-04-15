@@ -10,16 +10,17 @@ import {
   Linkedin as LinkedinIcon,
   Twitter as TwitterIcon
 } from "lucide-react";
-import contentData from "../../data";
+import { useLanguage } from "../../context/LanguageContext";
 import { useState } from "react";
 import { slideVariants } from "../shared/slideVariants";
 
 export const MemberDetail = () => {
-  const { id } = useParams();
+  const { content } = useLanguage();
+    const { id } = useParams();
   const navigate = useNavigate();
   const [direction, setDirection] = useState(0);
 
-  const members = contentData.team.members;
+  const members = content.team.members;
   const currentIndex = members.findIndex((m) => m.id === id);
   const member = members[currentIndex];
 
@@ -27,10 +28,10 @@ export const MemberDetail = () => {
     return (
       <div className="min-h-screen flex items-center justify-center p-6 text-center">
         <div className="space-y-6 max-w-md">
-          <h1 className="text-3xl font-bold text-union-primary">{contentData.team.notFound}</h1>
+          <h1 className="text-3xl font-bold text-union-primary">{content.team.notFound}</h1>
           <Link to="/" className="inline-flex items-center gap-2 px-6 py-3 bg-union-primary text-white rounded-full font-bold">
             <ArrowLeft size={18} />
-            {contentData.team.backHome}
+            {content.team.backHome}
           </Link>
         </div>
       </div>
@@ -55,7 +56,7 @@ export const MemberDetail = () => {
         className="fixed left-2 lg:left-6 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-0.5 group transition-all duration-300 hidden md:flex"
       >
         <span className="text-[9px] font-black text-union-primary/20 group-hover:text-union-accent tracking-[3px] uppercase transition-colors whitespace-nowrap">
-           {contentData.team.prevLabel}
+           {content.team.prevLabel}
         </span>
         <motion.div animate={{ x: [0, -5, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="text-union-primary/30 group-hover:text-union-accent transition-colors">
           <ChevronLeft size={48} strokeWidth={1} />
@@ -67,7 +68,7 @@ export const MemberDetail = () => {
         className="fixed right-2 lg:right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-0.5 group transition-all duration-300 hidden md:flex"
       >
         <span className="text-[9px] font-black text-union-primary/20 group-hover:text-union-accent tracking-[3px] uppercase transition-colors whitespace-nowrap">
-           {contentData.team.nextLabel}
+           {content.team.nextLabel}
         </span>
         <motion.div animate={{ x: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="text-union-primary/30 group-hover:text-union-accent transition-colors">
           <ChevronRight size={48} strokeWidth={1} />
@@ -87,7 +88,7 @@ export const MemberDetail = () => {
           className="mb-16 flex items-center gap-3 px-6 py-2.5 rounded-2xl bg-union-primary text-white dark:text-union-dark shadow-xl hover:bg-union-accent transition-all font-bold text-sm"
         >
           <ArrowLeft size={18} />
-          <span>{contentData.team.backButton}</span>
+          <span>{content.team.backButton}</span>
         </motion.button>
 
         <AnimatePresence mode="wait" custom={direction}>
@@ -133,7 +134,7 @@ export const MemberDetail = () => {
               <div className="space-y-4">
                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-union-accent/10 text-union-accent text-[10px] font-bold uppercase tracking-widest border border-union-accent/20">
                     <ShieldCheck size={14} />
-                    {contentData.team.verifiedBadge}
+                    {content.team.verifiedBadge}
                  </div>
                  <h1 className="text-4xl md:text-6xl font-black text-union-primary leading-none tracking-tighter">
                     {member.name.split(' ').map((part, i) => (
@@ -153,11 +154,11 @@ export const MemberDetail = () => {
 
               {(member.email || member.linkedin || member.twitter) && (
               <div className="pt-10 border-t border-union-primary/5 space-y-6">
-                 <h3 className="text-sm font-black text-union-primary uppercase tracking-widest">{contentData.team.contactTitle}</h3>
+                 <h3 className="text-sm font-black text-union-primary uppercase tracking-widest">{content.team.contactTitle}</h3>
                  <div className="flex flex-wrap gap-4">
                     {member.email && (
                       <a href={`mailto:${member.email}`} className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-union-primary/5 text-union-primary hover:bg-union-primary hover:text-white transition-all font-bold text-sm">
-                        <Mail size={18} /> <span>Пошта</span>
+                        <Mail size={18} /> <span>{content.ui.mail}</span>
                       </a>
                     )}
                     {member.linkedin && (

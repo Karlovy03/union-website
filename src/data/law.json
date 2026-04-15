@@ -1,30 +1,62 @@
 {
-  "title": "Законодавча база",
-  "subtitle": "Нормативно-правові акти, якими ми керуємося",
-  "timeline": [
-    {
-      "year": "1996",
-      "title": "Конституція України",
-      "subtitle": "Основний Закон",
-      "description": "Гарантує право громадян створювати профспілки з метою захисту своїх трудових і соціально-економічних прав та інтересів."
-    },
-    {
-      "year": "1999",
-      "title": "Про професійні спілки, їх права та гарантії діяльності",
-      "subtitle": "Закон України",
-      "description": "Визначає особливості правового регулювання, створення та діяльності професійних спілок, їх права та гарантії."
-    },
-    {
-      "year": "2015",
-      "title": "Про Національну поліцію",
-      "subtitle": "Закон України",
-      "description": "Регламентує правові засади організації та діяльності Національної поліції України, статус поліцейських."
-    },
-    {
-      "year": "2021",
-      "title": "Статут Профспілки",
-      "subtitle": "Оновлено у 2022",
-      "description": "Правова основа діяльності профспілки"
-    }
-  ]
+  "uk": {
+    "title": "Законодавча база",
+    "subtitle": "Нормативно-правові акти, якими ми керуємося",
+    "timeline": [
+      {
+        "year": "1996",
+        "title": "Конституція України",
+        "subtitle": "Основний Закон",
+        "description": "Гарантує право громадян створювати профспілки з метою захисту своїх трудових і соціально-економічних прав та інтересів."
+      },
+      {
+        "year": "1999",
+        "title": "Про професійні спілки, їх права та гарантії діяльності",
+        "subtitle": "Закон України",
+        "description": "Визначає особливості правового регулювання, створення та діяльності професійних спілок, їх права та гарантії."
+      },
+      {
+        "year": "2015",
+        "title": "Про Національну поліцію",
+        "subtitle": "Закон України",
+        "description": "Регламентує правові засади організації та діяльності Національної поліції України, статус поліцейських."
+      },
+      {
+        "year": "2021",
+        "title": "Статут Профспілки",
+        "subtitle": "Оновлено у 2022",
+        "description": "Правова основа діяльності профспілки"
+      }
+    ]
+  },
+  "en": {
+    "title": "Legal Framework",
+    "subtitle": "Normative legal acts that guide our activities",
+    "timeline": [
+      {
+        "year": "1996",
+        "title": "Constitution of Ukraine",
+        "subtitle": "Basic Law",
+        "description": "Guarantees the right of citizens to form trade unions in order to protect their labor and socio-economic rights and interests."
+      },
+      {
+        "year": "1999",
+        "title": "On Trade Unions, Their Rights and Guarantees of Activity",
+        "subtitle": "Law of Ukraine",
+        "description": "Determines the features of legal regulation, creation, and activity of trade unions, their rights, and guarantees."
+      },
+      {
+        "year": "2015",
+        "title": "On the National Police",
+        "subtitle": "Law of Ukraine",
+        "description": "Regulates the legal basis of organization and activity of the National Police of Ukraine, and the status of police officers."
+      },
+      {
+        "year": "2021",
+        "title": "Trade Union Charter",
+        "subtitle": "Updated in 2022",
+        "description": "Legal basis of trade union activity"
+      }
+    ]
+  }
 }

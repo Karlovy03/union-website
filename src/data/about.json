@@ -1,14 +1,30 @@
 {
-  "title": "Про нашу організацію",
-  "description": "Первинна профспілкова організація працівників центрального органу управління поліції Всеукраїнської профспілки Національної поліції — це добровільна неприбуткова громадська самоврядна організація, що об'єднує поліцейських, державних службовців та працівників поліції з метою представництва та здійснення захисту трудових та соціально-економічних прав. Профспілка у своїй діяльності незалежна від органів державної влади та місцевого самоврядування, роботодавців і політичних партій.",
-  "stats": [
-    {
-      "label": "Всеукраїнський рівень",
-      "value": "100%"
-    },
-    {
-      "label": "Незалежність гарантовано",
-      "value": "✓"
-    }
-  ]
+  "uk": {
+    "title": "Про нашу організацію",
+    "description": "Первинна профспілкова організація працівників центрального органу управління поліції Всеукраїнської профспілки Національної поліції — це добровільна неприбуткова громадська самоврядна організація, що об'єднує поліцейських, державних службовців та працівників поліції з метою представництва та здійснення захисту трудових та соціально-економічних прав. Профспілка у своїй діяльності незалежна від органів державної влади та місцевого самоврядування, роботодавців і політичних партій.",
+    "stats": [
+      {
+        "label": "Всеукраїнський рівень",
+        "value": "100%"
+      },
+      {
+        "label": "Незалежність гарантовано",
+        "value": "✓"
+      }
+    ]
+  },
+  "en": {
+    "title": "About Our Organization",
+    "description": "The Primary Trade Union Organization of Central Police Management Body Employees of the All-Ukrainian Trade Union of the National Police is a voluntary non-profit public self-governing organization uniting police officers, civil servants, and police employees for the purpose of representing and protecting labor and socio-economic rights. The Trade Union in its activities is independent of state authorities and local self-government, employers, and political parties.",
+    "stats": [
+      {
+        "label": "All-Ukrainian level",
+        "value": "100%"
+      },
+      {
+        "label": "Independence guaranteed",
+        "value": "✓"
+      }
+    ]
+  }
 }

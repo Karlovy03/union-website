@@ -1,25 +1,52 @@
 {
-  "title": "Профспілка працівників ЦОУП",
-  "subtitle": "Первинна профспілкова організація працівників центрального органу управління поліції Всеукраїнської профспілки Національної поліції.",
-  "sections": {
-    "navigation": "Навігація",
-    "contacts": "Контакти",
-    "address": "Адреса"
+  "uk": {
+    "title": "Профспілка працівників ЦОУП",
+    "subtitle": "Первинна профспілкова організація працівників центрального органу управління поліції Всеукраїнської профспілки Національної поліції.",
+    "sections": {
+      "navigation": "Навігація",
+      "contacts": "Контакти",
+      "address": "Адреса"
+    },
+    "badge": {
+      "title": "На варті ваших прав",
+      "description": "Ми — первинна профспілкова організація, що забезпечує соціальний та правовий захист працівників центрального органу управління поліції."
+    },
+    "bottomNote": "Розроблено для захисників",
+    "contacts": {
+      "email": "info@example.ua",
+      "address": "м. Київ"
+    },
+    "links": [
+      { "name": "Про нас", "href": "#about" },
+      { "name": "Методичні рекомендації", "href": "#recommendations" },
+      { "name": "Правова база", "href": "#law" },
+      { "name": "Новини", "href": "#news" }
+    ],
+    "copyright": "© 2026 Первинна профспілкова організація працівників ЦОУП. Усі права захищені."
   },
-  "badge": {
-    "title": "На варті ваших прав",
-    "description": "Ми — первинна профспілкова організація, що забезпечує соціальний та правовий захист працівників центрального органу управління поліції."
-  },
-  "bottomNote": "Розроблено для захисників",
-  "contacts": {
-    "email": "info@example.ua",
-    "address": "м. Київ"
-  },
-  "links": [
-    { "name": "Про нас", "href": "#about" },
-    { "name": "Методичні рекомендації", "href": "#recommendations" },
-    { "name": "Правова база", "href": "#law" },
-    { "name": "Новини", "href": "#news" }
-  ],
-  "copyright": "© 2026 Первинна профспілкова організація працівників ЦОУП. Усі права захищені."
+  "en": {
+    "title": "Trade Union of CPMB Employees",
+    "subtitle": "Primary Trade Union Organization of Central Police Management Body Employees of the All-Ukrainian Trade Union of the National Police.",
+    "sections": {
+      "navigation": "Navigation",
+      "contacts": "Contacts",
+      "address": "Address"
+    },
+    "badge": {
+      "title": "Guarding your rights",
+      "description": "We are a primary trade union organization that provides social and legal protection for employees of the central police management body."
+    },
+    "bottomNote": "Designed for defenders",
+    "contacts": {
+      "email": "info@example.ua",
+      "address": "Kyiv"
+    },
+    "links": [
+      { "name": "About Us", "href": "#about" },
+      { "name": "Methodological Recommendations", "href": "#recommendations" },
+      { "name": "Legal Framework", "href": "#law" },
+      { "name": "News", "href": "#news" }
+    ],
+    "copyright": "© 2026 Primary Trade Union Organization of CPMB Employees. All rights reserved."
+  }
 }

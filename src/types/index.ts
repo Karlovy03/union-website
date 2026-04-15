@@ -208,7 +208,27 @@ export interface FooterData {
   copyright: string;
 }
 
+export interface UiData {
+  themeLight: string;
+  themeDark: string;
+  openMenu: string;
+  closeMenu: string;
+  mail: string;
+  imageNotAvailable: string;
+  errorTitle: string;
+  errorDescription: string;
+  errorButton: string;
+  prevCategory: string;
+  nextCategory: string;
+  updated: string;
+  attachments: string;
+  languageEN: string;
+  languageUK: string;
+  brandChar: string;
+}
+
 export interface ContentData {
+  ui: UiData;
   header: HeaderData;
   footer: FooterData;
   join: JoinData;

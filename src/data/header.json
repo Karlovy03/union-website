@@ -1,41 +1,42 @@
 {
-  "brand": {
-    "name": "Профспілка",
-    "subtitle": "Працівників ЦОУП",
-    "logoAlt": "Логотип Первинної профспілкової організації працівників ЦОУП"
-  },
-  "navItems": [
-    {
-      "name": "Головна",
-      "href": "#hero"
+  "uk": {
+    "brand": {
+      "name": "Профспілка",
+      "subtitle": "Працівників ЦОУП",
+      "logoAlt": "Логотип Первинної профспілкової організації працівників ЦОУП"
     },
-    {
-      "name": "Про нас",
-      "href": "#about"
-    },
-    {
-      "name": "Команда",
-      "href": "#team"
-    },
-    {
-      "name": "Новини",
-      "href": "#news"
-    },
-    {
-      "name": "Матеріали",
-      "href": "#recommendations"
-    },
-    {
-      "name": "Право",
-      "href": "#law"
-    },
-    {
-      "name": "FAQ",
-      "href": "#faq"
+    "navItems": [
+      { "name": "Головна", "href": "#hero" },
+      { "name": "Про нас", "href": "#about" },
+      { "name": "Команда", "href": "#team" },
+      { "name": "Новини", "href": "#news" },
+      { "name": "Матеріали", "href": "#recommendations" },
+      { "name": "Право", "href": "#law" },
+      { "name": "FAQ", "href": "#faq" }
+    ],
+    "ctaButton": {
+      "name": "Вступ",
+      "href": "#join"
     }
-  ],
-  "ctaButton": {
-    "name": "Вступ",
-    "href": "#join"
+  },
+  "en": {
+    "brand": {
+      "name": "Trade Union",
+      "subtitle": "Of CPMB Employees",
+      "logoAlt": "Logo of the Primary Trade Union Organization of CPMB Employees"
+    },
+    "navItems": [
+      { "name": "Home", "href": "#hero" },
+      { "name": "About", "href": "#about" },
+      { "name": "Team", "href": "#team" },
+      { "name": "News", "href": "#news" },
+      { "name": "Materials", "href": "#recommendations" },
+      { "name": "Law", "href": "#law" },
+      { "name": "FAQ", "href": "#faq" }
+    ],
+    "ctaButton": {
+      "name": "Join",
+      "href": "#join"
+    }
   }
 }

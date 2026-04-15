@@ -1,8 +1,9 @@
 import { Mail, MapPin } from "lucide-react";
-import contentData from "../../data";
+import { useLanguage } from "../../context/LanguageContext";
 
 export const Footer = () => {
-  const { footer } = contentData;
+  const { content } = useLanguage();
+  const { footer } = content;
 
   const handleScrollTo = (href: string) => {
     const element = document.querySelector(href);
@@ -25,7 +26,7 @@ export const Footer = () => {
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-union-primary to-union-secondary flex items-center justify-center shadow-2xl relative group/logo overflow-hidden">
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/logo:translate-y-0 transition-transform duration-500"></div>
-                <span className="text-white font-bold text-2xl relative z-10">П</span>
+                <span className="text-white font-bold text-2xl relative z-10">{content.ui.brandChar}</span>
               </div>
               <h3 className="text-2xl font-black text-union-primary tracking-tight font-display">
                 {footer.title}

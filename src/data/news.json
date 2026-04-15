@@ -1,24 +1,50 @@
 {
-  "title": "Останні новини",
-  "subtitle": "Будьте в курсі найважливіших подій, рішень та досягнень нашої профспілкової організації.",
-  "badge": "Актуально",
-  "readMore": "Читати далі",
-  "keyPoints": "Ключові тези:",
-  "share": "Поділитися",
-  "copied": "Посилання скопійовано!",
-  "notFound": "Новину не знайдено",
-  "backButton": "До списку новин",
-  "backHome": "Повернутися на головну",
-  "prevLabel": "ПОПЕРЕДНЯ НОВИНА",
-  "nextLabel": "НАСТУПНА НОВИНА",
-  "copyright": "© Первинна профспілкова організація працівників ЦОУП",
-  "items": [
-    {
-      "id": "1",
-      "date": "21-23.04.2026",
-      "title": "Участь у Конгресі Європейської конфедерації поліції для обміну досвіду та зміцнення співпраці з європейськими партнерами",
-      "image": "/union-website/photo/new_1.jpeg",
-      "content": "Захід спрямований на обмін досвідом між поліцейськими європейських країн, зміцнення міжнародної співпраці, захист професійних інтересів працівників поліції та розвиток сучасних стандартів правоохоронної діяльності. Участь у Конгресі є важливою для посилення ролі профспілок у міжнародному середовищі, налагодження партнерських зв’язків і представлення інтересів українських поліцейських на європейському рівні. З урахуванням актуальності заходу, голови профспілки Горяченка Руслана Івановича.\n\nВитрати, пов’язані з відрядженням, покриває сторона, що приймає."
-    }
-  ]
+  "uk": {
+    "title": "Останні новини",
+    "subtitle": "Будьте в курсі найважливіших подій, рішень та досягнень нашої профспілкової організації.",
+    "badge": "Актуально",
+    "readMore": "Читати далі",
+    "keyPoints": "Ключові тези:",
+    "share": "Поділитися",
+    "copied": "Посилання скопійовано!",
+    "notFound": "Новину не знайдено",
+    "backButton": "До списку новин",
+    "backHome": "Повернутися на головну",
+    "prevLabel": "ПОПЕРЕДНЯ НОВИНА",
+    "nextLabel": "НАСТУПНА НОВИНА",
+    "copyright": "© Первинна профспілкова організація працівників ЦОУП",
+    "items": [
+      {
+        "id": "1",
+        "date": "21-23.04.2026",
+        "title": "Участь у Конгресі Європейської конфедерації поліції для обміну досвіду та зміцнення співпраці з європейськими партнерами",
+        "image": "/union-website/photo/new_1.jpeg",
+        "content": "Захід спрямований на обмін досвідом між поліцейськими європейських країн, зміцнення міжнародної співпраці, захист професійних інтересів працівників поліції та розвиток сучасних стандартів правоохоронної діяльності. Участь у Конгресі є важливою для посилення ролі профспілок у міжнародному середовищі, налагодження партнерських зв’язків і представлення інтересів українських поліцейських на європейському рівні. З урахуванням актуальності заходу, голови профспілки Горяченка Руслана Івановича.\n\nВитрати, пов’язані з відрядженням, покриває сторона, що приймає."
+      }
+    ]
+  },
+  "en": {
+    "title": "Latest News",
+    "subtitle": "Stay informed about the most important events, decisions, and achievements of our trade union.",
+    "badge": "Trending",
+    "readMore": "Read more",
+    "keyPoints": "Key points:",
+    "share": "Share",
+    "copied": "Link copied!",
+    "notFound": "News not found",
+    "backButton": "Back to news list",
+    "backHome": "Return home",
+    "prevLabel": "PREVIOUS NEWS",
+    "nextLabel": "NEXT NEWS",
+    "copyright": "© Primary Trade Union Organization of CPMB Employees",
+    "items": [
+      {
+        "id": "1",
+        "date": "21-23.04.2026",
+        "title": "Participation in the Congress of the European Confederation of Police to exchange experience and strengthen cooperation with European partners",
+        "image": "/union-website/photo/new_1.jpeg",
+        "content": "The event is aimed at exchanging experience among police officers from European countries, strengthening international cooperation, protecting the professional interests of police employees, and developing modern law enforcement standards. Participation in the Congress is vital for enhancing the role of trade unions in the international environment, establishing partnerships, and representing the interests of Ukrainian police officers at the European level. Taking into account the relevance of the event, the head of the trade union Horiachenko Ruslan Ivanovych.\n\nThe expenses related to the business trip are covered by the host party."
+      }
+    ]
+  }
 }

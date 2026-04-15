@@ -1,5 +1,6 @@
 import { Component } from "react";
 import type { ReactNode, ErrorInfo } from "react";
+import content from "../data";
 
 interface Props {
   children: ReactNode;
@@ -25,6 +26,9 @@ export class ErrorBoundary extends Component<Props, State> {
 
   render() {
     if (this.state.hasError) {
+      const language = (localStorage.getItem('language') === 'en' ? 'en' : 'uk');
+      const { ui } = content[language];
+      
       return (
         <div className="min-h-screen flex items-center justify-center p-6">
           <div className="text-center space-y-6 max-w-md">
@@ -32,16 +36,16 @@ export class ErrorBoundary extends Component<Props, State> {
               !
             </div>
             <h1 className="text-3xl font-bold text-union-primary">
-              Щось пішло не так
+              {ui.errorTitle}
             </h1>
             <p className="text-muted-foreground">
-              Виникла несподівана помилка. Спробуйте оновити сторінку.
+              {ui.errorDescription}
             </p>
             <button
               onClick={() => window.location.reload()}
               className="inline-flex items-center gap-2 px-6 py-3 bg-union-primary text-white rounded-full font-bold hover:bg-union-accent transition-colors"
             >
-              Оновити сторінку
+              {ui.errorButton}
             </button>
           </div>
         </div>

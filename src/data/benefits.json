@@ -1,21 +1,44 @@
 {
-  "title": "Чому варто бути з нами?",
-  "subtitle": "Ми пропонуємо реальні інструменти захисту та підтримки для кожного члена профспілки",
-  "items": [
-    {
-      "title": "Юридичний захист",
-      "description": "Безкоштовні консультації, допомога у складанні рапортів та представництво в судах.",
-      "icon": "shield"
-    },
-    {
-      "title": "Матеріальна підтримка",
-      "description": "Матеріальна допомога для членів профспілки.",
-      "icon": "wallet"
-    },
-    {
-      "title": "Відпочинок та оздоровлення",
-      "description": "Програми лояльності, путівки на санаторно-курортне лікування для вас та вашої родини.",
-      "icon": "heart"
-    }
-  ]
+  "uk": {
+    "title": "Чому варто бути з нами?",
+    "subtitle": "Ми пропонуємо реальні інструменти захисту та підтримки для кожного члена профспілки",
+    "items": [
+      {
+        "title": "Юридичний захист",
+        "description": "Безкоштовні консультації, допомога у складанні рапортів та представництво в судах.",
+        "icon": "shield"
+      },
+      {
+        "title": "Матеріальна підтримка",
+        "description": "Матеріальна допомога для членів профспілки.",
+        "icon": "wallet"
+      },
+      {
+        "title": "Відпочинок та оздоровлення",
+        "description": "Програми лояльності, путівки на санаторно-курортне лікування для вас та вашої родини.",
+        "icon": "heart"
+      }
+    ]
+  },
+  "en": {
+    "title": "Why be with us?",
+    "subtitle": "We offer real tools of protection and support for every trade union member",
+    "items": [
+      {
+        "title": "Legal Protection",
+        "description": "Free consultations, assistance in drafting reports, and representation in courts.",
+        "icon": "shield"
+      },
+      {
+        "title": "Material Support",
+        "description": "Financial assistance for trade union members.",
+        "icon": "wallet"
+      },
+      {
+        "title": "Rest and Health Improvement",
+        "description": "Loyalty programs, vouchers for sanatorium and resort treatment for you and your family.",
+        "icon": "heart"
+      }
+    ]
+  }
 }

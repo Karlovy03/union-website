@@ -1,12 +1,26 @@
 {
-  "items": {
-    "home": "Головна",
-    "about": "Про нас",
-    "join": "Вступ",
-    "team": "Команда",
-    "news": "Новини",
-    "recommendations": "Матеріали",
-    "law": "Право",
-    "faq": "FAQ"
+  "uk": {
+    "items": {
+      "home": "Головна",
+      "about": "Про нас",
+      "join": "Вступ",
+      "team": "Команда",
+      "news": "Новини",
+      "recommendations": "Матеріали",
+      "law": "Право",
+      "faq": "FAQ"
+    }
+  },
+  "en": {
+    "items": {
+      "home": "Home",
+      "about": "About",
+      "join": "Join",
+      "team": "Team",
+      "news": "News",
+      "recommendations": "Materials",
+      "law": "Law",
+      "faq": "FAQ"
+    }
   }
 }

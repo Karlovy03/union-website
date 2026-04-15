@@ -1,45 +1,92 @@
 {
-  "title": "Наше Керівництво",
-  "subtitle": "Люди, які стоять на варті ваших прав кожного дня.",
-  "badge": "Наша Гордість",
-  "viewProfile": "Переглянути профіль",
-  "notFound": "Керівника не знайдено",
-  "backButton": "До складу керівництва",
-  "backHome": "Повернутися на головну",
-  "prevLabel": "ПОПЕРЕДНІЙ",
-  "nextLabel": "НАСТУПНИЙ",
-  "verifiedBadge": "Перевірений профіль",
-  "contactTitle": "Зв'язок та професійні мережі:",
-  "members": [
-    {
-      "id": "horiachenko-r-i",
-      "name": "Горяченко Руслан Іванович",
-      "role": "Голова",
-      "quote": "Права людини - наш обов'язок, довіра людей - наша ціль",
-      "bio": "Пройшовши свій професійний шлях, я завжди ставив за головний пріоритет служіння суспільству та захист законності. Для мене Профспілка — це передусім об'єднання однодумців, мета якого підтримувати тих, хто щодня наражає себе на небезпеку.",
-      "image": "/union-website/photo/horiachenko-r-i.jpg",
-      "email": "",
-      "linkedin": ""
-    },
-    {
-      "id": "svystunova.o.m.",
-      "name": "Свистунова Олена Миколаївна",
-      "role": "Заступниця Голови",
-      "quote": "Правова допомога - це не послуга, це обов'язок",
-      "bio": "Мій життєвий та професійний шлях завжди був тісно пов'язаний із правозахисною діяльністю та допомогою людям. Відстоювати справедливість та боротися за права тих, хто цього потребує — фундамент моїх переконань. Я твердо вважаю, що підтримка у складній ситуації має надаватись не як привілей чи послуга, а як наш прямий і беззаперечний обов'язок.",
-      "image": "/union-website/photo/svystunova.png",
-      "email": "",
-      "linkedin": ""
-    },
-    {
-      "id": "panchenko.e.v.",
-      "name": "Панченко Євгеній Вікторович",
-      "role": "Заступник Голови",
-      "quote": "Головне - це люди, а не посади",
-      "bio": "У своєму житті я завжди керувався принципом взаємоповаги та людяності. Професійний досвід навчив мене, що будь-яка успішна організація чи система тримається виключно на людях, а не на паперових інструкціях чи званнях. Мій особистий вибір — бути поруч із тими, хто потребує допомоги, розуміти їхні турботи та ставити цінність людини вище за будь-які формальності.",
-      "image": "/union-website/photo/panchenko.e.v.jpeg",
-      "email": "",
-      "linkedin": ""
-    }
-  ]
+  "uk": {
+    "title": "Наше Керівництво",
+    "subtitle": "Люди, які стоять на варті ваших прав кожного дня.",
+    "badge": "Наша Гордість",
+    "viewProfile": "Переглянути профіль",
+    "notFound": "Керівника не знайдено",
+    "backButton": "До складу керівництва",
+    "backHome": "Повернутися на головну",
+    "prevLabel": "ПОПЕРЕДНІЙ",
+    "nextLabel": "НАСТУПНИЙ",
+    "verifiedBadge": "Перевірений профіль",
+    "contactTitle": "Зв'язок та професійні мережі:",
+    "members": [
+      {
+        "id": "horiachenko-r-i",
+        "name": "Горяченко Руслан Іванович",
+        "role": "Голова",
+        "quote": "Права людини - наш обов'язок, довіра людей - наша ціль",
+        "bio": "Пройшовши свій професійний шлях, я завжди ставив за головний пріоритет служіння суспільству та захист законності. Для мене Профспілка — це передусім об'єднання однодумців, мета якого підтримувати тих, хто щодня наражає себе на небезпеку.",
+        "image": "/union-website/photo/horiachenko-r-i.jpg",
+        "email": "",
+        "linkedin": ""
+      },
+      {
+        "id": "svystunova.o.m.",
+        "name": "Свистунова Олена Миколаївна",
+        "role": "Заступниця Голови",
+        "quote": "Правова допомога - це не послуга, це обов'язок",
+        "bio": "Мій життєвий та професійний шлях завжди був тісно пов'язаний із правозахисною діяльністю та допомогою людям. Відстоювати справедливість та боротися за права тих, хто цього потребує — фундамент моїх переконань. Я твердо вважаю, що підтримка у складній ситуації має надаватись не як привілей чи послуга, а як наш прямий і беззаперечний обов'язок.",
+        "image": "/union-website/photo/svystunova.png",
+        "email": "",
+        "linkedin": ""
+      },
+      {
+        "id": "panchenko.e.v.",
+        "name": "Панченко Євгеній Вікторович",
+        "role": "Заступник Голови",
+        "quote": "Головне - це люди, а не посади",
+        "bio": "У своєму житті я завжди керувався принципом взаємоповаги та людяності. Професійний досвід навчив мене, що будь-яка успішна організація чи система тримається виключно на людях, а не на паперових інструкціях чи званнях. Мій особистий вибір — бути поруч із тими, хто потребує допомоги, розуміти їхні турботи та ставити цінність людини вище за будь-які формальності.",
+        "image": "/union-website/photo/panchenko.e.v.jpeg",
+        "email": "",
+        "linkedin": ""
+      }
+    ]
+  },
+  "en": {
+    "title": "Our Leadership",
+    "subtitle": "People who stand guard over your rights every day.",
+    "badge": "Our Pride",
+    "viewProfile": "View Profile",
+    "notFound": "Manager not found",
+    "backButton": "Back to Leadership",
+    "backHome": "Return Home",
+    "prevLabel": "PREVIOUS",
+    "nextLabel": "NEXT",
+    "verifiedBadge": "Verified Profile",
+    "contactTitle": "Contact and professional networks:",
+    "members": [
+      {
+        "id": "horiachenko-r-i",
+        "name": "Horiachenko Ruslan Ivanovych",
+        "role": "Head",
+        "quote": "Human rights are our duty, people's trust is our goal",
+        "bio": "Having gone through my professional path, I have always placed service to society and the protection of the rule of law as my top priority. For me, the Trade Union is primarily an association of like-minded people whose goal is to support those who put themselves in danger every day.",
+        "image": "/union-website/photo/horiachenko-r-i.jpg",
+        "email": "",
+        "linkedin": ""
+      },
+      {
+        "id": "svystunova.o.m.",
+        "name": "Svystunova Olena Mykolaivna",
+        "role": "Deputy Head",
+        "quote": "Legal aid is not a service, it's a duty",
+        "bio": "My life and professional path have always been closely connected with human rights activities and helping people. Defending justice and fighting for the rights of those in need is the foundation of my beliefs. I firmly believe that support in a difficult situation must be provided not as a privilege or a service, but as our direct and indisputable duty.",
+        "image": "/union-website/photo/svystunova.png",
+        "email": "",
+        "linkedin": ""
+      },
+      {
+        "id": "panchenko.e.v.",
+        "name": "Panchenko Yevhenii Viktorovych",
+        "role": "Deputy Head",
+        "quote": "The main thing is people, not positions",
+        "bio": "In my life, I have always been guided by the principle of mutual respect and humanity. My professional experience taught me that any successful organization or system rests exclusively on people, not on paper instructions or ranks. My personal choice is to be close to those who need help, to understand their concerns, and to place the value of a person above any formalities.",
+        "image": "/union-website/photo/panchenko.e.v.jpeg",
+        "email": "",
+        "linkedin": ""
+      }
+    ]
+  }
 }
